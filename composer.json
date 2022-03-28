@@ -1,0 +1,32 @@
+{
+    "name": "colibri/security",
+    "description": "Colibri Security Module",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Vahan Grigoryan",
+            "email": "vahan.grigoryan@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "colibri/core": "dev-master",
+        "colibri/ui": "dev-master"
+    },
+    "repositories": {
+        "gitlab.repeatme.online/22": {
+            "type": "composer",
+            "url": "https://gitlab.repeatme.online/api/v4/group/22/-/packages/composer/packages.json"
+        },
+        "gitlab.repeatme.online/7": {
+            "type": "composer",
+            "url": "https://gitlab.repeatme.online/api/v4/group/7/-/packages/composer/packages.json"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Modules\\Security\\": "src/Security/"
+        }
+    }
+}

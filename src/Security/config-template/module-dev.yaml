@@ -1,0 +1,49 @@
+
+smtp:
+  enabled: true
+  host: "smtp.yandex.ru"
+  port: 465
+  secure: 'ssl'
+  user: 'connect@buhsoft.ru'
+  password: 'KtUdNYHkjkt56pA'
+  from: 'connect@buhsoft.ru'
+  fromname: 'БухСофт'
+
+templates:
+  token: "6891a20e4e911d2cc8da78e0606796d7"
+  messages:
+    register: "Добро пожаловать в систему Colibri"
+    reset-password: "Ваш пароль успешно сброшен"
+    reset-request: "Запрос на восстановление пароля"
+
+databases:
+
+  access-points: 
+
+    drivers:
+      mysql:
+        connection: Colibri\Data\MySql\Connection
+        command: Colibri\Data\MySql\Command
+        reader: Colibri\Data\MySql\DataReader
+        querybuilder: Colibri\Data\MySql\QueryBuilder
+
+    connections:
+      security:
+        # драйвер, который существует в секции access-points.drivers
+        type: mysql
+        # адрес подключения
+        host: localhost
+        # порт подключения
+        port: 3306
+        # пользователь
+        user: web
+        # пароль
+        password: 123456
+
+    points:
+      auth: 
+        connection: security
+        database: products
+
+  storages: include(security-storages.yaml)
+      

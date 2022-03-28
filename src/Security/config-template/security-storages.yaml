@@ -1,0 +1,133 @@
+
+users:
+  access-point: security
+  module: Security
+  models:
+    row: Models\User
+    table: Models\Users
+  desc: Пользователи системы безопасности
+  fields:
+    
+    login:
+      type: varchar
+      length: 255
+      class: string
+      desc: "Логин пользователя"
+      attrs:
+        width: 500
+    
+    password:
+      type: varchar
+      length: 255
+      class: string
+      desc: "Пароль"
+      required: true
+      readonly: false
+      component: Hidden
+    
+    fio:  
+      type: json
+      class: ObjectField
+      desc: "ФИО пользователя"
+      component: Object
+      required: false
+      reqdonly: true
+      default: "json_object()"
+      merged: true
+      fields:
+        firstName:
+          type: varchar
+          length: 50
+          component: Text
+          desc: "Имя"
+          class: string
+          readonly: false
+          required: false
+        lastName:
+          type: varchar
+          length: 50
+          desc: "Фамилия"
+          component: Text
+          class: string
+          readonly: false
+          required: false
+        patronymic:
+          type: varchar
+          length: 50
+          desc: "Отчество"
+          component: Text
+          class: string
+          readonly: false
+          required: false
+      attrs:
+        width: 800
+      params:
+        validate:
+          - message: "Пожалуйста, введите ваше имя и фамилию"
+            method: "(field, validator) => !!field.value.firstName && !!field.value.lastName"
+
+    phone:
+      type: varchar
+      length: 12
+      component: Text
+      class: string
+      required: false
+      readonly: false
+      desc: "Телефон"
+      attrs:
+        width: 450
+      params:
+        validate:
+          - message: "Пожалуйста, введите ваш телефон, формат: 7999999999 или 3749998877"
+            method: "(field, validator) => !!field.value && field.value.isNumeric()"
+
+    avatar:
+      type: varchar
+      length: 255
+      desc: "Аватар пользователя"
+      component: File
+      readonly: false
+      required: false
+    
+    role:
+      type: bigint unsigned
+      class: App\Modules\Security\Role
+      desc: "Роль"
+      attrs:
+        width: 350
+      lookup:
+        storage: roles
+    
+    permissions:
+      type: json
+      class: ObjectField
+      default: "json_object()"
+      desc: "Права доступа"
+      readonly: false
+      required: false
+
+roles:
+  access-point: security
+  module: Security
+  models:
+    row: Models\UserRole
+    table: Models\UserRoles
+  desc: "Роль пользователя"
+  fields:
+
+    name:
+      type: varchar
+      length: 255
+      class: string
+      component: Text
+      desc: Наименование роли
+      readonly: true
+      required: true
+
+    permissions:
+      type: json
+      class: ObjectField
+      default: "json_object()"
+      desc: "Права доступа"
+      readonly: false
+      required: false
