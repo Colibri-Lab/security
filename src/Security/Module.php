@@ -30,12 +30,6 @@ use Colibri\Common\SmtpHelper;
  * @author Vahan P. Grigoryan
  * @package App\Modules\Security
  * 
- * @property-read JWToken $current данные текущей сессии
- * @property-read User $user данные текущего польователя
- * @property-read Organization $organization данные текущей организации
- * @property-read Organizations $organizations организации пользователя
- * @property-read UserOrg $organization_data связь с текущей организацией
- * 
  */
 class Module extends BaseModule
 {
@@ -54,7 +48,7 @@ class Module extends BaseModule
 
         self::$instance = $this;
 
-        $this->Restore();
+        // $this->Restore();
 
     }
 

@@ -69,6 +69,13 @@ class Installer
     config: include(/config/security.yaml)', $modulesConfigContent);
         file_put_contents($modulesTargetPath, $modulesConfigContent);
 
+        print_r('Установка скриптов'."\n");
+        $scriptsPath = $path.'/src/Security/bin/';
+        $binDir = './bin/';
+ 
+        copy($scriptsPath.'security-migrate.sh', $binDir.'security-migrate.sh');
+        copy($scriptsPath.'security-models-generate.sh', $binDir.'security-models-generate.sh');
+
         // print_r('Копирование изображений'."\n");
 
         // $sourcePath = $path.'/src/Security/web/res/img/';
