@@ -13,27 +13,33 @@ users:
       length: 255
       class: string
       desc: "Логин пользователя"
+      note: "Введите наименование роли. Только латинские буквы, без пробелов"
       attrs:
-        width: 500
+        width: 100%
     
     password:
       type: varchar
       length: 255
       class: string
       desc: "Пароль"
+      note: "Пароль. Только латинские буквы, цифры и спец. символы. Обязательно должна быть одна цифра и один символ в верхнем регистре"
       required: true
       readonly: false
-      component: Hidden
+      component: Password
+      attrs:
+        width: 100%
     
     fio:  
       type: json
       class: ObjectField
       desc: "ФИО пользователя"
+      note: "Введите имя, фамилию и отчество"
       component: Object
       required: false
       reqdonly: true
       default: "json_object()"
-      merged: true
+      attrs:
+        width: 100%
       fields:
         firstName:
           type: varchar
@@ -59,8 +65,6 @@ users:
           class: string
           readonly: false
           required: false
-      attrs:
-        width: 800
       params:
         validate:
           - message: "Пожалуйста, введите ваше имя и фамилию"
@@ -74,8 +78,9 @@ users:
       required: false
       readonly: false
       desc: "Телефон"
+      note: "Введите телефон в формате 7999999999 или 3749998877"
       attrs:
-        width: 450
+        width: 100%
       params:
         validate:
           - message: "Пожалуйста, введите ваш телефон, формат: 7999999999 или 3749998877"
@@ -84,27 +89,73 @@ users:
     avatar:
       type: varchar
       length: 255
+      class: FileField
       desc: "Аватар пользователя"
+      note: "Загрузите аватару"
       component: File
       readonly: false
       required: false
+      params: 
+        droparea: true
+        allow:
+          exts: ['png', 'gif', 'jpg', 'jpeg']
+          size: 20971520
     
     role:
       type: bigint unsigned
-      class: App\Modules\Security\Role
+      class: App\Modules\Security\Models\UserRole
       desc: "Роль"
+      note: "Выберите роль пользователя"
       attrs:
-        width: 350
+        width: 100%
       lookup:
         storage: roles
+        controller: 
+          module: Security
+          class: Client
+          method: Roles
+      selector:
+        title: "name"
+        value: "id"
     
     permissions:
       type: json
-      class: ObjectField
-      default: "json_object()"
+      class: App\Modules\Security\Models\Permissions
+      component: Hidden
+      default: "json_array()"
       desc: "Права доступа"
       readonly: false
       required: false
+      fields:
+        path: 
+          type: varchar
+          length: 255
+          component: Hidden
+          required: true
+          readonly: false
+        value:
+          type: enum
+          default: "deny"
+          values: 
+            - value: "deny"
+              title: "Нет доступа"
+            - value: "allow"
+              title: "Есть доступ"
+
+
+    
+    settings:
+      type: json
+      class: ObjectField
+      component: Hidden
+      default: "json_object()"
+      fields:
+        logged: 
+          type: boolean
+          class: bool
+          readonly: false
+          required: false
+          default: "0"
 
 roles:
   access-point: security
@@ -126,8 +177,23 @@ roles:
 
     permissions:
       type: json
-      class: ObjectField
-      default: "json_object()"
+      class: App\Modules\Security\Models\Permissions
+      default: "json_array()"
       desc: "Права доступа"
       readonly: false
       required: false
+      fields:
+        path: 
+          type: varchar
+          length: 255
+          component: Hidden
+          required: true
+          readonly: false
+        value:
+          type: enum
+          default: "deny"
+          values: 
+            - value: "deny"
+              title: "Нет доступа"
+            - value: "allow"
+              title: "Есть доступ"

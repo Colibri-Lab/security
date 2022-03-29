@@ -76,16 +76,16 @@ class Installer
         copy($scriptsPath.'security-migrate.sh', $binDir.'security-migrate.sh');
         copy($scriptsPath.'security-models-generate.sh', $binDir.'security-models-generate.sh');
 
-        // print_r('Копирование изображений'."\n");
+        print_r('Копирование изображений'."\n");
 
-        // $sourcePath = $path.'/src/Security/web/res/img/';
-        // $targetDir = './web/res/img/';
+        $sourcePath = $path.'/src/Security/web/res/img/';
+        $targetDir = './web/res/img/';
 
-        // copy($sourcePath.'auth-arrow.svg', $targetDir.'auth-arrow.svg');
-        // copy($sourcePath.'auth-logo-only.svg', $targetDir.'auth-logo-only.svg');
-        // copy($sourcePath.'auth-icon-cart-white.svg', $targetDir.'auth-icon-cart-white.svg');
-        // copy($sourcePath.'auth-logo.svg', $targetDir.'auth-logo.svg');
-        // copy($sourcePath.'auth-bg.svg', $targetDir.'auth-bg.svg');
+        copy($sourcePath.'security-arrow.svg', $targetDir.'security-arrow.svg');
+        copy($sourcePath.'security-logo-only.svg', $targetDir.'security-logo-only.svg');
+        copy($sourcePath.'security-icon-cart-white.svg', $targetDir.'security-icon-cart-white.svg');
+        copy($sourcePath.'security-logo.svg', $targetDir.'security-logo.svg');
+        copy($sourcePath.'security-bg.svg', $targetDir.'security-bg.svg');
 
         print_r('Установка завершена'."\n");
 

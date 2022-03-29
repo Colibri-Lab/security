@@ -4,31 +4,19 @@ namespace App\Modules\Security;
 
 use Colibri\Modules\Module as BaseModule;
 use Colibri\App;
-use App\Modules\Security\Helpers\DemoAttacher;
-use Colibri\Common\DateHelper;
-use App\Modules\Security\SSClient\Api;
-use Colibri\Utils\Debug;
 use App\Modules\Security\Models\Users;
-use App\Modules\Security\Models\Organizations;
-use App\Modules\Security\Models\Organization;
-use App\Modules\Security\Models\UserOrg;
-use App\Modules\Security\Helpers\OldAuthHelper;
 use App\Modules\Security\Models\User;
-use App\Modules\MainFrame\Module as MainFrameModule;
-use CometApiClient\Client as CometApiClient;
-use App\Modules\Security\SSClient\JWToken;
-use App\Modules\Security\Models\UserOrgs;
-use PHPMailer\PHPMailer\PHPMailer;
 use Colibri\Utils\Menu\Item;
-use App\Modules\Security\Models\Members;
-use App\Modules\Security\Models\Member;
 use Colibri\Common\RandomizationHelper;
-use Colibri\Common\SmtpHelper;
+use Colibri\Encryption\Crypt;
+use Colibri\Utils\Debug;
 
 /**
  * Модуль авторизация
  * @author Vahan P. Grigoryan
  * @package App\Modules\Security
+ * 
+ * @property-read User $current
  * 
  */
 class Module extends BaseModule
@@ -48,7 +36,7 @@ class Module extends BaseModule
 
         self::$instance = $this;
 
-        // $this->Restore();
+        $this->Restore();
 
     }
 
@@ -85,7 +73,7 @@ class Module extends BaseModule
         $this->_hash = isset($_SESSION['SS_HASH']) ? $_SESSION['SS_HASH'] : null;
         @session_write_close();
 
-        $member = Members::LoadById($this->_id);
+        $member = Users::LoadById($this->_id);
         if(!$member) {
             $this->ClearSession();
             return;
@@ -135,15 +123,19 @@ class Module extends BaseModule
         return (bool)$this->_id;
     }
 
-    public function Login($email, $password) 
+    public function Login($login, $password) 
     {
 
-        $member = Members::LoadByEmail($email);
+        $member = Users::LoadByLogin($login);
         if(!$member) {
             return false;
         }
 
         if(!$member->Authorize($password)) {
+            return false;
+        }
+
+        if(!$member->IsCommandAllowed('security.login')) {
             return false;
         }
 
@@ -153,34 +145,6 @@ class Module extends BaseModule
         $this->Store();
 
         return true;
-
-    }
-
-    public function Register($data) {
-
-        $data = (object)$data;
-
-        if(Members::LoadByEmail($data->email)) {
-            return false;
-        }
-
-        $password = RandomizationHelper::Mixed(10);
-
-        /** @var Member */
-        $member = Members::LoadEmpty();
-        $member->email = $data->email;
-        $member->phone = $data->phone;
-        $member->password = $password;
-        $member->fio = $data->fio;
-        $member->info = $data->info;
-
-        if(!$member->Save()) {
-            return false;
-        }
-
-        $member->Notify('register');        
-        
-        return $member;
 
     }
 
@@ -195,12 +159,18 @@ class Module extends BaseModule
 
         $permissions = parent::GetPermissions();
 
-        $modulesList = App::$moduleManager->list;
-        foreach($modulesList as $module) {
-            if(is_object($module) && method_exists($module, 'GetPersmissions') && !($module instanceof self)) {
-                $permissions = array_merge($permissions, $module->GetPersmissions());
-            }
-        }
+        $permissions['security'] = 'Использовать модуль';
+        $permissions['security.login'] = 'Выполнять вход в административную консоль';
+        $permissions['security.profile'] = 'Редактировать свой профиль';
+
+        $permissions['security.roles'] = 'Доступ к ролям';
+        $permissions['security.users'] = 'Доступ к пользователям';
+        $permissions['security.roles.add'] = 'Создать роль';
+        $permissions['security.roles.save'] = 'Сохранить роль';
+        $permissions['security.roles.remove'] = 'Удалить роль';
+        $permissions['security.users.add'] = 'Создать пользователя';
+        $permissions['security.users.save'] = 'Сохранить пользователя';
+        $permissions['security.users.remove'] = 'Удалить пользователя';
 
         return $permissions;
     }
@@ -209,34 +179,15 @@ class Module extends BaseModule
 
         return Item::Create('more', 'ЕЩЕ', 'blue', false, '')->Add(
 
-            Item::Create('profile', 'Личный кабинет', '', false, '')->Add(
-                Item::Create('requisites', 'Реквизиты', '', false, 'Security.RouteTo("/lk/form/requisites/")')
+            Item::Create('security', 'Безопасность', '', false, '')->Add(
+                Item::Create('profile', 'Личный кабинет', '', false, 'Security.RouteTo("/security/profile/")')
             )->Add(
-                Item::Create('legalAddress', 'Юридический адрес', '', false, 'Security.RouteTo("/lk/form/legalAddress/")')
+                Item::Create('users', 'Пользователи', '', false, 'Security.RouteTo("/security/users/")')
             )->Add(
-                Item::Create('actualAddress', 'Фактический адрес', '', false, 'Security.RouteTo("/lk/form/actualAddress/")')
+                Item::Create('roles', 'Роли', '', false, 'Security.RouteTo("/security/roles/")')
             )->Add(
-                Item::Create('contacts', 'Контактное лицо', '', false, 'Security.RouteTo("/lk/form/contacts/")')
-            )->Add(
-                Item::Create('bank', 'Банковские данные', '', false, 'Security.RouteTo("/lk/form/bank/")')
-            )->Add(
-                Item::Create('sending', 'Отправка заказов', '', false, 'Security.RouteTo("/lk/sending/")')
-            )->Add(
-                Item::Create('delivery', 'Доставка', '', false, 'Security.RouteTo("/lk/delivery/")')
-            )->Add(
-                Item::Create('subscription', 'Рассылка', '', false, 'Security.RouteTo("/lk/subscription/")')
+                Item::Create('permissions', 'Права доступа', '', false, 'Security.RouteTo("/security/permissions/")')
             )
-
-        )->Add(
-
-            Item::Create('orders', 'Мои заказы', '', false, '')->Add(
-                Item::Create('current', 'Текущий заказ', '', false, 'Security.RouteTo("/orders/current/")')
-            )->Add(
-                Item::Create('all', 'Все заказы', '', false, 'Security.RouteTo("/orders/all/")')
-            )->Add(
-                Item::Create('statistics', 'Статистика', '', false, 'Security.RouteTo("/orders/stats/")')
-            )
-
         );
 
     }
