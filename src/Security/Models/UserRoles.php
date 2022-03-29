@@ -19,7 +19,8 @@ use App\Modules\Security\Models\UserRole;
  * @method UserRole _read()
  * 
  */
-class UserRoles extends BaseModelDataTable {
+class UserRoles extends BaseModelDataTable
+{
 
     /**
      * Конструктор
@@ -34,7 +35,7 @@ class UserRoles extends BaseModelDataTable {
         parent::__construct($point, $reader, $returnAs, $storage);
     }
 
-    
+
     /**
      * Создание модели по названию хранилища
      * @param int $page страница
@@ -44,15 +45,15 @@ class UserRoles extends BaseModelDataTable {
      * @param array $params параметры к запросу
      * @return UserRoles
      */
-    static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = []) : UserRoles 
+    static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = []): UserRoles
     {
         $storage = Storages::Create()->Load('roles');
         return self::LoadByQuery(
             $storage,
-            'select * from ' . $storage->name . 
-                ($filter ? ' where ' . $filter : '') . 
-                ($order ? ' order by ' . $order : ''), 
-            ['page' => $page, 'pagesize' => $pagesize, 'params' => $params]
+            'select * from ' . $storage->name .
+            ($filter ? ' where ' . $filter : '') .
+            ($order ? ' order by ' . $order : ''),
+        ['page' => $page, 'pagesize' => $pagesize, 'params' => $params]
         );
     }
 
@@ -62,7 +63,7 @@ class UserRoles extends BaseModelDataTable {
      * @param int $pagesize размер страницы
      * @return UserRoles 
      */
-    static function LoadAll(int $page = -1, int $pagesize = 20) : UserRoles
+    static function LoadAll(int $page = -1, int $pagesize = 20): UserRoles
     {
         return self::LoadByFilter($page, $pagesize, null, null);
     }
@@ -72,7 +73,7 @@ class UserRoles extends BaseModelDataTable {
      * @param int $id ID строки
      * @return UserRole|null
      */
-    static function LoadById(int $id) : UserRole 
+    static function LoadById(int $id): UserRole
     {
         $table = self::LoadByFilter(1, 1, '{id}=[[id:integer]]', null, ['id' => $id]);
         return $table->Count() > 0 ? $table->First() : null;
@@ -82,7 +83,7 @@ class UserRoles extends BaseModelDataTable {
      * Создание модели по названию хранилища
      * @return UserRole
      */
-    static function LoadEmpty() : UserRole 
+    static function LoadEmpty(): UserRole
     {
         $reports = self::LoadByFilter(-1, 20, 'false');
         return $reports->CreateEmptyRow();

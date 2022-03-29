@@ -28,14 +28,16 @@ use Colibri\Encryption\Crypt;
  * @property ObjectField|null $settings 
  * endregion Properties;
  */
-class User extends BaseModelDataRow {
+class User extends BaseModelDataRow
+{
 
     /**
      * Авторизация пользователя
      */
-    public function Authorize(string $password): bool {
+    public function Authorize(string $password): bool
+    {
 
-        if($this->password == $password) {
+        if ($this->password == $password) {
             $this->settings->logged = true;
             $this->Save();
             return true;
@@ -45,23 +47,24 @@ class User extends BaseModelDataRow {
 
     }
 
-    public function Logout() : void {
+    public function Logout(): void
+    {
         $this->settings->logged = false;
         $this->Save();
     }
 
-    
-    public function setPropertyPassword(string $value) : void
+
+    public function setPropertyPassword(string $value): void
     {
         $this->_data['users_password'] = Crypt::Encrypt($this->login, $value, Crypt::EncryptionAlgHex);
     }
 
-    public function getPropertyPassword() : string
+    public function getPropertyPassword(): string
     {
         return Crypt::Decrypt($this->login, $this->_data['users_password'], Crypt::EncryptionAlgHex);
     }
 
-    public function ToArray(bool $noPrefix = false) : array 
+    public function ToArray(bool $noPrefix = false): array
     {
 
         $ar = parent::ToArray($noPrefix);
@@ -69,14 +72,14 @@ class User extends BaseModelDataRow {
         foreach ($ar as $key => $value) {
             if ($value instanceof FileField) {
                 $ar[$key] = $value->Source();
-            }   
+            }
         }
 
         return $ar;
 
     }
 
-    public function IsCommandAllowed(string $command) : bool 
+    public function IsCommandAllowed(string $command): bool
     {
 
         $rolePermissions = $this->role->permissions;
@@ -86,9 +89,9 @@ class User extends BaseModelDataRow {
 
         $rolePermissions->Sort('path', SORT_DESC);
 
-        foreach($rolePermissions as $permission) {
+        foreach ($rolePermissions as $permission) {
             /** @var Permission $permission */
-            if($result = $permission->Check($command)) {
+            if ($result = $permission->Check($command)) {
                 return $result === Permission::Allow;
             }
         }

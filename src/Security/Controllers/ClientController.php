@@ -16,31 +16,31 @@ use Colibri\App;
 class ClientController extends RpcController
 {
 
-    public function Settings(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload)  : object
+    public function Settings(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
     {
         $userFields = Storages::Create()->Load('users')->ToArray();
         $isLogged = Module::$instance->IsLogged();
         $member = null;
-        if($isLogged) {
+        if ($isLogged) {
             $member = Module::$instance->current->ToArray(true);
         }
         $permissions = App::$moduleManager->GetPermissions();
         return $this->Finish(200, 'ok', ['settings' => ['logged' => $isLogged, 'permissions' => $permissions, 'fields' => ['user' => $userFields['fields']]], 'user' => $member]);
     }
 
-    public function Roles(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload) : object
+    public function Roles(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
     {
 
         $roles = UserRoles::LoadAll();
-        
+
         return $this->Finish(200, 'ok', $roles->ToArray(true));
     }
 
-    public function Save(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload) : object 
+    public function Save(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
     {
 
         $id = $post->id;
-        if(!$id) {
+        if (!$id) {
             return $this->Finish(400, 'Bad request');
         }
 
@@ -51,7 +51,7 @@ class ClientController extends RpcController
         $phone = $post->phone;
 
         $user = Module::$instance->current;
-        if($password) {
+        if ($password) {
             $user->password = $password;
         }
         $user->avatar = $avatar;
@@ -63,15 +63,15 @@ class ClientController extends RpcController
         return $this->Finish(200, 'ok', $user->ToArray(true));
     }
 
-    public function Login(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload) : object
+    public function Login(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
     {
 
-        if(!$post->login || !$post->password) {
+        if (!$post->login || !$post->password) {
             return $this->Finish(400, 'Bad request', []);
         }
 
         $result = Module::$instance->Login($post->login, $post->password);
-        if($result) {
+        if ($result) {
             return $this->Finish(200, 'Logged');
         }
         else {
@@ -80,7 +80,7 @@ class ClientController extends RpcController
 
     }
 
-    public function Logout(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload) : object
+    public function Logout(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
     {
         Module::$instance->current->Logout();
         Module::$instance->ClearSession();

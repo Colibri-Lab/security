@@ -19,7 +19,8 @@ use App\Modules\Security\Models\User;
  * @method User _read()
  * 
  */
-class Users extends BaseModelDataTable {
+class Users extends BaseModelDataTable
+{
 
     /**
      * Конструктор
@@ -34,7 +35,7 @@ class Users extends BaseModelDataTable {
         parent::__construct($point, $reader, $returnAs, $storage);
     }
 
-    
+
     /**
      * Создание модели по названию хранилища
      * @param int $page страница
@@ -44,15 +45,15 @@ class Users extends BaseModelDataTable {
      * @param array $params параметры к запросу
      * @return Users
      */
-    static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = []) : Users 
+    static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = []): Users
     {
         $storage = Storages::Create()->Load('users');
         return self::LoadByQuery(
             $storage,
-            'select * from ' . $storage->name . 
-                ($filter ? ' where ' . $filter : '') . 
-                ($order ? ' order by ' . $order : ''), 
-            ['page' => $page, 'pagesize' => $pagesize, 'params' => $params]
+            'select * from ' . $storage->name .
+            ($filter ? ' where ' . $filter : '') .
+            ($order ? ' order by ' . $order : ''),
+        ['page' => $page, 'pagesize' => $pagesize, 'params' => $params]
         );
     }
 
@@ -62,7 +63,7 @@ class Users extends BaseModelDataTable {
      * @param int $pagesize размер страницы
      * @return Users 
      */
-    static function LoadAll(int $page = -1, int $pagesize = 20) : Users
+    static function LoadAll(int $page = -1, int $pagesize = 20): Users
     {
         return self::LoadByFilter($page, $pagesize, null, null);
     }
@@ -72,7 +73,7 @@ class Users extends BaseModelDataTable {
      * @param int $id ID строки
      * @return User|null
      */
-    static function LoadById(int $id) : User|null 
+    static function LoadById(int $id): User|null
     {
         $table = self::LoadByFilter(1, 1, '{id}=[[id:integer]]', null, ['id' => $id]);
         return $table->Count() > 0 ? $table->First() : null;
@@ -83,7 +84,7 @@ class Users extends BaseModelDataTable {
      * @param string $login Логин строки
      * @return User|null
      */
-    static function LoadByLogin(string $login): User|null 
+    static function LoadByLogin(string $login): User|null
     {
         $table = self::LoadByFilter(1, 1, '{login}=[[login:string]]', null, ['login' => $login]);
         return $table->Count() > 0 ? $table->First() : null;
@@ -94,7 +95,8 @@ class Users extends BaseModelDataTable {
      * Создание модели по названию хранилища
      * @return User
      */
-    static function LoadEmpty() : User {
+    static function LoadEmpty(): User
+    {
         $reports = self::LoadByFilter(-1, 20, 'false');
         return $reports->CreateEmptyRow();
     }

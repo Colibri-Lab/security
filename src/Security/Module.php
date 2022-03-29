@@ -31,7 +31,7 @@ class Module extends BaseModule
     private $_current;
 
 
-    public function InitializeModule()
+    public function InitializeModule(): void
     {
 
         self::$instance = $this;
@@ -40,7 +40,7 @@ class Module extends BaseModule
 
     }
 
-    public function __destruct() 
+    public function __destruct()
     {
         $this->Store();
     }
@@ -50,21 +50,21 @@ class Module extends BaseModule
      * @param string $property свойство
      * @return mixed 
      */
-    public function __get($property)
+    public function __get(string $property): mixed
     {
         $return = null;
         if (strtolower($property) === 'current') {
             $return = $this->_current;
         }
-        
+
         return $return ? $return : parent::__get($property);
 
     }
 
-    public function Restore() 
+    public function Restore(): void
     {
 
-        if(version_compare(PHP_VERSION, '7.3.0') !== -1 && !headers_sent()) {
+        if (version_compare(PHP_VERSION, '7.3.0') !== -1 && !headers_sent()) {
             session_set_cookie_params(["SameSite" => "None"]); //none, lax, strict
             session_set_cookie_params(["Secure" => "true"]); //false, true        
         }
@@ -74,12 +74,12 @@ class Module extends BaseModule
         @session_write_close();
 
         $member = Users::LoadById($this->_id);
-        if(!$member) {
+        if (!$member) {
             $this->ClearSession();
             return;
         }
 
-        if(!$member->Authorize($this->_hash)) {
+        if (!$member->Authorize($this->_hash)) {
             $this->ClearSession();
             return;
         }
@@ -88,14 +88,14 @@ class Module extends BaseModule
 
     }
 
-    public function Store()
+    public function Store(): void
     {
         // если версия выше 7.3.0
-        if(version_compare(PHP_VERSION, '7.3.0') !== -1 && !headers_sent()) {
+        if (version_compare(PHP_VERSION, '7.3.0') !== -1 && !headers_sent()) {
             session_set_cookie_params(["SameSite" => "None"]); //none, lax, strict
             session_set_cookie_params(["Secure" => "true"]); //false, true        
         }
-        
+
         @session_start();
         $_SESSION['SS_MEMBER'] = $this->_id;
         $_SESSION['SS_HASH'] = $this->_hash;
@@ -103,11 +103,12 @@ class Module extends BaseModule
 
     }
 
-    public function ClearSession() {
-        if(version_compare(PHP_VERSION, '7.3.0') !== -1 && !headers_sent()) {
+    public function ClearSession(): void
+    {
+        if (version_compare(PHP_VERSION, '7.3.0') !== -1 && !headers_sent()) {
             session_set_cookie_params(["SameSite" => "None"]); //none, lax, strict
             session_set_cookie_params(["Secure" => "true"]); //false, true        
-        }     
+        }
         session_start();
         $_SESSION['SS_MEMBER'] = null;
         $_SESSION['SS_HASH'] = null;
@@ -118,24 +119,24 @@ class Module extends BaseModule
         $this->_current = null;
     }
 
-    public function IsLogged()
-    { 
+    public function IsLogged(): bool
+    {
         return (bool)$this->_id;
     }
 
-    public function Login($login, $password) 
+    public function Login(string $login, string $password): bool
     {
 
         $member = Users::LoadByLogin($login);
-        if(!$member) {
+        if (!$member) {
             return false;
         }
 
-        if(!$member->Authorize($password)) {
+        if (!$member->Authorize($password)) {
             return false;
         }
 
-        if(!$member->IsCommandAllowed('security.login')) {
+        if (!$member->IsCommandAllowed('security.login')) {
             return false;
         }
 
@@ -148,15 +149,8 @@ class Module extends BaseModule
 
     }
 
-    public function GetPermissions()
+    public function GetPermissions(): array
     {
-        // создаем набор прав, на будущее
-        // $permissions = parent::GetPermissions()
-        // $className = static::class
-        // $permissionsName = strtolower(str_replace('\\', '.', $className))
-        // $permissions[ $permissionsName.'.test.write' ] = 'Тестовое правило записи'
-        // return $permissions;
-
         $permissions = parent::GetPermissions();
 
         $permissions['security'] = 'Использовать модуль';
@@ -175,23 +169,21 @@ class Module extends BaseModule
         return $permissions;
     }
 
-    public function GetTopmostMenu($hideExecuteCommand = true) {
-
+    public function GetTopmostMenu(bool $hideExecuteCommand = true): Item|array
+    {
         return Item::Create('more', 'ЕЩЕ', 'blue', false, '')->Add(
-
             Item::Create('security', 'Безопасность', '', false, '')->Add(
-                Item::Create('profile', 'Личный кабинет', '', false, 'Security.RouteTo("/security/profile/")')
-            )->Add(
-                Item::Create('users', 'Пользователи', '', false, 'Security.RouteTo("/security/users/")')
-            )->Add(
-                Item::Create('roles', 'Роли', '', false, 'Security.RouteTo("/security/roles/")')
-            )->Add(
-                Item::Create('permissions', 'Права доступа', '', false, 'Security.RouteTo("/security/permissions/")')
-            )
-        );
-
+            Item::Create('profile', 'Личный кабинет', '', false, 'Security.RouteTo("/security/profile/")')
+        )->Add(
+            Item::Create('users', 'Пользователи', '', false, 'Security.RouteTo("/security/users/")')
+        )->Add(
+            Item::Create('roles', 'Роли', '', false, 'Security.RouteTo("/security/roles/")')
+        )->Add(
+            Item::Create('permissions', 'Права доступа', '', false, 'Security.RouteTo("/security/permissions/")')
+        ));
     }
 
 
-    
+
+
 }

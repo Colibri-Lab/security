@@ -11,7 +11,7 @@ class Permissions extends ArrayField
      * @param int $index индекс
      * @return Permission обьект
      */
-    public function Item(int $index) : Permission
+    public function Item(int $index): Permission
     {
         return $this->data[$index] instanceof Permission ? $this->data[$index] : new Permission($this->data[$index], $this->_storage, $this->_field);
     }

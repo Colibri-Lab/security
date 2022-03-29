@@ -19,6 +19,7 @@ use Colibri\Data\Storages\Fields\ObjectField;
  * @property Permissions|null $permissions Права доступа
  * endregion Properties;
  */
-class UserRole extends BaseModelDataRow {
+class UserRole extends BaseModelDataRow
+{
 
 }

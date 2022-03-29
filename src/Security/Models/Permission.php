@@ -8,14 +8,14 @@ use Colibri\Data\Storages\Fields\ObjectField;
  * @property string $value
  */
 class Permission extends ObjectField
-{   
+{
     const Allow = 'allow';
     const Deny = 'deny';
 
-    public function Check($command) : string|null
+    public function Check($command): string|null
     {
         $permission = str_replace('*', '.*', str_replace('.', '\.', $this->path));
-        if (preg_match('/'.$permission.'$/im', $command, $matches) > 0) {
+        if (preg_match('/' . $permission . '$/im', $command, $matches) > 0) {
             return $this->value;
         }
         return null;
