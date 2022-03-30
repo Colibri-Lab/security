@@ -7,9 +7,44 @@ App.Modules.Security = class extends Colibri.Modules.Module {
         super('Security');
     }
 
+    
+
     InitializeModule() {
 
         this.userData = {};
+        this._pages = {};
+        this._pageMap = {
+            profile: {
+                route: '/security/profile/',
+                handle: () => {
+                    Colibri.Common.Wait(() => this._store.Query('security.user').id).then(() => {
+                        if(this.IsCommandAllowed('security.profile')) {
+                    
+                            if(!this._pages['profile']) {
+                                this._pages['profile'] = new App.Modules.Security.ProfileWindow('profile', document.body);
+                            }
+                            this._pages['profile'].Show();
+                            
+                        }
+                        else {
+                            App.Notices && App.Notices.Add({
+                                severity: 'error',
+                                title: 'Действие запрещено',
+                                timeout: 5000
+                            });
+                        }
+                    });
+                    
+                }
+            },
+            administrate: {
+                className: 'App.Modules.Security.AdministratePage', 
+                title: 'Администрирование',
+                color: 'orange',
+                route: '/security/administrate/'
+            }
+            
+        }
         this._loginForm = null;
 
         this._store = App.Store.AddChild('app.security', {});
@@ -21,11 +56,6 @@ App.Modules.Security = class extends Colibri.Modules.Module {
             }
         });
 
-        this.HandleRoute('/', 'RoutedToModule');
-        this.HandleRoute('/security/profile/', 'RoutedToSelf');
-        this.HandleRoute('/security/users/', 'RoutedToUsers');
-        this.HandleRoute('/security/roles/', 'RoutedToRoles');
-        this.HandleRoute('/security/permissions/', 'RoutedToPermissions');
 
         console.log('Initializing module Security');
 
@@ -39,6 +69,9 @@ App.Modules.Security = class extends Colibri.Modules.Module {
             App.Router.Navigate('', {});
         });
 
+        Object.forEach(this._pageMap, (name, info) => {
+            App.Router.AddRoutePattern(info.route, info.handle ?? ((url, options) => this.ShowPage(name)));
+        });
 
     }
 
@@ -51,11 +84,6 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     RegisterEvents() {
         console.log('Registering module events for Security');
         
-        this.RegisterEvent('RoutedToModule', false, 'Когда переключились на модуль (будет подниматься каждый раз когда раутер переключается внутри модуля)');
-        this.RegisterEvent('RoutedToSelf', false, 'Когда перешли в редактор своего профиля');
-        this.RegisterEvent('RoutedToUsers', false, 'Когда перешли в редактор пользователей');
-        this.RegisterEvent('RoutedToRoles', false, 'Когда перешли в редактор ролей');
-        this.RegisterEvent('RoutedToPermissions', false, 'Когда перешли в просмотр прав');
 
     }
 
@@ -81,58 +109,69 @@ App.Modules.Security = class extends Colibri.Modules.Module {
             });
         });
 
-        this.AddHandler('RoutedToLK', (event, args) => {
-
-            this._store.AsyncQuery('security.user').then((userData) => {
-
-                if(userData.id) {
-                    if(!this._pageLKContainer) {
-                        if(MainFrame) {
-                            this._pageLKContainer = MainFrame.AddTab('security_lk', 'Личный кабинет', 'orange', true, 'security_lk-container', () => {
-                                this.RemoveLKPage();
-                                this._pageLKContainer = null;
-                            }, '/security/lk/');    
-                        }
-                        else {
-                            this._pageLKContainer = AktionDigital.UI.Find('mainpage/page-content');
-                        }
-                    }
-                    else if(MainFrame) {
-                        MainFrame.SelectTab(this._pageLKContainer);
-                    }
-                    this.ShowLkPage(this._pageLKContainer);
-                }
-
-            });
-            
-        });
-
-        this.AddHandler('RoutedToOrders', (event, args) => {
-            this._store.AsyncQuery('security.user').then((userData) => {
-
-                if(userData.id) {
-                    if(!this._pageOrdersContainer) {
-                        if(MainFrame) {
-                            this._pageOrdersContainer = MainFrame.AddTab('security_orders', 'Мои заказы', 'orange', true, 'security_orders-container', () => {
-                                this.RemoveOrdersPage();
-                                this._pageOrdersContainer = null;
-                            }, '/security/orders/');    
-                        }
-                        else {
-                            this._pageOrdersContainer = AktionDigital.UI.Find('mainpage/page-content');
-                        }
-                    }
-                    else if(MainFrame) {
-                        MainFrame.SelectTab(this._pageOrdersContainer);
-                    }
-                    this.ShowOrdersPage(this._pageOrdersContainer);
-                }
-
-            });
-        });
+        this.AddHandler('RoutedToUsers', (event, args) => this.ShowPage('users'));
+        this.AddHandler('RoutedToRoles', (event, args) => this.ShowPage('roles'));
+        this.AddHandler('RoutedToPermissions', (event, args) => this.ShowPage('permission'));
 
     }
 
+    ShowPage(name) {
+        Colibri.Common.Wait(() => this._store.Query('security.user').id).then(() => {
+            if(this.IsCommandAllowed('security.' + name)) {
+        
+                const pageInfo = this._pageMap[name];
+                const componentClass = pageInfo.className;
+                const title = pageInfo.title;
+                const route = pageInfo.route;
+
+                const componentObject = eval(componentClass);
+                if(!componentObject) {
+                    return;
+                }
+
+                let container = null;
+                if(!this._pages[componentClass]) {
+
+                    container = MainFrame.AddTab(componentClass, title, 'orange', true, name + '-container', () => {
+                        this.RemovePage(name);
+                    }, route);    
+
+                    if(!this._pages[componentClass]) {
+                        this._pages[componentClass] = new componentObject(name, container);
+                    }
+                    if(!this._pages[componentClass].isConnected) {
+                        this._pages[componentClass].ConnectTo(container);
+                    }
+                    this._pages[componentClass].Show();
+
+                }
+                else if(MainFrame) {
+                    MainFrame.SelectTab(this._pages[componentClass].parent);
+                }
+
+            }
+            else {
+                App.Notices && App.Notices.Add({
+                    severity: 'error',
+                    title: 'Действие запрещено',
+                    timeout: 5000
+                });
+            }
+        });
+
+
+    }
+
+    RemovePage(name) {
+        const pageInfo = this._pageMap[name];
+        const componentClass = pageInfo.className;
+
+        if(this._pages[componentClass]) {
+            this._pages[componentClass].Dispose();
+            this._pages[componentClass].parent.Dispose();
+            this._pages[componentClass] = null;
+        }
+    }
 
     Menu(isadmin) {
 
@@ -303,35 +342,6 @@ App.Modules.Security = class extends Colibri.Modules.Module {
             });
     }
 
-    ShowLkPage(container) {
-        this._pageLKContainer = container;
-
-        const renderPage = (c) => {
-            const pageContent = c || AktionDigital.UI.Find('mainpage/page-content');
-            if(!this._lkPage) {
-                this._lkPage = new App.Modules.Security.LkPage('lk-page', pageContent);
-                this._lkPage.binding = 'app.personnel';
-            }
-            if(!this._lkPage.isConnected) {
-                this._lkPage.ConnectTo(pageContent);
-            }
-            this._lkPage.Show();
-        };
-
-        if(!container) {
-            AktionDigital.Common.Wait(() => AktionDigital.UI.Find('mainpage/page-content') !== null).then(renderPage);
-        }
-        else {
-            renderPage(container);
-        }
-    }
-
-    RemoveLKPage() {
-        if(this._lkPage) {
-            this._lkPage.Dispose();
-            this._lkPage = null;
-        }
-    }
 
     get LoginForm() {
         if(this._loginForm) {
@@ -344,14 +354,6 @@ App.Modules.Security = class extends Colibri.Modules.Module {
         }
 
         return this._loginForm;
-    }
-
-    get RegisterForm() {
-        return this._registerForm;
-    }
-
-    get ResetRequestForm() {
-        return this._resetRequestForm;
     }
 
     get ProfileWindow() {

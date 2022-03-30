@@ -1,0 +1,25 @@
+.app-security-administrate-page-component {
+    height: 100%;
+    [data-object-name="split"] {
+        width: 100%;
+        height: 100%;
+        [data-object-name="userroles-pane"], [data-object-name="permissions-pane"] {
+            &.app-component-shown {
+                display: grid;
+            }
+            grid-template-rows: 30px calc(100% - 30px);
+        }
+        .app-component-split-left {
+            flex: 0 0 20%;
+        }
+        .app-component-split-right {
+            padding-left: 20px;
+        }
+        .app-component-split-handler {
+            flex: 0 0 7px;
+            width: 7px;
+            background: #dfdfdf;
+        }
+    }
+    
+}

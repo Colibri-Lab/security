@@ -73,6 +73,10 @@ class Module extends BaseModule
         $this->_hash = isset($_SESSION['SS_HASH']) ? $_SESSION['SS_HASH'] : null;
         @session_write_close();
 
+        if(!$this->_id) {
+            return;
+        }
+
         $member = Users::LoadById($this->_id);
         if (!$member) {
             $this->ClearSession();
@@ -157,14 +161,13 @@ class Module extends BaseModule
         $permissions['security.login'] = 'Выполнять вход в административную консоль';
         $permissions['security.profile'] = 'Редактировать свой профиль';
 
-        $permissions['security.roles'] = 'Доступ к ролям';
-        $permissions['security.users'] = 'Доступ к пользователям';
-        $permissions['security.roles.add'] = 'Создать роль';
-        $permissions['security.roles.save'] = 'Сохранить роль';
-        $permissions['security.roles.remove'] = 'Удалить роль';
-        $permissions['security.users.add'] = 'Создать пользователя';
-        $permissions['security.users.save'] = 'Сохранить пользователя';
-        $permissions['security.users.remove'] = 'Удалить пользователя';
+        $permissions['security.administrate'] = 'Доступ к администрированию';
+        $permissions['security.administrate.rolesadd'] = 'Создать роль';
+        $permissions['security.administrate.rolessave'] = 'Сохранить роль';
+        $permissions['security.administrate.rolesremove'] = 'Удалить роль';
+        $permissions['security.administrate.usersadd'] = 'Создать пользователя';
+        $permissions['security.administrate.userssave'] = 'Сохранить пользователя';
+        $permissions['security.administrate.usersremove'] = 'Удалить пользователя';
 
         return $permissions;
     }
@@ -173,13 +176,9 @@ class Module extends BaseModule
     {
         return Item::Create('more', 'ЕЩЕ', 'blue', false, '')->Add(
             Item::Create('security', 'Безопасность', '', false, '')->Add(
-            Item::Create('profile', 'Личный кабинет', '', false, 'Security.RouteTo("/security/profile/")')
+            Item::Create('profile', 'Личный кабинет', '', false, 'Security.RouteTo("/profile/")')
         )->Add(
-            Item::Create('users', 'Пользователи', '', false, 'Security.RouteTo("/security/users/")')
-        )->Add(
-            Item::Create('roles', 'Роли', '', false, 'Security.RouteTo("/security/roles/")')
-        )->Add(
-            Item::Create('permissions', 'Права доступа', '', false, 'Security.RouteTo("/security/permissions/")')
+            Item::Create('users', 'Администрирование', '', false, 'Security.RouteTo("/administrate/")')
         ));
     }
 

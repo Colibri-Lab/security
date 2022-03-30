@@ -100,4 +100,9 @@ class User extends BaseModelDataRow
         return false;
     }
 
+    public function Save(): bool 
+    {
+        return $this->table->SaveRow($this);
+    }
+
 }
