@@ -1,3 +1,39 @@
+__global_types:
+  
+  file: 
+    type: json
+    class: RemoteFileField
+    component: File
+    default: "json_object()"
+    params:
+      remote:
+          class: FileServerApiClient\Client
+          args: ['fs.local.bsft.loc', '4c01a6bb9d449641683075d9ccac3c0b']
+          method: ['GetObject', 'PutObject', 'StatObject']
+          key: guid
+
+    fields: 
+      crc: varchar(32), string
+      guid: varchar(36), string 
+      name: varchar(255), string 
+      path: varchar(255), string 
+      size: bigint, int 
+      bucket: varchar, string 
+      mimetype: varchar, string
+
+  filelist: 
+    type: json
+    class: FileListField
+    component: Files
+    default: "json_array()"
+    fields: 
+      crc: varchar(32), string
+      guid: varchar(36), string 
+      name: varchar(255), string 
+      path: varchar(255), string 
+      size: bigint, int 
+      bucket: varchar, string 
+      mimetype: varchar, string
 
 users:
   access-point: security
@@ -87,20 +123,15 @@ users:
             method: "(field, validator) => !!field.value && field.value.isNumeric()"
 
     avatar:
-      type: varchar
-      length: 255
-      class: FileField
+      inherit: file
       desc: "Аватар пользователя"
       note: "Загрузите аватару"
-      component: File
-      readonly: false
-      required: false
       params: 
         droparea: true
         allow:
-          exts: ['png', 'gif', 'jpg', 'jpeg']
+          exts: ['png', 'gif', 'jpg', 'jpeg', 'txt']
           size: 20971520
-    
+
     role:
       type: bigint unsigned
       class: App\Modules\Security\Models\UserRole

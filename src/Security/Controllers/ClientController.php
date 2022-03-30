@@ -45,16 +45,23 @@ class ClientController extends RpcController
         }
 
         $password = $post->password;
-        $avatar = $post->avatar;
         $role = $post->role['id'];
         $fio = $post->fio;
         $phone = $post->phone;
+        $avatar = App::$request->files->avatar;
 
         $user = Module::$instance->current;
         if ($password) {
             $user->password = $password;
         }
-        $user->avatar = $avatar;
+
+        if(!$avatar) {
+            $user->avatar = null;    
+        }
+        else { 
+            $user->avatar->ConvertFromFile($avatar);
+        }
+
         $user->role = UserRoles::LoadById($role);
         $user->fio = $fio;
         $user->phone = $phone;

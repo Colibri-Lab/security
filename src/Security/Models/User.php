@@ -5,9 +5,12 @@ namespace App\Modules\Security\Models;
 use Colibri\Data\Storages\Fields\DateTimeField;
 use Colibri\Data\Storages\Models\DataRow as BaseModelDataRow;
 use Colibri\Data\Storages\Fields\ObjectField;
-use Colibri\Data\Storages\Fields\FileField;
+use Colibri\Data\Storages\Fields\RemoteFileField;
 use App\Modules\Security\Models\UserRole;
 use Colibri\Encryption\Crypt;
+use Colibri\Web\RequestedFile;
+use Colibri\IO\FileSystem\File;
+use Colibri\Data\Storages\Fields\FileField;
 
 /**
  * Представление строки в таблице в хранилище Пользователи системы безопасности
@@ -22,7 +25,7 @@ use Colibri\Encryption\Crypt;
  * @property string $password Пароль
  * @property ObjectField|null $fio ФИО пользователя
  * @property string|null $phone Телефон
- * @property FileField|null $avatar Аватар пользователя
+ * @property RemoteFileField|null $avatar Аватар пользователя
  * @property UserRole|null $role Роль
  * @property Permissions|null $permissions Права доступа
  * @property ObjectField|null $settings 
@@ -66,17 +69,9 @@ class User extends BaseModelDataRow
 
     public function ToArray(bool $noPrefix = false): array
     {
-
         $ar = parent::ToArray($noPrefix);
         unset($ar['password']);
-        foreach ($ar as $key => $value) {
-            if ($value instanceof FileField) {
-                $ar[$key] = $value->Source();
-            }
-        }
-
         return $ar;
-
     }
 
     public function IsCommandAllowed(string $command): bool
