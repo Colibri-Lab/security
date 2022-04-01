@@ -19,19 +19,14 @@ App.Modules.Security = class extends Colibri.Modules.Module {
                 handle: () => {
                     Colibri.Common.Wait(() => this._store.Query('security.user').id).then(() => {
                         if(this.IsCommandAllowed('security.profile')) {
-                    
-                            if(!this._pages['profile']) {
-                                this._pages['profile'] = new App.Modules.Security.ProfileWindow('profile', document.body);
-                            }
-                            this._pages['profile'].Show();
-                            
+                            this.FormWindow.Show('Личный кабинет', 800, 'app.manage.storages(users)', 'app.security.user')
+                                .then((data) => {
+                                    this.SaveUser(data);
+                                })
+                                .catch(() => {});
                         }
                         else {
-                            App.Notices && App.Notices.Add({
-                                severity: 'error',
-                                title: 'Действие запрещено',
-                                timeout: 5000
-                            });
+                            App.Notices.Add(new Colibri.UI.Notice('Действие запрещено', Colibri.UI.Notice.Error, 5000));
                         }
                     });
                     
@@ -45,6 +40,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
             }
             
         }
+
         this._loginForm = null;
 
         this._store = App.Store.AddChild('app.security', {});
@@ -97,14 +93,14 @@ App.Modules.Security = class extends Colibri.Modules.Module {
         this.AddHandler('RoutedToSelf', (event, args) => {
             Colibri.Common.Wait(() => this._store.Query('security.user').id).then(() => {
                 if(this.IsCommandAllowed('security.profile')) {
-                    this.ProfileWindow.Show();
+                    this.FormWindow.Show('Личный кабинет', 800, 'app.manage.storages(users)', 'app.security.user')
+                        .then((data) => {
+                            this.SaveUser(data);
+                        })
+                        .catch(() => {});
                 }
                 else {
-                    App.Notices && App.Notices.Add({
-                        severity: 'error',
-                        title: 'Действие запрещено',
-                        timeout: 5000
-                    });
+                    App.Notices.Add(new Colibri.UI.Notice('Действие запрещено', Colibri.UI.Notice.Error, 5000));
                 }
             });
         });
@@ -356,17 +352,17 @@ App.Modules.Security = class extends Colibri.Modules.Module {
         return this._loginForm;
     }
 
-    get ProfileWindow() {
-        if(this._profileForm) {
-            return this._profileForm;
+    get FormWindow() {
+        if(this._formWindow) {
+            return this._formWindow;
         }
 
-        this._profileForm = new App.Modules.Security.ProfileWindow('profile-window', document.body);
-        if(!this._profileForm.isConnected) {
-            this._profileForm.ConnectTo(document.body);
+        this._formWindow = new App.Modules.Manage.Windows.FormWindow('form-window', document.body);
+        if(!this._formWindow.isConnected) {
+            this._formWindow.ConnectTo(document.body);
         }
 
-        return this._profileForm;
+        return this._formWindow;
     }
 
     get Store() {
@@ -375,6 +371,12 @@ App.Modules.Security = class extends Colibri.Modules.Module {
 
     IsCommandAllowed(command) {
         // реализовать проверку
+
+        let isNot = false;
+        if(command.substr(0, 1) == '!') {
+            isNot = true;
+            command = command.substr(1);
+        }
 
         const user = this._store.Query('security.user');
         const role = user.role;
@@ -396,11 +398,11 @@ App.Modules.Security = class extends Colibri.Modules.Module {
         for(const perm of perms) {
             const reg = new RegExp(perm.path.replace(/\./, '\.').replace(/\*/, '.*'), 'im');
             if(reg.test(command) !== false) {
-                return perm.value === 'allow';
+                return isNot ? perm.value !== 'allow' : perm.value === 'allow';
             }
         }
 
-        return false;
+        return isNot ? true : false;
         
     }
     

@@ -18,14 +18,13 @@ class ClientController extends RpcController
 
     public function Settings(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
     {
-        $userFields = Storages::Create()->Load('users')->ToArray();
         $isLogged = Module::$instance->IsLogged();
         $member = null;
         if ($isLogged) {
             $member = Module::$instance->current->ToArray(true);
         }
         $permissions = App::$moduleManager->GetPermissions();
-        return $this->Finish(200, 'ok', ['settings' => ['logged' => $isLogged, 'permissions' => $permissions, 'fields' => ['user' => $userFields['fields']]], 'user' => $member]);
+        return $this->Finish(200, 'ok', ['settings' => ['logged' => $isLogged, 'permissions' => $permissions], 'user' => $member]);
     }
 
     public function Roles(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object

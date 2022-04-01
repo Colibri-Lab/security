@@ -2,8 +2,8 @@ __global_types:
   
   file: 
     type: json
-    class: RemoteFileField
-    component: File
+    class: App\Modules\Manage\Models\Fields\RemoteFileField
+    component: App.Modules.Manage.UI.RemoteFile
     default: "json_object()"
     params:
       remote:
@@ -52,6 +52,9 @@ users:
       note: "Введите наименование роли. Только латинские буквы, без пробелов"
       attrs:
         width: 100%
+      params:
+        security:
+          readonly: "!security.profile.loginchange"
     
     password:
       type: varchar
@@ -64,6 +67,9 @@ users:
       component: Password
       attrs:
         width: 100%
+      params:
+        security:
+          readonly: "!security.profile.passwordchange"
     
     fio:  
       type: json
@@ -148,7 +154,10 @@ users:
       selector:
         title: "name"
         value: "id"
-    
+      params:
+        security:
+          enabled: "security.profile.rolechange"
+
     permissions:
       type: json
       class: App\Modules\Security\Models\Permissions
@@ -172,9 +181,7 @@ users:
               title: "Нет доступа"
             - value: "allow"
               title: "Есть доступ"
-
-
-    
+              
     settings:
       type: json
       class: ObjectField

@@ -5,7 +5,7 @@ namespace App\Modules\Security\Models;
 use Colibri\Data\Storages\Fields\DateTimeField;
 use Colibri\Data\Storages\Models\DataRow as BaseModelDataRow;
 use Colibri\Data\Storages\Fields\ObjectField;
-use Colibri\Data\Storages\Fields\RemoteFileField;
+use App\Modules\Manage\Models\Fields\RemoteFileField;
 use App\Modules\Security\Models\UserRole;
 use Colibri\Encryption\Crypt;
 use Colibri\Web\RequestedFile;

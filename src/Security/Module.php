@@ -161,6 +161,10 @@ class Module extends BaseModule
         $permissions['security.login'] = 'Выполнять вход в административную консоль';
         $permissions['security.profile'] = 'Редактировать свой профиль';
 
+        $permissions['security.profile.passwordchange'] = 'Изменять свой пароль';
+        $permissions['security.profile.rolechange'] = 'Изменять свою роль';
+        $permissions['security.profile.loginchange'] = 'Изменять свой логин';
+
         $permissions['security.administrate'] = 'Доступ к администрированию';
         $permissions['security.administrate.rolesadd'] = 'Создать роль';
         $permissions['security.administrate.rolessave'] = 'Сохранить роль';
@@ -172,14 +176,14 @@ class Module extends BaseModule
         return $permissions;
     }
 
-    public function GetTopmostMenu(bool $hideExecuteCommand = true): Item|array
+    public function GetTopmostMenu(bool $hideExecuteCommand = true): Item|array|null
     {
-        return Item::Create('more', 'ЕЩЕ', 'blue', false, '')->Add(
-            Item::Create('security', 'Безопасность', '', false, '')->Add(
-            Item::Create('profile', 'Личный кабинет', '', false, 'Security.RouteTo("/profile/")')
-        )->Add(
-            Item::Create('users', 'Администрирование', '', false, 'Security.RouteTo("/administrate/")')
-        ));
+        return Item::Create('more', 'ЕЩЕ', '', 'blue', false, '')->Add(
+            Item::Create('security', 'Безопасность', '', '', false, '')->Add([
+                Item::Create('profile', 'Личный кабинет', 'Ваш личный кабинет - профиль. Можно изменить ФИО и аватар', '', false, 'Security.RouteTo("/profile/")'),
+                Item::Create('users', 'Администрирование', 'Административная панель, пользователи и роли', '', false, 'Security.RouteTo("/administrate/")')
+            ])
+        );
     }
 
 
