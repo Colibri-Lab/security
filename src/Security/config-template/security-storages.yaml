@@ -1,40 +1,42 @@
+---
 __global_types:
-  
-  file: 
+  file:
     type: json
     class: App\Modules\Manage\Models\Fields\RemoteFileField
     component: App.Modules.Manage.UI.RemoteFile
-    default: "json_object()"
+    default: json_object()
     params:
       remote:
-          class: FileServerApiClient\Client
-          args: ['fs.local.bsft.loc', '4c01a6bb9d449641683075d9ccac3c0b']
-          method: ['GetObject', 'PutObject', 'StatObject']
-          key: guid
-
-    fields: 
+        class: FileServerApiClient\Client
+        args:
+        - fs.local.bsft.loc
+        - 4c01a6bb9d449641683075d9ccac3c0b
+        method:
+        - GetObject
+        - PutObject
+        - StatObject
+        key: guid
+    fields:
       crc: varchar(32), string
-      guid: varchar(36), string 
-      name: varchar(255), string 
-      path: varchar(255), string 
-      size: bigint, int 
-      bucket: varchar, string 
+      guid: varchar(36), string
+      name: varchar(255), string
+      path: varchar(255), string
+      size: bigint, int
+      bucket: varchar, string
       mimetype: varchar, string
-
-  filelist: 
+  filelist:
     type: json
     class: FileListField
     component: Files
-    default: "json_array()"
-    fields: 
+    default: json_array()
+    fields:
       crc: varchar(32), string
-      guid: varchar(36), string 
-      name: varchar(255), string 
-      path: varchar(255), string 
-      size: bigint, int 
-      bucket: varchar, string 
+      guid: varchar(36), string
+      name: varchar(255), string
+      path: varchar(255), string
+      size: bigint, int
+      bucket: varchar, string
       mimetype: varchar, string
-
 users:
   access-point: security
   module: Security
@@ -43,25 +45,24 @@ users:
     table: Models\Users
   desc: Пользователи системы безопасности
   fields:
-    
     login:
       type: varchar
       length: 255
       class: string
-      desc: "Логин пользователя"
-      note: "Введите наименование роли. Только латинские буквы, без пробелов"
+      desc: Логин пользователя
+      note: Введите наименование роли. Только латинские буквы, без пробелов
       attrs:
         width: 100%
       params:
         security:
-          readonly: "!security.profile.loginchange"
-    
+          readonly: '!security.profile.loginchange'
     password:
       type: varchar
       length: 255
       class: string
-      desc: "Пароль"
-      note: "Пароль. Только латинские буквы, цифры и спец. символы. Обязательно должна быть одна цифра и один символ в верхнем регистре"
+      desc: Пароль
+      note: Пароль. Только латинские буквы, цифры и спец. символы. Обязательно должна
+        быть одна цифра и один символ в верхнем регистре
       required: true
       readonly: false
       component: Password
@@ -69,17 +70,16 @@ users:
         width: 100%
       params:
         security:
-          readonly: "!security.profile.passwordchange"
-    
-    fio:  
+          readonly: '!security.profile.passwordchange'
+    fio:
       type: json
       class: ObjectField
-      desc: "ФИО пользователя"
-      note: "Введите имя, фамилию и отчество"
+      desc: ФИО пользователя
+      note: Введите имя, фамилию и отчество
       component: Object
       required: false
       reqdonly: true
-      default: "json_object()"
+      default: json_object()
       attrs:
         width: 100%
       fields:
@@ -87,14 +87,14 @@ users:
           type: varchar
           length: 50
           component: Text
-          desc: "Имя"
+          desc: Имя
           class: string
           readonly: false
           required: false
         lastName:
           type: varchar
           length: 50
-          desc: "Фамилия"
+          desc: Фамилия
           component: Text
           class: string
           readonly: false
@@ -102,16 +102,15 @@ users:
         patronymic:
           type: varchar
           length: 50
-          desc: "Отчество"
+          desc: Отчество
           component: Text
           class: string
           readonly: false
           required: false
       params:
         validate:
-          - message: "Пожалуйста, введите ваше имя и фамилию"
-            method: "(field, validator) => !!field.value.firstName && !!field.value.lastName"
-
+        - message: Пожалуйста, введите ваше имя и фамилию
+          method: (field, validator) => !!field.value.firstName && !!field.value.lastName
     phone:
       type: varchar
       length: 12
@@ -119,55 +118,57 @@ users:
       class: string
       required: false
       readonly: false
-      desc: "Телефон"
-      note: "Введите телефон в формате 7999999999 или 3749998877"
+      desc: Телефон
+      note: Введите телефон в формате 7999999999 или 3749998877
       attrs:
         width: 100%
       params:
         validate:
-          - message: "Пожалуйста, введите ваш телефон, формат: 7999999999 или 3749998877"
-            method: "(field, validator) => !!field.value && field.value.isNumeric()"
-
+        - message: 'Пожалуйста, введите ваш телефон, формат: 7999999999 или 3749998877'
+          method: (field, validator) => !!field.value && field.value.isNumeric()
     avatar:
       inherit: file
-      desc: "Аватар пользователя"
-      note: "Загрузите аватару"
-      params: 
+      desc: Аватар пользователя
+      note: Загрузите аватару
+      params:
         droparea: true
         allow:
-          exts: ['png', 'gif', 'jpg', 'jpeg', 'txt']
+          exts:
+          - png
+          - gif
+          - jpg
+          - jpeg
+          - txt
           size: 20971520
-
     role:
       type: bigint unsigned
       class: App\Modules\Security\Models\UserRole
-      desc: "Роль"
-      note: "Выберите роль пользователя"
+      desc: Роль
+      note: Выберите роль пользователя
       attrs:
         width: 100%
       lookup:
         storage: roles
-        controller: 
+        controller:
           module: Security
           class: Client
           method: Roles
       selector:
-        title: "name"
-        value: "id"
+        title: name
+        value: id
       params:
         security:
-          enabled: "security.profile.rolechange"
-
+          enabled: security.profile.rolechange
     permissions:
       type: json
       class: App\Modules\Security\Models\Permissions
       component: Hidden
-      default: "json_array()"
-      desc: "Права доступа"
+      default: json_array()
+      desc: Права доступа
       readonly: false
       required: false
       fields:
-        path: 
+        path:
           type: varchar
           length: 255
           component: Hidden
@@ -175,35 +176,32 @@ users:
           readonly: false
         value:
           type: enum
-          default: "deny"
-          values: 
-            - value: "deny"
-              title: "Нет доступа"
-            - value: "allow"
-              title: "Есть доступ"
-              
+          default: deny
+          values:
+          - value: deny
+            title: Нет доступа
+          - value: allow
+            title: Есть доступ
     settings:
       type: json
       class: ObjectField
       component: Hidden
-      default: "json_object()"
+      default: json_object()
       fields:
-        logged: 
+        logged:
           type: boolean
           class: bool
           readonly: false
           required: false
           default: "0"
-
 roles:
   access-point: security
   module: Security
   models:
     row: Models\UserRole
     table: Models\UserRoles
-  desc: "Роль пользователя"
+  desc: Роль пользователя
   fields:
-
     name:
       type: varchar
       length: 255
@@ -212,16 +210,15 @@ roles:
       desc: Наименование роли
       readonly: true
       required: true
-
     permissions:
       type: json
       class: App\Modules\Security\Models\Permissions
-      default: "json_array()"
-      desc: "Права доступа"
+      default: json_array()
+      desc: Права доступа
       readonly: false
       required: false
       fields:
-        path: 
+        path:
           type: varchar
           length: 255
           component: Hidden
@@ -229,9 +226,10 @@ roles:
           readonly: false
         value:
           type: enum
-          default: "deny"
-          values: 
-            - value: "deny"
-              title: "Нет доступа"
-            - value: "allow"
-              title: "Есть доступ"
+          default: deny
+          values:
+          - value: deny
+            title: Нет доступа
+          - value: allow
+            title: Есть доступ
+...
