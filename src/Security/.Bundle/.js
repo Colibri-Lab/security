@@ -19,7 +19,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
                 handle: () => {
                     Colibri.Common.Wait(() => this._store.Query('security.user').id).then(() => {
                         if(this.IsCommandAllowed('security.profile')) {
-                            this.FormWindow.Show('Личный кабинет', 800, 'app.manage.storages(users)', 'app.security.user')
+                            Manage.FormWindow.Show('Личный кабинет', 800, 'app.manage.storages(users)', 'app.security.user')
                                 .then((data) => {
                                     this.SaveUser(data);
                                 })
@@ -227,21 +227,13 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     Login(login, password) {
         this.Call('Client', 'Login', {login: login, password: password})
             .then((response) => {
-                App.Notices.Add({
-                    severity: 'success',
-                    title: 'Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!',
-                    timeout: 5000
-                });
-                Colibri.Common.Delay(5000).then(() => {
+                App.Notices.Add(new Colibri.UI.Notice('Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!', Colibri.UI.Notice.Success, 3000));
+                Colibri.Common.Delay(3000).then(() => {
                     location.reload();
                 });
             })
             .catch(error => {
-                App.Notices.Add({
-                    severity: 'error',
-                    title: error.result,
-                    timeout: 5000
-                });
+                App.Notices.Add(new Colibri.UI.Notice(error.result));
                 console.error(error);
             });
 
@@ -250,23 +242,14 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     Logout(noreload) {
         this.Call('Client', 'Logout')
             .then((response) => {
-
-                App.Notices.Add({
-                    severity: 'success',
-                    title: 'До свидания!',
-                    timeout: 5000
-                });
-                Colibri.Common.Delay(5000).then(() => {
+                App.Notices.Add(new Colibri.UI.Notice('До свидания!', Colibri.UI.Notice.Success, 3000));
+                Colibri.Common.Delay(3000).then(() => {
                     location.reload();
                 });
 
             })
             .catch(error => {
-                App.Notices.Add({
-                    severity: 'error',
-                    title: error.result,
-                    timeout: 5000
-                });
+                App.Notices.Add(new Colibri.UI.Notice(error.result));
                 console.error(error);
             });
     }
@@ -274,21 +257,13 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     Register(value) {
         this.Call('Client', 'Register', value)
             .then((response) => {
-                App.Notices.Add({
-                    severity: 'success',
-                    title: 'Вы успешно зарегистрировались, пожалуйста, проверьте почтовый ящик',
-                    timeout: 5000
-                });
-                Colibri.Common.Delay(5000).then(() => {
+                App.Notices.Add(new Colibri.UI.Notice('Вы успешно зарегистрировались, пожалуйста, проверьте почтовый ящик', Colibri.UI.Notice.Success, 3000));
+                Colibri.Common.Delay(3000).then(() => {
                     location.reload();
                 });
             })
             .catch(error => {
-                App.Notices.Add({
-                    severity: 'error',
-                    title: error.result,
-                    timeout: 5000
-                });
+                App.Notices.Add(new Colibri.UI.Notice(error.result));
                 console.error(error);
             });
     }
@@ -296,22 +271,11 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     SaveUser(value) {
         this.Call('Client', 'Save', value)
             .then((response) => {
-                
                 this._store.Set('security.user', response.result);
-
-                App.Notices.Add({
-                    severity: 'success',
-                    title: 'Данные успешно сохранены',
-                    timeout: 5000
-                });
-
+                App.Notices.Add(new Colibri.UI.Notice('Данные успешно сохранены', Colibri.UI.Notice.Success, 3000));
             })
             .catch(error => {
-                App.Notices.Add({
-                    severity: 'error',
-                    title: error.result,
-                    timeout: 5000
-                });
+                App.Notices.Add(new Colibri.UI.Notice(error.result));
                 console.error(error);
             });
     }
@@ -319,21 +283,13 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     ResetRequest(value) {
         this.Call('Client', 'ResetRequest', value)
             .then((response) => {
-                App.Notices.Add({
-                    severity: 'success',
-                    title: 'Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите по ссылке в письме!',
-                    timeout: 5000
-                });
-                Colibri.Common.Delay(5000).then(() => {
+                App.Notices.Add(new Colibri.UI.Notice('Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите по ссылке в письме!', Colibri.UI.Notice.Success, 3000));
+                Colibri.Common.Delay(3000).then(() => {
                     location.reload();
                 });
             })
             .catch(error => {
-                App.Notices.Add({
-                    severity: 'success',
-                    title: error.result,
-                    timeout: 5000
-                });
+                App.Notices.Add(new Colibri.UI.Notice(error.result));
                 console.error(error);
             });
     }
@@ -352,18 +308,6 @@ App.Modules.Security = class extends Colibri.Modules.Module {
         return this._loginForm;
     }
 
-    get FormWindow() {
-        if(this._formWindow) {
-            return this._formWindow;
-        }
-
-        this._formWindow = new App.Modules.Manage.Windows.FormWindow('form-window', document.body);
-        if(!this._formWindow.isConnected) {
-            this._formWindow.ConnectTo(document.body);
-        }
-
-        return this._formWindow;
-    }
 
     get Store() {
         return this._store;

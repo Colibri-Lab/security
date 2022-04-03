@@ -194,6 +194,12 @@ users:
           readonly: false
           required: false
           default: "0"
+  indices:
+    users_login_idx:
+      fields: ['login']
+      type: UNIQUE
+      method: BTREE    
+
 roles:
   access-point: security
   module: Security
@@ -232,4 +238,9 @@ roles:
             title: Нет доступа
           - value: allow
             title: Есть доступ
+  indices:
+    roles_name_idx:
+      fields: ['name']
+      type: UNIQUE
+      method: BTREE  
 ...
