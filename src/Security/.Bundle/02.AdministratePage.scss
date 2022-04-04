@@ -7,7 +7,7 @@
             &.app-component-shown {
                 display: grid;
             }
-            grid-template-rows: 30px calc(100% - 30px);
+            grid-template-rows: 40px calc(100% - 40px);
         }
         .app-component-split-left {
             flex: 0 0 20%;

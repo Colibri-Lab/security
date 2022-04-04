@@ -30,17 +30,48 @@ class ClientController extends RpcController
     public function Roles(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
     {
 
+        if(!Module::$instance->current) {
+            return $this->Finish(403, 'Permission denied');
+        }
+
+        if(!Module::$instance->current->IsCommandAllowed('security.administrate.roles')) {
+            return $this->Finish(403, 'Permission denied');
+        }
+
         $roles = UserRoles::LoadAll();
 
         return $this->Finish(200, 'ok', $roles->ToArray(true));
     }
 
-    public function Save(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    public function Users(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
     {
+        if(!Module::$instance->current) {
+            return $this->Finish(403, 'Permission denied');
+        }
+
+        if(!Module::$instance->current->IsCommandAllowed('security.administrate.users')) {
+            return $this->Finish(403, 'Permission denied');
+        }
+
+        $users = Users::LoadAll();
+
+        return $this->Finish(200, 'ok', $users->ToArray(true));
+    }
+
+    public function SaveUser(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    {
+
+        if(!Module::$instance->current) {
+            return $this->Finish(403, 'Permission denied');
+        }
 
         $id = $post->id;
         if (!$id) {
             return $this->Finish(400, 'Bad request');
+        }
+
+        if(Module::$instance->current->id != $id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.save')) {
+            return $this->Finish(403, 'Permission denied');
         }
 
         $password = $post->password;
@@ -64,11 +95,41 @@ class ClientController extends RpcController
         $user->role = UserRoles::LoadById($role);
         $user->fio = $fio;
         $user->phone = $phone;
+        $user->permissions = $post->permissions;
         $user->Save();
 
         return $this->Finish(200, 'ok', $user->ToArray(true));
     }
 
+
+    public function SaveRole(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    {
+
+        if(!Module::$instance->current) {
+            return $this->Finish(403, 'Permission denied');
+        }
+
+        $id = $post->id;
+        if(!$id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.add')) {
+            return $this->Finish(403, 'Permission denied');
+        }
+        else if(!Module::$instance->current->IsCommandAllowed('security.administrate.users.save')) {
+            return $this->Finish(403, 'Permission denied');
+        }
+
+        if($id) {
+            $role = UserRoles::LoadById($id);
+        }
+        else {
+            $role = UserRoles::LoadEmpty();
+        }
+        $role->name = $post->name;
+        $role->permissions = $post->permissions;
+        $role->Save();
+
+        return $this->Finish(200, 'ok', $role->ToArray(true));
+
+    }
     public function Login(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
     {
 

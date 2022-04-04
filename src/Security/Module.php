@@ -166,12 +166,14 @@ class Module extends BaseModule
         $permissions['security.profile.loginchange'] = 'Изменять свой логин';
 
         $permissions['security.administrate'] = 'Доступ к администрированию';
-        $permissions['security.administrate.rolesadd'] = 'Создать роль';
-        $permissions['security.administrate.rolessave'] = 'Сохранить роль';
-        $permissions['security.administrate.rolesremove'] = 'Удалить роль';
-        $permissions['security.administrate.usersadd'] = 'Создать пользователя';
-        $permissions['security.administrate.userssave'] = 'Сохранить пользователя';
-        $permissions['security.administrate.usersremove'] = 'Удалить пользователя';
+        $permissions['security.administrate.roles'] = 'Список ролей';
+        $permissions['security.administrate.roles.add'] = 'Создать роль';
+        $permissions['security.administrate.roles.save'] = 'Сохранить роль';
+        $permissions['security.administrate.roles.remove'] = 'Удалить роль';
+        $permissions['security.administrate.users'] = 'Список пользователей';
+        $permissions['security.administrate.users.add'] = 'Создать пользователя';
+        $permissions['security.administrate.users.save'] = 'Сохранить пользователя';
+        $permissions['security.administrate.users.remove'] = 'Удалить пользователя';
 
         return $permissions;
     }

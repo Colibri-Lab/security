@@ -44,6 +44,8 @@ users:
     row: Models\User
     table: Models\Users
   desc: Пользователи системы безопасности
+  params:
+    visible: false
   fields:
     login:
       type: varchar
@@ -207,6 +209,8 @@ roles:
     row: Models\UserRole
     table: Models\UserRoles
   desc: Роль пользователя
+  params:
+    visible: false
   fields:
     name:
       type: varchar
@@ -218,6 +222,7 @@ roles:
       required: true
     permissions:
       type: json
+      component: Hidden
       class: App\Modules\Security\Models\Permissions
       default: json_array()
       desc: Права доступа
