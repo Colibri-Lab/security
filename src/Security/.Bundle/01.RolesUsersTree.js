@@ -21,6 +21,7 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
             this._usersList = users;
             this._rolesList = roles;
 
+            let foundRoles = [];
             this._rolesList.forEach((role) => {
                 let newNode = this.FindNode(role.id + role.name);
                 if(!newNode) {
@@ -30,8 +31,10 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
                 newNode.isLeaf = true;
                 newNode.icon = App.Modules.Sites.Icons.FolderIconUnpublished;
                 newNode.tag = role;    
+                foundRoles.push(role.id + role.name);
             }); 
 
+            let foundUsers = [];
             this._usersList.forEach((user) => {
 
                 const roleNode = this.FindNode(user.role.id + user.role.name);
@@ -43,6 +46,11 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
                     newNode = roleNode.nodes.Add(user.id + user.login);
                 }
 
+                if(user.role.id != newNode.parentNode?.tag?.id) {
+                    newNode.MoveTo(roleNode);
+                    roleNode.Expand();
+                }
+
                 newNode.text = user.login;
                 newNode.toolTip = user.fio.lastName + ' ' + user.fio.firstName + ' ' + user.fio.patronymic;
                 newNode.isLeaf = true;
@@ -50,7 +58,21 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
                 newNode.tag = user;
                 
                 roleNode.isLeaf = false;    
+                foundUsers.push(user.id + user.login);
             }); 
+
+            this.allNodes.forEach((node) => {
+                if(node.tag.role != undefined) {
+                    if(foundUsers.indexOf(node.name) === -1) {
+                        node.Dispose();
+                    }    
+                }
+                else {
+                    if(foundRoles.indexOf(node.name) === -1) {
+                        node.Dispose();
+                    }
+                }
+            });
 
     
         });

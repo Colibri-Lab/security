@@ -223,7 +223,7 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
             }
             case 'delete-role': {
                 App.Confirm.Show('Удаление роли', 'Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль Readonly').then(() => {
-                    Security.RemoveRole(item.tag.id);
+                    Security.RemoveRole(item.tag);
                 });
                 break;                                
             }
@@ -242,7 +242,7 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
                 }
                 else {
                     App.Confirm.Show('Удаление пользователя', 'Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль Readonly').then(() => {
-                        Security.RemoveRole(item.tag.id);
+                        Security.RemoveUser(item.tag);
                     });    
                 }
                 break;                                

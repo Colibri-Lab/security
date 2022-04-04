@@ -290,7 +290,28 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     SaveUser(value) {
         this.Call('Client', 'SaveUser', value)
             .then((response) => {
-                this._store.Set('security.user', response.result);
+                const currentUser = this._store.Query('security.user');
+                const savedUser = response.result;
+                if(savedUser.id == currentUser.id) {
+                    this._store.Set('security.user', response.result);                    
+                }
+
+                let users = this._store.Query('security.users');
+                let isAdd = true;
+                users = users.map((u) => {
+                    if(u.id == savedUser.id) {
+                        isAdd = false;
+                        return savedUser;
+                    }
+                    else {
+                        return u;
+                    }
+                });
+                if(isAdd) {
+                    users.push(savedUser);
+                }
+                this._store.Set('security.users', users);
+
                 App.Notices.Add(new Colibri.UI.Notice('Данные успешно сохранены', Colibri.UI.Notice.Success, 3000));
             })
             .catch(error => {
@@ -304,16 +325,62 @@ App.Modules.Security = class extends Colibri.Modules.Module {
             .then((response) => {
                 const role = response.result;
                 let roles = this._store.Query('security.roles');
+                let isAdd = true;
                 roles = roles.map((r) => {
                     if(r.id == role.id) {
+                        isAdd = false;
                         return role;
                     }
                     else {
                         return r;
                     }
                 });
+                if(isAdd) {
+                    roles.push(role);
+                }
                 this._store.Set('security.roles', roles);
+                this._store.DispatchPath('security.users');
                 App.Notices.Add(new Colibri.UI.Notice('Данные успешно сохранены', Colibri.UI.Notice.Success, 3000));
+            })
+            .catch(error => {
+                App.Notices.Add(new Colibri.UI.Notice(error.result));
+                console.error(error);
+            });
+    }
+
+    RemoveRole(value) {
+        this.Call('Client', 'RemoveRole', value)
+            .then((response) => {
+                let roles = this._store.Query('security.roles');
+                let newRoles = [];
+                roles.map((r) => {
+                    if(r.id != value.id) {
+                        newRoles.push(r);
+                    }
+                });
+                this._store.Set('security.roles', newRoles);
+                this._store.Reload('security.users', false);
+                App.Notices.Add(new Colibri.UI.Notice('Данные успешно удалены', Colibri.UI.Notice.Success, 3000));
+            })
+            .catch(error => {
+                App.Notices.Add(new Colibri.UI.Notice(error.result));
+                console.error(error);
+            });
+    }
+
+    RemoveUser(value) {
+        this.Call('Client', 'RemoveUser', value)
+            .then((response) => {
+                let users = this._store.Query('security.users');
+                let newUsers = [];
+                users.map((u) => {
+                    if(u.id != value.id) {
+                        newUsers.push(u);
+                    }
+                });
+                console.log(newUsers);
+                this._store.Set('security.users', newUsers);
+                App.Notices.Add(new Colibri.UI.Notice('Данные успешно удалены', Colibri.UI.Notice.Success, 3000));
             })
             .catch(error => {
                 App.Notices.Add(new Colibri.UI.Notice(error.result));

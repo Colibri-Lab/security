@@ -90,6 +90,19 @@ class Users extends BaseModelDataTable
         return $table->Count() > 0 ? $table->First() : null;
     }
 
+    /**
+     * Возвращает список пользователей по роли
+     * @param UserRole|int $role роль
+     * @return Users
+     */
+    static function LoadByRole(UserRole|int $role): Users
+    {
+        if(!is_numeric($role)) {
+            $role = $role->id;
+        }
+        return self::LoadByFilter(1, 1, '{role}=[[role:string]]', null, ['role' => $role]);
+    }
+
 
     /**
      * Создание модели по названию хранилища

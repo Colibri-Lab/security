@@ -218,7 +218,7 @@ roles:
       class: string
       component: Text
       desc: Наименование роли
-      readonly: true
+      readonly: false
       required: true
     permissions:
       type: json

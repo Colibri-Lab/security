@@ -22,4 +22,9 @@ use Colibri\Data\Storages\Fields\ObjectField;
 class UserRole extends BaseModelDataRow
 {
 
+    public function Users(): Users
+    {
+        return Users::LoadByRole($this);
+    }
+
 }

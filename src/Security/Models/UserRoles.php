@@ -80,6 +80,17 @@ class UserRoles extends BaseModelDataTable
     }
 
     /**
+     * Возвращает модель наименоваю
+     * @param string $name наименование
+     * @return UserRole|null
+     */
+    static function LoadByName(string $name): UserRole
+    {
+        $table = self::LoadByFilter(1, 1, '{name}=[[name:string]]', null, ['name' => $name]);
+        return $table->Count() > 0 ? $table->First() : null;
+    }
+
+    /**
      * Создание модели по названию хранилища
      * @return UserRole
      */
