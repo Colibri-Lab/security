@@ -46,6 +46,7 @@ users:
   desc: Пользователи системы безопасности
   params:
     visible: false
+    maybepublished: false
   fields:
     login:
       type: varchar
@@ -211,6 +212,7 @@ roles:
   desc: Роль пользователя
   params:
     visible: false
+    maybepublished: false
   fields:
     name:
       type: varchar

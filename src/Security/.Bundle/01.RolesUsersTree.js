@@ -29,7 +29,7 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
                 }
                 newNode.text = role.name;
                 newNode.isLeaf = true;
-                newNode.icon = App.Modules.Sites.Icons.FolderIconUnpublished;
+                newNode.icon = App.Modules.Security.Icons.RoleIcon;
                 newNode.tag = role;    
                 foundRoles.push(role.id + role.name);
             }); 
@@ -54,7 +54,7 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
                 newNode.text = user.login;
                 newNode.toolTip = user.fio.lastName + ' ' + user.fio.firstName + ' ' + user.fio.patronymic;
                 newNode.isLeaf = true;
-                newNode.icon = App.Modules.Sites.Icons.FolderIconUnpublished;
+                newNode.icon = App.Modules.Security.Icons.UserIcon;
                 newNode.tag = user;
                 
                 roleNode.isLeaf = false;    
@@ -74,7 +74,6 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
                 }
             });
 
-    
         });
 
 
