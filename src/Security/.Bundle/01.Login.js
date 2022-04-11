@@ -13,9 +13,9 @@ App.Modules.Security.Login = class extends Colibri.UI.Component {
         this._form.fields = {
             login: {
                 component: 'Text',
-                required: true,
-                readonly: false,
                 params: {
+                    required: true,
+                    readonly: false,
                     validate: [
                         {
                             message: 'Пожалуйста, введите эл. адрес',
@@ -26,9 +26,9 @@ App.Modules.Security.Login = class extends Colibri.UI.Component {
             },
             password: {
                 component: 'Password',
-                required: true,
-                reqdonly: false,
                 params: {
+                    required: true,
+                    reqdonly: false,
                     validate: [
                         {
                             message: 'Пожалуйста, введите пароль',

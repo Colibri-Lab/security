@@ -66,12 +66,12 @@ users:
       desc: Пароль
       note: Пароль. Только латинские буквы, цифры и спец. символы. Обязательно должна
         быть одна цифра и один символ в верхнем регистре
-      required: true
-      readonly: false
       component: Password
       attrs:
         width: 100%
       params:
+        required: true
+        readonly: false
         security:
           readonly: '!security.profile.passwordchange'
     fio:
@@ -80,8 +80,6 @@ users:
       desc: ФИО пользователя
       note: Введите имя, фамилию и отчество
       component: Object
-      required: false
-      reqdonly: true
       default: json_object()
       attrs:
         width: 100%
@@ -92,25 +90,30 @@ users:
           component: Text
           desc: Имя
           class: string
-          readonly: false
-          required: false
+          params:
+            readonly: false
+            required: false
         lastName:
           type: varchar
           length: 50
           desc: Фамилия
           component: Text
           class: string
-          readonly: false
-          required: false
+          params:
+            readonly: false
+            required: false
         patronymic:
           type: varchar
           length: 50
           desc: Отчество
           component: Text
           class: string
-          readonly: false
-          required: false
+          params:
+            readonly: false
+            required: false
       params:
+        required: false
+        reqdonly: true
         validate:
         - message: Пожалуйста, введите ваше имя и фамилию
           method: (field, validator) => !!field.value.firstName && !!field.value.lastName
@@ -119,13 +122,13 @@ users:
       length: 12
       component: Text
       class: string
-      required: false
-      readonly: false
       desc: Телефон
       note: Введите телефон в формате 7999999999 или 3749998877
       attrs:
         width: 100%
       params:
+        required: false
+        readonly: false
         validate:
         - message: 'Пожалуйста, введите ваш телефон, формат: 7999999999 или 3749998877'
           method: (field, validator) => !!field.value && field.value.isNumeric()
@@ -151,11 +154,12 @@ users:
       attrs:
         width: 100%
       lookup:
-        storage: roles
-        controller:
-          module: Security
-          class: Client
-          method: Roles
+        storage: 
+          name: roles
+          controller:
+            module: Security
+            class: Client
+            method: Roles
       selector:
         title: name
         value: id
@@ -168,15 +172,17 @@ users:
       component: Hidden
       default: json_array()
       desc: Права доступа
-      readonly: false
-      required: false
+      params:
+        readonly: false
+        required: false
       fields:
         path:
           type: varchar
           length: 255
           component: Hidden
-          required: true
-          readonly: false
+          params:
+            required: true
+            readonly: false
         value:
           type: enum
           default: deny
@@ -194,8 +200,9 @@ users:
         logged:
           type: boolean
           class: bool
-          readonly: false
-          required: false
+          params:
+            readonly: false
+            required: false
           default: "0"
   indices:
     users_login_idx:
@@ -220,23 +227,26 @@ roles:
       class: string
       component: Text
       desc: Наименование роли
-      readonly: false
-      required: true
+      params:
+        readonly: false
+        required: true
     permissions:
       type: json
       component: Hidden
       class: App\Modules\Security\Models\Permissions
       default: json_array()
       desc: Права доступа
-      readonly: false
-      required: false
+      params:
+        readonly: false
+        required: false
       fields:
         path:
           type: varchar
           length: 255
           component: Hidden
-          required: true
-          readonly: false
+          params:
+            required: true
+            readonly: false
         value:
           type: enum
           default: deny
