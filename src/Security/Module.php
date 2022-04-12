@@ -180,11 +180,8 @@ class Module extends BaseModule
 
     public function GetTopmostMenu(bool $hideExecuteCommand = true): Item|array|null
     {
-        return Item::Create('more', 'ЕЩЕ', '', 'blue', false, '')->Add(
-            Item::Create('security', 'Безопасность', '', '', false, '')->Add([
-                Item::Create('profile', 'Личный кабинет', 'Ваш личный кабинет - профиль. Можно изменить ФИО и аватар', '', false, 'Security.RouteTo("/profile/")'),
-                Item::Create('users', 'Администрирование', 'Административная панель, пользователи и роли', '', false, 'Security.RouteTo("/administrate/")')
-            ])
+        return Item::Create('more', 'Инструменты', '', 'App.Modules.MainFrame.Icons.MoreIcon', '')->Add(
+            Item::Create('users', 'Пользователи и роли', 'Административная панель, пользователи и роли', 'App.Modules.Security.Icons.UserAndRolesIcon', 'App.Modules.Security.AdministratePage')
         );
     }
 
