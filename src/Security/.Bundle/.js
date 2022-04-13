@@ -59,6 +59,19 @@ App.Modules.Security = class extends Colibri.Modules.Module {
 
     }
 
+    ShowProfileWindow() {
+        if(this.IsCommandAllowed('security.profile')) {
+            Manage.FormWindow.Show('Личный кабинет', 800, 'app.manage.storages(users)', this._store.Query('security.user'))
+                .then((data) => {
+                    this.SaveUser(data);
+                })
+                .catch(() => {});
+        }
+        else {
+            App.Notices.Add(new Colibri.UI.Notice('Действие запрещено', Colibri.UI.Notice.Error, 5000));
+        }
+    }
+
     Menu(isadmin) {
 
         const userData = this._store.Query('security.user');
