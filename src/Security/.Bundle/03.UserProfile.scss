@@ -1,0 +1,49 @@
+.app-user-profile-component {
+
+    padding: 10px 10px 10px 20px;
+
+    [data-object-name="user-flex"] {
+        width: 100%;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        [data-object-name="icon"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        [data-object-name="info"] {
+            padding-left: 10px;
+            padding-right: 20px;
+            cursor: pointer;
+            span {
+                display: block;
+                color: #ffffff;
+            }
+            [data-object-name="name"] {
+                font-size: 16px;
+                font-weight: 600;
+                white-space: nowrap;
+                margin-bottom: 0px;
+            }
+            
+        }
+
+        [data-object-name="logout"] {
+            font-size: 14px;
+            text-decoration: underline;
+            margin-left: auto;
+            cursor: pointer;
+            svg {
+                width: 16px;
+                height: 16px;
+                path {
+                    fill: #ffffff;
+                }
+            }
+        }
+
+    }
+
+}
