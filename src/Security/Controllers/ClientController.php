@@ -75,10 +75,10 @@ class ClientController extends RpcController
 
         $password = $post->password;
         $login = $post->login;
-        $role = $post->role['id'];
+        $role = $post->role;
         $fio = $post->fio;
         $phone = $post->phone;
-        $avatar = App::$request->files->avatar;
+        $avatar = $post->avatar;
 
         if($id) {
             $user = Users::LoadById($id);
@@ -92,17 +92,11 @@ class ClientController extends RpcController
             $user->password = $password;
         }
 
-        if(!$avatar) {
-            $user->avatar = null;    
-        }
-        else { 
-            $user->avatar->ConvertFromFile($avatar);
-        }
-
         $user->role = UserRoles::LoadById($role);
         $user->fio = $fio;
         $user->phone = $phone;
         $user->permissions = $post->permissions ?: '[]';
+        $user->avatar = $avatar;
         $user->Save();
 
         return $this->Finish(200, 'ok', $user->ToArray(true));

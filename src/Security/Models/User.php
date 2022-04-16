@@ -67,6 +67,16 @@ class User extends BaseModelDataRow
         return Crypt::Decrypt($this->login, $this->_data['users_password'], Crypt::EncryptionAlgHex);
     }
 
+    // public function setPropertyAvatar(string|array|object $value): void
+    // {
+    //     $this->_data['users_avatar'] = is_string($value) ? $value : json_encode($value);
+    // }
+
+    // public function getPropertyAvatar(): string
+    // {
+    //     return is_string($this->_data['users_avatar']) ? json_decode($this->_data['users_avatar']) : $this->_data['users_avatar'];
+    // }
+
     public function ToArray(bool $noPrefix = false): array
     {
         $ar = parent::ToArray($noPrefix);

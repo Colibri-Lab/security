@@ -133,19 +133,12 @@ users:
         - message: 'Пожалуйста, введите ваш телефон, формат: 7999999999 или 3749998877'
           method: (field, validator) => !!field.value && field.value.isNumeric()
     avatar:
-      inherit: file
+      type: json
+      class: App\Modules\Manage\Models\Fields\RemoteFileField
+      component: App.Modules.Manage.UI.RemoteFile
+      default: json_object()
       desc: Аватар пользователя
-      note: Загрузите аватару
-      params:
-        droparea: true
-        allow:
-          exts:
-          - png
-          - gif
-          - jpg
-          - jpeg
-          - txt
-          size: 20971520
+      note: Загрузите аватарку
     role:
       type: bigint unsigned
       class: App\Modules\Security\Models\UserRole

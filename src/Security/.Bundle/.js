@@ -199,6 +199,10 @@ App.Modules.Security = class extends Colibri.Modules.Module {
                 }
 
                 let users = this._store.Query('security.users');
+                if(!Array.isArray(users)) {
+                    users = [];
+                }
+
                 let isAdd = true;
                 users = users.map((u) => {
                     if(u.id == savedUser.id) {
@@ -274,13 +278,17 @@ App.Modules.Security = class extends Colibri.Modules.Module {
         this.Call('Client', 'RemoveUser', value)
             .then((response) => {
                 let users = this._store.Query('security.users');
+                if(!Array.isArray(users)) {
+                    users = [];
+                }
+
                 let newUsers = [];
                 users.map((u) => {
                     if(u.id != value.id) {
                         newUsers.push(u);
                     }
                 });
-                console.log(newUsers);
+
                 this._store.Set('security.users', newUsers);
                 App.Notices.Add(new Colibri.UI.Notice('Данные успешно удалены', Colibri.UI.Notice.Success, 3000));
             })
