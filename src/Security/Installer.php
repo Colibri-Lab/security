@@ -53,10 +53,15 @@ class Installer
     {
 
         $modules = self::_loadConfig($file);
-        foreach($modules['entries'] as $entry) {
-            if($entry['name'] === 'Security') {
-                return;
+        if(is_array($modules['entries'])) {
+            foreach($modules['entries'] as $entry) {
+                if($entry['name'] === 'Security') {
+                    return;
+                }
             }
+        }
+        else {
+            $modules['entries'] = [];
         }
 
         // добавляем в начало
