@@ -32,6 +32,49 @@ class Installer
         }
     }
 
+    
+    private static function _loadConfig($file): array
+    {
+        return yaml_parse_file($file);
+    }
+
+    private static function _saveConfig($file, $config): void
+    {
+        yaml_emit_file($file, $config, \YAML_UTF8_ENCODING, \YAML_ANY_BREAK);
+    }
+
+    private static function _getMode($file): string
+    {
+        $appConfig = self::_loadConfig($file);
+        return $appConfig['mode'];
+    }
+
+    private static function _injectIntoModuleConfig($file): void
+    {
+
+        $modules = self::_loadConfig($file);
+        foreach($modules['entries'] as $entry) {
+            if($entry['name'] === 'Security') {
+                return;
+            }
+        }
+
+        // добавляем в начало
+        $modules['entries'] = array_merge($modules['entries'], [
+            'name' => 'Security',
+            'entry' => '\Security\Module',
+            'desc' => 'Система безопасности',
+            'enabled' => true,
+            'visible' => false,
+            'for' => ['manage'],
+            'config' => 'include(/config/security.yaml)'
+        ]);
+
+        self::_saveConfig($file, $modules);
+
+    }
+
+
     /**
      * 
      * @param PackageEvent $event 
@@ -43,6 +86,12 @@ class Installer
         print_r('Установка и настройка модуля Авторизация' . "\n");
 
         $vendorDir = $event->getComposer()->getConfig()->get('vendor-dir') . '/';
+
+        $operation = $event->getOperation();
+        $installedPackage = $operation->getPackage();
+        $targetDir = $installedPackage->getName();
+        $path = $vendorDir . $targetDir;
+        $configPath = $path . '/src/Security/config-template/';
         $configDir = './config/';
 
         if (!file_exists($configDir . 'app.yaml')) {
@@ -50,70 +99,26 @@ class Installer
             return;
         }
 
-        $mode = 'dev';
-        $appYamlContent = file_get_contents($configDir . 'app.yaml');
-        if (preg_match('/mode: (\w+)/', $appYamlContent, $matches) >= 0) {
-            $mode = $matches[1];
-        }
-
-        $operation = $event->getOperation();
-        $installedPackage = $operation->getPackage();
-        $targetDir = $installedPackage->getName();
-        $path = $vendorDir . $targetDir;
-        $configPath = $path . '/src/Security/config-template/';
+        $mode = self::_getMode($configDir . 'app.yaml');
 
         // копируем конфиг
-        print_r('Копируем файл конфигурации' . "\n");
-        if (file_exists($configDir.'security.yaml')) {
-            print_r('Файл конфигурации найден, пропускаем настройку' . "\n");
-            return;
-        }
+        print_r('Копируем файлы конфигурации' . "\n");
         self::_copyOrSymlink($mode, $configPath, $configDir, 'module-' . $mode . '.yaml', 'security.yaml');
-
-
-        print_r('Копируем файл хранилищ' . "\n");
-        if (file_exists($configDir . 'security-storages.yaml')) {
-            print_r('Файл конфигурации найден, пропускаем настройку' . "\n");
-            return;
-        }
         self::_copyOrSymlink($mode, $configPath, $configDir, 'security-storages.yaml', 'security-storages.yaml');
 
-        // нужно прописать в модули
-        $modulesTargetPath = $configDir . 'modules.yaml';
-        $modulesConfigContent = file_get_contents($modulesTargetPath);
-        if (strstr($modulesConfigContent, '- name: Security') !== false) {
-            print_r('Модуль сконфигурирован, пропускаем' . "\n");
-            return;
-        }
-
-        $modulesConfigContent = str_replace('entries:', 'entries:
-  - name: Security
-    entry: \Security\Module
-    enabled: true
-    desc: Система безопасности
-    visible: true
-    for:
-      - manage
-    config: include(/config/security.yaml)', $modulesConfigContent);
-        file_put_contents($modulesTargetPath, $modulesConfigContent);
+        print_r('Встраиваем модуль'."\n");
+        self::_injectIntoModuleConfig($configDir . 'modules.yaml');
 
         print_r('Установка скриптов' . "\n");
-        $scriptsPath = $path . '/src/Security/bin/';
-        $binDir = './bin/';
-
-        self::_copyOrSymlink($mode, $scriptsPath, $binDir, 'security-migrate.sh', 'security-migrate.sh');
-        self::_copyOrSymlink($mode, $scriptsPath, $binDir, 'security-models-generate.sh', 'security-models-generate.sh');
+        self::_copyOrSymlink($mode, $path . '/src/Security/bin/', './bin/', 'security-migrate.sh', 'security-migrate.sh');
+        self::_copyOrSymlink($mode, $path . '/src/Security/bin/', './bin/', 'security-models-generate.sh', 'security-models-generate.sh');
 
         print_r('Копирование изображений' . "\n");
-
-        $sourcePath = $path . '/src/Security/web/res/img/';
-        $targetDir = './web/res/img/';
-
-        self::_copyOrSymlink($mode, $sourcePath, $targetDir, 'security-arrow.svg', 'security-arrow.svg');
-        self::_copyOrSymlink($mode, $sourcePath, $targetDir, 'security-logo-only.svg', 'security-logo-only.svg');
-        self::_copyOrSymlink($mode, $sourcePath, $targetDir, 'security-icon-cart-white.svg', 'security-icon-cart-white.svg');
-        self::_copyOrSymlink($mode, $sourcePath, $targetDir, 'security-logo.svg', 'security-logo.svg');
-        self::_copyOrSymlink($mode, $sourcePath, $targetDir, 'security-bg.svg', 'security-bg.svg');
+        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './web/res/img/', 'security-arrow.svg', 'security-arrow.svg');
+        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './web/res/img/', 'security-logo-only.svg', 'security-logo-only.svg');
+        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './web/res/img/', 'security-icon-cart-white.svg', 'security-icon-cart-white.svg');
+        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './web/res/img/', 'security-logo.svg', 'security-logo.svg');
+        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './web/res/img/', 'security-bg.svg', 'security-bg.svg');
         
         print_r('Установка завершена' . "\n");
 
