@@ -90,6 +90,10 @@ class Installer
   - name: Security
     entry: \Security\Module
     enabled: true
+    desc: Безопасность
+    visible: true
+    for:
+      - manage
     config: include(/config/security.yaml)', $modulesConfigContent);
         file_put_contents($modulesTargetPath, $modulesConfigContent);
 
