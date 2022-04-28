@@ -43,7 +43,7 @@ databases:
     points:
       security: 
         connection: security
-        database: products
+        database: gate
 
   storages: include(security-storages.yaml)
       
