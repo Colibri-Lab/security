@@ -90,7 +90,7 @@ class Installer
   - name: Security
     entry: \Security\Module
     enabled: true
-    desc: Безопасность
+    desc: Система безопасности
     visible: true
     for:
       - manage
