@@ -2,11 +2,11 @@
 
     <Split name="split" shown="true" hasHandle="true">
         <Pane name="userroles-pane" shown="true">
-            <H2 name="ttl" shown="true">Пользователи и роли</H2>
-            <App.Modules.Security.RolesUsersTree name="userroles" shown="true" binding="app.security.users" hasContextMenu="true" />
+            <H2 name="ttl" shown="true">#{security-administration-userroles-title;Пользователи и роли}</H2>
+            <App.Modules.Security.RolesUsersTree name="userroles" shown="true" binding="app.security.users" hasContextMenu="true" hasTreeContextMenu="true" />
         </Pane>
         <Pane name="permissions-pane" shown="true">
-            <H2 name="ttl" shown="true">Права доступа</H2>
+            <H2 name="ttl" shown="true">#{security-administration-permission-title;Права доступа}</H2>
             <App.Modules.Security.PermissionsTree name="permissions" shown="true" binding="app.security.settings.permissions" hasContextMenu="true" />
         </Pane>
     </Split>    
