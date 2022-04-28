@@ -65,7 +65,7 @@ class Installer
         }
 
         // добавляем в начало
-        $modules['entries'] = array_merge($modules['entries'], [
+        $modules['entries'] = array_merge($modules['entries'], [[
             'name' => 'Security',
             'entry' => '\Security\Module',
             'desc' => 'Система безопасности',
@@ -73,7 +73,7 @@ class Installer
             'visible' => false,
             'for' => ['manage'],
             'config' => 'include(/config/security.yaml)'
-        ]);
+        ]]);
 
         self::_saveConfig($file, $modules);
 
