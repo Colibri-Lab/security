@@ -38,10 +38,10 @@ databases:
         # пользователь
         user: web
         # пароль
-        password: 123456
+        password: vault(vault.repeatme.online:828fff9ce3d3b45e6042529a1de75107:prod_db_password)
 
     points:
-      auth: 
+      security: 
         connection: security
         database: products
 
