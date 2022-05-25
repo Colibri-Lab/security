@@ -8,6 +8,7 @@ use Colibri\Data\Storages\Storages;
 use Colibri\Data\Storages\Storage;
 use Colibri\Data\Storages\Models\DataTable as BaseModelDataTable;
 use App\Modules\Security\Models\UserRole;
+use Colibri\Utils\Logs\Logger;
 
 /**
  * Таблица, представление данных в хранилище Роль пользователя
@@ -98,6 +99,32 @@ class UserRoles extends BaseModelDataTable
     {
         $reports = self::LoadByFilter(-1, 20, 'false');
         return $reports->CreateEmptyRow();
+    }
+
+    static function DataMigrate(?Logger $logger = null): bool
+    {
+
+        $defaultRoles = [
+            'Administrator' => '[{"path": "*", "value": "allow"}]',
+            'Readonly' => '[{"path": "*", "value": "deny"}, {"path": "security.login", "value": "allow"}]',
+            'Disabled' => '[{"path": "*", "value": "deny"}]',
+            'Manager' => '[{"path": "login", "value": "allow"}, {"path": "app.security.profile.*", "value": "allow"}, {"path": "*access", "value": "allow"}, {"path": "*.data.*", "value": "allow"}, {"path": "*", "value": "deny"}]',
+        ];
+
+        $logger->info('Migrating data of storage: roles');
+
+        foreach($defaultRoles as $roleName => $rolePermissions) {
+            $role = UserRoles::LoadByName($roleName);
+            if(!$role) {
+                $role = UserRoles::LoadEmpty();
+                $role->name = $roleName;
+                $role->permissions = $rolePermissions;
+                $role->Save();
+            }    
+        }
+
+        return true;
+
     }
 
 }

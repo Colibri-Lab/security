@@ -8,6 +8,7 @@ use Colibri\Data\Storages\Storages;
 use Colibri\Data\Storages\Storage;
 use Colibri\Data\Storages\Models\DataTable as BaseModelDataTable;
 use App\Modules\Security\Models\User;
+use Colibri\Utils\Logs\Logger;
 
 /**
  * Таблица, представление данных в хранилище Пользователи системы безопасности
@@ -112,6 +113,35 @@ class Users extends BaseModelDataTable
     {
         $reports = self::LoadByFilter(-1, 20, 'false');
         return $reports->CreateEmptyRow();
+    }
+
+    static function DataMigrate(?Logger $logger = null): bool
+    {
+
+        $logger->info('Migrating data of storage: users');
+        $adminUser = Users::LoadByLogin('admin');
+        if($adminUser) {
+            return true;
+        }
+
+        $role = UserRoles::LoadByName('Administrator');
+        if(!$role) {
+            $role = UserRoles::LoadEmpty();
+            $role->name = 'Administrator';
+            $role->permissions = '[{"path": "*", "value": "allow"}]';
+            $role->Save();
+        }
+
+        $adminUser = Users::LoadEmpty();
+        $adminUser->login = 'admin';
+        $adminUser->password = '12345678';
+        $adminUser->users_fio = '{"lastName": "DefaultAdmin", "firstName": "User", "patronymic": ""}';
+        $adminUser->avatar = '{}';
+        $adminUser->permissions = '[]';
+        $adminUser->settings = '{"logged": 0}';
+        $adminUser->role = $role->id;
+        return $adminUser->Save();
+
     }
 
 }
