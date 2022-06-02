@@ -10,6 +10,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     
 
     InitializeModule() {
+        super.InitializeModule();
 
         this.userData = {};
 
