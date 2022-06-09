@@ -68,9 +68,9 @@ class UserRoles extends BaseModelDataTable
      * @param int $pagesize размер страницы
      * @return UserRoles 
      */
-    static function LoadAll(int $page = -1, int $pagesize = 20): UserRoles
+    static function LoadAll(int $page = -1, int $pagesize = 20, bool $calculateAffected = false): UserRoles
     {
-        return self::LoadByFilter($page, $pagesize, null, null);
+        return self::LoadByFilter($page, $pagesize, null, null, [], $calculateAffected);
     }
 
     /**
@@ -80,7 +80,7 @@ class UserRoles extends BaseModelDataTable
      */
     static function LoadById(int $id): UserRole
     {
-        $table = self::LoadByFilter(1, 1, '{id}=[[id:integer]]', null, ['id' => $id]);
+        $table = self::LoadByFilter(1, 1, '{id}=[[id:integer]]', null, ['id' => $id], false);
         return $table->Count() > 0 ? $table->First() : null;
     }
 

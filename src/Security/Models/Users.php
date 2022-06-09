@@ -69,9 +69,9 @@ class Users extends BaseModelDataTable
      * @param int $pagesize размер страницы
      * @return Users 
      */
-    static function LoadAll(int $page = -1, int $pagesize = 20): Users
+    static function LoadAll(int $page = -1, int $pagesize = 20, bool $calculateAffected = false): Users
     {
-        return self::LoadByFilter($page, $pagesize, null, null);
+        return self::LoadByFilter($page, $pagesize, null, null, [], $calculateAffected);
     }
 
     /**
@@ -81,7 +81,7 @@ class Users extends BaseModelDataTable
      */
     static function LoadById(int $id): User|null
     {
-        $table = self::LoadByFilter(1, 1, '{id}=[[id:integer]]', null, ['id' => $id]);
+        $table = self::LoadByFilter(1, 1, '{id}=[[id:integer]]', null, ['id' => $id], false);
         return $table->Count() > 0 ? $table->First() : null;
     }
 
