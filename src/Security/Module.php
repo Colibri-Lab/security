@@ -66,7 +66,7 @@ class Module extends BaseModule
 
         if (version_compare(PHP_VERSION, '7.3.0') !== -1 && !headers_sent()) {
             session_set_cookie_params(["SameSite" => "None"]); //none, lax, strict
-            session_set_cookie_params(["Secure" => "true"]); //false, true        
+            session_set_cookie_params(["Secure" => App::$request->insecure ? "false" : "true"]); //false, true        
         }
         @session_start();
         $this->_id = isset($_SESSION['SS_MEMBER']) ? $_SESSION['SS_MEMBER'] : null;
@@ -97,7 +97,7 @@ class Module extends BaseModule
         // если версия выше 7.3.0
         if (version_compare(PHP_VERSION, '7.3.0') !== -1 && !headers_sent()) {
             session_set_cookie_params(["SameSite" => "None"]); //none, lax, strict
-            session_set_cookie_params(["Secure" => "true"]); //false, true        
+            session_set_cookie_params(["Secure" => App::$request->insecure ? "false" : "true"]); //false, true        
         }
 
         @session_start();
@@ -111,7 +111,7 @@ class Module extends BaseModule
     {
         if (version_compare(PHP_VERSION, '7.3.0') !== -1 && !headers_sent()) {
             session_set_cookie_params(["SameSite" => "None"]); //none, lax, strict
-            session_set_cookie_params(["Secure" => "true"]); //false, true        
+            session_set_cookie_params(["Secure" => App::$request->insecure ? "false" : "true"]); //false, true        
         }
         session_start();
         $_SESSION['SS_MEMBER'] = null;
