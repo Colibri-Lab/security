@@ -46,7 +46,7 @@ class Users extends BaseModelDataTable
      * @param array $params параметры к запросу
      * @return Users
      */
-    static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = [], bool $calculateAffected = true): Users
+    static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = [], bool $calculateAffected = true): ?Users
     {
         $storage = Storages::Create()->Load('users');
         $additionalParams = ['page' => $page, 'pagesize' => $pagesize, 'params' => $params];

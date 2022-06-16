@@ -110,6 +110,7 @@ class Installer
         print_r('Копируем файлы конфигурации' . "\n");
         self::_copyOrSymlink($mode, $configPath, $configDir, 'module-' . $mode . '.yaml', 'security.yaml');
         self::_copyOrSymlink($mode, $configPath, $configDir, 'security-storages.yaml', 'security-storages.yaml');
+        self::_copyOrSymlink($mode, $configPath, $configDir, 'security-langtexts.yaml', 'security-langtexts.yaml');
 
         print_r('Встраиваем модуль'."\n");
         self::_injectIntoModuleConfig($configDir . 'modules.yaml');

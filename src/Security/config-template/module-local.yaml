@@ -1,4 +1,6 @@
 
+texts: include(security-langtexts.yaml)
+
 smtp:
   enabled: true
   host: "smtp.yandex.ru"

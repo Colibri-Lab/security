@@ -46,7 +46,7 @@ class UserRoles extends BaseModelDataTable
      * @param array $params параметры к запросу
      * @return UserRoles
      */
-    static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = [], bool $calculateAffected = true): UserRoles
+    static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = [], bool $calculateAffected = true): ?UserRoles
     {
         $storage = Storages::Create()->Load('roles');
         $additionalParams = ['page' => $page, 'pagesize' => $pagesize, 'params' => $params];

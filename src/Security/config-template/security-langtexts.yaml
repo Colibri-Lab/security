@@ -1,0 +1,67 @@
+---
+security-user-profile:
+  ru: Пользователь
+security-login-button:
+  ru: Вход в программу
+security-administration-userroles-title:
+  ru: Пользователи и роли
+security-administration-permission-title:
+  ru: Права доступа
+security-permissions-cleareverywere:
+  ru: Очистить везде
+security-permissions-all:
+  ru: Права на все
+security-permissions-denyeveryware:
+  ru: Запретить везде
+security-permissions-alloweveryware:
+  ru: Разрешить везде
+security-permissions-clear:
+  ru: Очистить
+security-permissions-clearall:
+  ru: Очистить все
+security-permissions-allow:
+  ru: Разрешить
+security-permissions-deny:
+  ru: Запретить
+security-permissions-allowall:
+  ru: Разрешить все
+security-permissions-denyall:
+  ru: Запретить все
+security-contextmenu-addrole:
+  ru: Добавить роль
+security-contextmenu-adduser:
+  ru: Добавить пользователя
+security-windowtitle-adduser:
+  ru: Добавить пользователя
+security-windowtitle-addrole:
+  ru: Добавить роль
+security-windowtitle-editrole:
+  ru: Редактировать роль
+security-windowtitle-removerole:
+  ru: Удаление роли
+security-windowtitle-edituser:
+  ru: Редактировать пользователя
+security-messages-removeselfmessage:
+  ru: Вы не можете удалить самого себя!
+security-windowtitle-removeuser:
+  ru: Удаление пользователя
+security-messages-removeusermessage:
+  ru: Вы уверены, что хотите удалить пользователя?
+security-messages-removerolemessage:
+  ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль Readonly
+security-global-notallowed:
+  ru: Действие запрещено
+security-login-success-message:
+  ru: Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!
+security-logout-success-message:
+  ru: До свидания!
+security-register-success-message:
+  ru: Вы успешно зарегистрировались, пожалуйста, проверьте почтовый ящик
+security-reset-message:
+  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите
+    по ссылке в письме!
+security-menu-usersandroles:
+  ru: Пользователи и роли
+security-menu-usersandroles-desc:
+  ru: Административная панель, пользователи и роли
+...

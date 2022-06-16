@@ -180,8 +180,8 @@ class Module extends BaseModule
 
     public function GetTopmostMenu(bool $hideExecuteCommand = true): Item|array|null
     {
-        return Item::Create('more', 'Инструменты', '', 'App.Modules.MainFrame.Icons.MoreIcon', '')->Add(
-            Item::Create('users', 'Пользователи и роли', 'Административная панель, пользователи и роли', 'App.Modules.Security.Icons.UserAndRolesIcon', 'App.Modules.Security.AdministratePage')
+        return Item::Create('more', '#{mainframe-menu-more;Инструменты}', '', 'App.Modules.MainFrame.Icons.MoreIcon', '')->Add(
+            Item::Create('users', '#{security-menu-usersandroles;Пользователи и роли}', '#{security-menu-usersandroles-desc;Административная панель, пользователи и роли}', 'App.Modules.Security.Icons.UserAndRolesIcon', 'App.Modules.Security.AdministratePage')
         );
     }
 
