@@ -66,7 +66,7 @@ class UserRoles extends BaseModelDataTable
      * @param int $pagesize размер страницы
      * @return UserRoles 
      */
-    static function LoadAll(int $page = -1, int $pagesize = 20, bool $calculateAffected = false): UserRoles
+    static function LoadAll(int $page = -1, int $pagesize = 20, bool $calculateAffected = false): ?UserRoles
     {
         return self::LoadByFilter($page, $pagesize, null, null, [], $calculateAffected);
     }
@@ -76,7 +76,7 @@ class UserRoles extends BaseModelDataTable
      * @param int $id ID строки
      * @return UserRole|null
      */
-    static function LoadById(int $id): UserRole
+    static function LoadById(int $id): ?UserRole
     {
         $table = self::LoadByFilter(1, 1, '{id}=[[id:integer]]', null, ['id' => $id], false);
         return $table && $table->Count() > 0 ? $table->First() : null;
@@ -87,7 +87,7 @@ class UserRoles extends BaseModelDataTable
      * @param string $name наименование
      * @return UserRole|null
      */
-    static function LoadByName(string $name): UserRole
+    static function LoadByName(string $name): ?UserRole
     {
         $table = self::LoadByFilter(1, 1, '{name}=[[name:string]]', null, ['name' => $name]);
         return $table && $table->Count() > 0 ? $table->First() : null;
@@ -97,7 +97,7 @@ class UserRoles extends BaseModelDataTable
      * Создание модели по названию хранилища
      * @return UserRole
      */
-    static function LoadEmpty(): UserRole
+    static function LoadEmpty(): ?UserRole
     {
         $table = self::LoadByFilter(-1, 20, 'false');
         return $table->CreateEmptyRow();

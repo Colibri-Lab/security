@@ -67,7 +67,7 @@ class Users extends BaseModelDataTable
      * @param int $pagesize размер страницы
      * @return Users 
      */
-    static function LoadAll(int $page = -1, int $pagesize = 20, bool $calculateAffected = false): Users
+    static function LoadAll(int $page = -1, int $pagesize = 20, bool $calculateAffected = false): ?Users
     {
         return self::LoadByFilter($page, $pagesize, null, null, [], $calculateAffected);
     }
@@ -99,7 +99,7 @@ class Users extends BaseModelDataTable
      * @param UserRole|int $role роль
      * @return Users
      */
-    static function LoadByRole(UserRole|int $role): Users
+    static function LoadByRole(UserRole|int $role): ?Users
     {
         if(!is_numeric($role)) {
             $role = $role->id;
@@ -112,7 +112,7 @@ class Users extends BaseModelDataTable
      * Создание модели по названию хранилища
      * @return User
      */
-    static function LoadEmpty(): User
+    static function LoadEmpty(): ?User
     {
         $table = self::LoadByFilter(-1, 20, 'false');
         return $table->CreateEmptyRow();
