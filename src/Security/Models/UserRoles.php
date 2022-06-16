@@ -79,7 +79,7 @@ class UserRoles extends BaseModelDataTable
     static function LoadById(int $id): UserRole
     {
         $table = self::LoadByFilter(1, 1, '{id}=[[id:integer]]', null, ['id' => $id], false);
-        return $table->Count() > 0 ? $table->First() : null;
+        return $table && $table->Count() > 0 ? $table->First() : null;
     }
 
     /**
@@ -90,7 +90,7 @@ class UserRoles extends BaseModelDataTable
     static function LoadByName(string $name): UserRole
     {
         $table = self::LoadByFilter(1, 1, '{name}=[[name:string]]', null, ['name' => $name]);
-        return $table->Count() > 0 ? $table->First() : null;
+        return $table && $table->Count() > 0 ? $table->First() : null;
     }
 
     /**
@@ -99,8 +99,8 @@ class UserRoles extends BaseModelDataTable
      */
     static function LoadEmpty(): UserRole
     {
-        $reports = self::LoadByFilter(-1, 20, 'false');
-        return $reports->CreateEmptyRow();
+        $table = self::LoadByFilter(-1, 20, 'false');
+        return $table->CreateEmptyRow();
     }
 
     static function DataMigrate(?Logger $logger = null): bool

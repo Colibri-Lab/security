@@ -80,7 +80,7 @@ class Users extends BaseModelDataTable
     static function LoadById(int $id): User|null
     {
         $table = self::LoadByFilter(1, 1, '{id}=[[id:integer]]', null, ['id' => $id], false);
-        return $table->Count() > 0 ? $table->First() : null;
+        return $table && $table->Count() > 0 ? $table->First() : null;
     }
 
     /**
@@ -91,7 +91,7 @@ class Users extends BaseModelDataTable
     static function LoadByLogin(string $login): User|null
     {
         $table = self::LoadByFilter(1, 1, '{login}=[[login:string]]', null, ['login' => $login]);
-        return $table->Count() > 0 ? $table->First() : null;
+        return $table && $table->Count() > 0 ? $table->First() : null;
     }
 
     /**
@@ -114,8 +114,8 @@ class Users extends BaseModelDataTable
      */
     static function LoadEmpty(): User
     {
-        $reports = self::LoadByFilter(-1, 20, 'false');
-        return $reports->CreateEmptyRow();
+        $table = self::LoadByFilter(-1, 20, 'false');
+        return $table->CreateEmptyRow();
     }
 
     static function DataMigrate(?Logger $logger = null): bool
