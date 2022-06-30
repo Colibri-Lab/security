@@ -10,6 +10,10 @@ use Colibri\Utils\Menu\Item;
 use Colibri\Common\RandomizationHelper;
 use Colibri\Encryption\Crypt;
 use Colibri\Utils\Debug;
+use Colibri\Utils\Logs\Logger;
+use App\Modules\Security\Models\UserRoles;
+use Colibri\IO\FileSystem\File;
+use Colibri\Common\XmlHelper;
 
 /**
  * Модуль авторизация
@@ -186,6 +190,22 @@ class Module extends BaseModule
     }
 
 
+    public function Backup(Logger $logger, string $path) {
+        // Do nothing        
+        
+        $logger->debug('Exporting data...');
+
+        $modulePath = $path . 'modules/Security/';
+
+        $logger->debug('Exporting UserRoles...');
+        $roles = UserRoles::LoadAll();
+        $roles->ExportJson($modulePath . 'roles.json');
+
+        $logger->debug('Exporting Users...');
+        $users = Users::LoadAll();
+        $users->ExportJson($modulePath . 'users.json');
+
+    }
 
 
 }

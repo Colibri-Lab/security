@@ -91,6 +91,10 @@ App.Modules.Security = class extends Colibri.Modules.Module {
         this._store.Set('security.menu', menu);
     }
 
+    InitComet() {
+        const userData = this._store.Query('security.user');
+        App.Comet.Init(String.MD5(userData.id + ''), App.Store, 'app.messages');
+    }
 
     Settings(returnPromise = false) {
         const promise = this.Call('Client', 'Settings')
@@ -102,6 +106,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
             this._store.Set('security.settings', response.result.settings);
             this._store.Set('security.user', response.result.user);
             this.Menu(false);
+            this.InitComet();
         }).catch((response) => {
             App.Notices && App.Notices.Add({
                 severity: 'error',
