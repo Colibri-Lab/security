@@ -1,134 +1,67 @@
 ---
 security-user-profile:
   ru: Пользователь
-  en: User
-  hy: Օգտվող
 security-login-button:
   ru: Вход в программу
-  en: Login to the program
-  hy: Ծրագրի մուտքը
 security-administration-userroles-title:
   ru: Пользователи и роли
-  en: Users and roles
-  hy: Օգտագործողները եւ դերերը
 security-administration-permission-title:
   ru: Права доступа
-  en: Access rights
-  hy: Մուտքի իրավունքները
 security-permissions-cleareverywere:
   ru: Очистить везде
-  en: Clear Everywhere
-  hy: Մաքրել ամենուր
 security-permissions-all:
   ru: Права на все
-  en: Rights to everything
-  hy: Բոլոր իրավունքները
 security-permissions-denyeveryware:
   ru: Запретить везде
-  en: Ban everywhere
-  hy: Արգելել ամենուր
 security-permissions-alloweveryware:
   ru: Разрешить везде
-  en: Allow everywhere
-  hy: Թույլ տալ ամենուր
 security-permissions-clear:
   ru: Очистить
-  en: Clear
-  hy: Մաքրել
 security-permissions-clearall:
   ru: Очистить все
-  en: Clear all
-  hy: Մաքրել ամեն ինչ
 security-permissions-allow:
   ru: Разрешить
-  en: Allow
-  hy: Թույլատրել
 security-permissions-deny:
   ru: Запретить
-  en: Prohibit
-  hy: Արգելել
 security-permissions-allowall:
   ru: Разрешить все
-  en: Allow all
-  hy: Թույլատրել բոլոր
 security-permissions-denyall:
   ru: Запретить все
-  en: Ban everything
-  hy: Արգելել բոլոր
 security-contextmenu-addrole:
   ru: Добавить роль
-  en: Add a role
-  hy: Ավելացնել դեր
 security-contextmenu-adduser:
   ru: Добавить пользователя
-  en: Add a user
-  hy: Ավելացնել օգտվողին
 security-windowtitle-adduser:
   ru: Добавить пользователя
-  en: Add a user
-  hy: Ավելացնել օգտվողին
 security-windowtitle-addrole:
   ru: Добавить роль
-  en: Add a role
-  hy: Ավելացնել դեր
 security-windowtitle-editrole:
   ru: Редактировать роль
-  en: Edit a role
-  hy: Խմբագրել դերը
 security-windowtitle-removerole:
   ru: Удаление роли
-  en: Deleting a role
-  hy: Հեռացնելով դերը
 security-windowtitle-edituser:
   ru: Редактировать пользователя
-  en: Edit a user
-  hy: Խմբագրել օգտվողին
 security-messages-removeselfmessage:
   ru: Вы не можете удалить самого себя!
-  en: You can't delete yourself!
-  hy: Դուք չեք կարող հեռացնել ինքներդ!
 security-windowtitle-removeuser:
   ru: Удаление пользователя
-  en: Deleting a user
-  hy: Օգտագործողի հեռացում
 security-messages-removeusermessage:
   ru: Вы уверены, что хотите удалить пользователя?
-  en: Are you sure you want to delete the user?
-  hy: 'Վստահ եք, որ ցանկանում եք ջնջել օգտվողին:'
 security-messages-removerolemessage:
   ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль Readonly
-  en: Are you sure you want to delete the role? Users will be moved to the Readonly
-    role
-  hy: Վստահ եք, որ ցանկանում եք հեռացնել դերը? Users կտեղափոխվի դերի Readonly
 security-global-notallowed:
   ru: Действие запрещено
-  en: The action is prohibited
-  hy: Ակցիան արգելված է
 security-login-success-message:
   ru: Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!
-  en: You have successfully logged in, please wait until we launch!
-  hy: 'Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչեւ մենք սկսենք:'
 security-logout-success-message:
   ru: До свидания!
-  en: Goodbye!
-  hy: Ցտեսություն!
 security-register-success-message:
   ru: Вы успешно зарегистрировались, пожалуйста, проверьте почтовый ящик
-  en: You have successfully registered, please check your mailbox
-  hy: Դուք հաջողությամբ գրանցվել, խնդրում ենք ստուգել փոստարկղը
 security-reset-message:
   ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите
     по ссылке в письме!
-  en: The recovery request has been successfully sent to your email, please follow
-    the link in the email!
-  hy: 'Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեզ փոստով, խնդրում ենք հետեւել
-    հղմանը նամակում:'
 security-menu-usersandroles:
   ru: Пользователи и роли
-  en: Users and roles
-  hy: Օգտագործողները եւ դերերը
 security-menu-usersandroles-desc:
   ru: Административная панель, пользователи и роли
-  en: Administrative panel, users and roles
-  hy: Վարչական վահանակ, օգտվողները եւ դերերը
 ...
