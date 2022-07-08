@@ -64,4 +64,8 @@ security-menu-usersandroles:
   ru: Пользователи и роли
 security-menu-usersandroles-desc:
   ru: Административная панель, пользователи и роли
+security-loginform-login-validation1:
+  ru: Пожалуйста, введите эл. адрес
+security-loginform-password-validation1:
+  ru: Пожалуйста, введите пароль
 ...
