@@ -93,7 +93,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
 
     InitComet() {
         const userData = this._store.Query('security.user');
-        App.Comet.Init(String.MD5(userData.id + ''), App.Store, 'app.messages');
+        App.Comet && App.Comet.Init({guid: String.MD5(userData.id + ''), name: userData.fio.lastName + ' ' + userData.fio.firstName}, App.Store, 'app.messages');
     }
 
     Settings(returnPromise = false) {
