@@ -104,6 +104,11 @@ class Installer
             return;
         }
 
+        // берем точку входа
+        $webRoot = \getenv('COLIBRI_WEBROOT');
+        if(!$webRoot) {
+            $webRoot = 'web'; 
+        }
         $mode = self::_getMode($configDir . 'app.yaml');
 
         // копируем конфиг
@@ -120,11 +125,11 @@ class Installer
         self::_copyOrSymlink($mode, $path . '/src/Security/bin/', './bin/', 'security-models-generate.sh', 'security-models-generate.sh');
 
         print_r('Копирование изображений' . "\n");
-        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './web/res/img/', 'security-arrow.svg', 'security-arrow.svg');
-        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './web/res/img/', 'security-logo-only.svg', 'security-logo-only.svg');
-        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './web/res/img/', 'security-icon-cart-white.svg', 'security-icon-cart-white.svg');
-        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './web/res/img/', 'security-logo.svg', 'security-logo.svg');
-        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './web/res/img/', 'security-bg.svg', 'security-bg.svg');
+        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './'.$webRoot.'/res/img/', 'security-arrow.svg', 'security-arrow.svg');
+        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './'.$webRoot.'/res/img/', 'security-logo-only.svg', 'security-logo-only.svg');
+        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './'.$webRoot.'/res/img/', 'security-icon-cart-white.svg', 'security-icon-cart-white.svg');
+        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './'.$webRoot.'/res/img/', 'security-logo.svg', 'security-logo.svg');
+        self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './'.$webRoot.'/res/img/', 'security-bg.svg', 'security-bg.svg');
         
         print_r('Установка завершена' . "\n");
 
