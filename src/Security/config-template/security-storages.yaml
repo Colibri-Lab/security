@@ -27,7 +27,7 @@ __global_types:
   filelist:
     type: json
     class: FileListField
-    component: Files
+    component: Colibri.UI.Forms.Files
     default: json_array()
     fields:
       crc: varchar(32), string
@@ -66,7 +66,7 @@ users:
       desc: Пароль
       note: Пароль. Только латинские буквы, цифры и спец. символы. Обязательно должна
         быть одна цифра и один символ в верхнем регистре
-      component: Password
+      component: Colibri.UI.Forms.Password
       attrs:
         width: 100%
       params:
@@ -79,7 +79,7 @@ users:
       class: ObjectField
       desc: ФИО пользователя
       note: Введите имя, фамилию и отчество
-      component: Object
+      component: Colibri.UI.Forms.Object
       default: json_object()
       attrs:
         width: 100%
@@ -87,7 +87,7 @@ users:
         firstName:
           type: varchar
           length: 50
-          component: Text
+          component: Colibri.UI.Forms.Text
           desc: Имя
           class: string
           params:
@@ -97,7 +97,7 @@ users:
           type: varchar
           length: 50
           desc: Фамилия
-          component: Text
+          component: Colibri.UI.Forms.Text
           class: string
           params:
             readonly: false
@@ -106,7 +106,7 @@ users:
           type: varchar
           length: 50
           desc: Отчество
-          component: Text
+          component: Colibri.UI.Forms.Text
           class: string
           params:
             readonly: false
@@ -120,7 +120,7 @@ users:
     phone:
       type: varchar
       length: 12
-      component: Text
+      component: Colibri.UI.Forms.Text
       class: string
       desc: Телефон
       note: Введите телефон в формате 7999999999 или 3749998877
@@ -162,7 +162,7 @@ users:
     permissions:
       type: json
       class: App\Modules\Security\Models\Permissions
-      component: Hidden
+      component: Colibri.UI.Forms.Hidden
       default: json_array()
       desc: Права доступа
       params:
@@ -172,7 +172,7 @@ users:
         path:
           type: varchar
           length: 255
-          component: Hidden
+          component: Colibri.UI.Forms.Hidden
           params:
             required: true
             readonly: false
@@ -187,7 +187,7 @@ users:
     settings:
       type: json
       class: ObjectField
-      component: Hidden
+      component: Colibri.UI.Forms.Hidden
       default: json_object()
       fields:
         logged:
@@ -218,14 +218,14 @@ roles:
       type: varchar
       length: 255
       class: string
-      component: Text
+      component: Colibri.UI.Forms.Text
       desc: Наименование роли
       params:
         readonly: false
         required: true
     permissions:
       type: json
-      component: Hidden
+      component: Colibri.UI.Forms.Hidden
       class: App\Modules\Security\Models\Permissions
       default: json_array()
       desc: Права доступа
@@ -236,7 +236,7 @@ roles:
         path:
           type: varchar
           length: 255
-          component: Hidden
+          component: Colibri.UI.Forms.Hidden
           params:
             required: true
             readonly: false
