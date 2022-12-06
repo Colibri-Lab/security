@@ -22,7 +22,7 @@ use Colibri\Data\Storages\Fields\FileField;
  * @property-read DateTimeField $datecreated Дата создания строки
  * @property-read DateTimeField $datemodified Дата последнего обновления строки
  * @property string|null $login Логин пользователя
- * @property string $password Пароль
+ * @property string|null $password Пароль
  * @property ObjectField|null $fio ФИО пользователя
  * @property string|null $phone Телефон
  * @property RemoteFileField|null $avatar Аватар пользователя
@@ -33,6 +33,33 @@ use Colibri\Data\Storages\Fields\FileField;
  */
 class User extends BaseModelDataRow
 {
+
+    public const JsonSchema = [
+        'type' => 'object',
+        'required' => [
+            'id',
+            'datecreated',
+            'datemodified',
+            # region SchemaRequired:
+			'password',
+			# endregion SchemaRequired;
+        ],
+        'properties' => [
+            'id' => ['type' => 'integer'],
+            'datecreated' => ['type' => 'string', 'format' => 'db-date-time'],
+            'datemodified' => ['type' => 'string', 'format' => 'db-date-time'],
+            # region SchemaProperties:
+			'login' => ['type' => ['string', 'null'], 'maxLength' => 255],
+			'password' => ['type' => 'string', 'maxLength' => 255],
+			'fio' => ['type' => 'object', 'required' => [], 'properties' => ['firstName' => ['type' => ['string', 'null'], 'maxLength' => 50],'lastName' => ['type' => ['string', 'null'], 'maxLength' => 50],'patronymic' => ['type' => ['string', 'null'], 'maxLength' => 50],]],
+			'phone' => ['type' => ['string', 'null'], 'maxLength' => 12],
+			'avatar' => RemoteFileField::JsonSchema,
+			'role' => UserRole::JsonSchema,
+			'permissions' => Permissions::JsonSchema,
+			'settings' => ['type' => 'object', 'required' => [], 'properties' => ['logged' => ['type' => ['boolean', 'null'], ],]],
+			# endregion SchemaProperties;
+        ]
+    ];
 
     /**
      * Авторизация пользователя

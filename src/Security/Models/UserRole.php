@@ -15,12 +15,33 @@ use Colibri\Data\Storages\Fields\ObjectField;
  * @property-read int $id ID строки
  * @property-read DateTimeField $datecreated Дата создания строки
  * @property-read DateTimeField $datemodified Дата последнего обновления строки
- * @property-read string $name Наименование роли
+ * @property string|null $name Наименование роли
  * @property Permissions|null $permissions Права доступа
  * endregion Properties;
  */
 class UserRole extends BaseModelDataRow
 {
+
+    public const JsonSchema = [
+        'type' => 'object',
+        'required' => [
+            'id',
+            'datecreated',
+            'datemodified',
+            # region SchemaRequired:
+			'name',
+			# endregion SchemaRequired;
+        ],
+        'properties' => [
+            'id' => ['type' => 'integer'],
+            'datecreated' => ['type' => 'string', 'format' => 'db-date-time'],
+            'datemodified' => ['type' => 'string', 'format' => 'db-date-time'],
+            # region SchemaProperties:
+			'name' => ['type' => 'string', 'maxLength' => 255],
+			'permissions' => Permissions::JsonSchema,
+			# endregion SchemaProperties;
+        ]
+    ];
 
     public function Users(): Users
     {

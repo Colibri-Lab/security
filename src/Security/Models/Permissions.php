@@ -6,6 +6,11 @@ use Colibri\Data\Storages\Fields\ArrayField;
 class Permissions extends ArrayField
 {
 
+    public const JsonSchema = [
+        'type' => 'array',
+        'items' => Permission::JsonSchema
+    ];
+
     /**
      * Возвращает обьект по индексу
      * @param int $index индекс

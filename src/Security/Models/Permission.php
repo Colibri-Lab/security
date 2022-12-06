@@ -9,6 +9,16 @@ use Colibri\Data\Storages\Fields\ObjectField;
  */
 class Permission extends ObjectField
 {
+
+    public const JsonSchema = [
+        'type' => 'object',
+        'patternProperties' => [
+            '.*' => [
+                'type' => 'string'
+            ]
+        ]
+    ];
+
     const Allow = 'allow';
     const Deny = 'deny';
 
