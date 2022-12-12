@@ -132,7 +132,7 @@ class User extends BaseModelDataRow
         return false;
     }
 
-    public function Save(): bool 
+    public function Save(bool $performValidationBeforeSave = false): bool 
     {
         return $this->table->SaveRow($this);
     }
