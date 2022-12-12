@@ -3,6 +3,7 @@
 
 namespace App\Modules\Security\Controllers;
 
+use Colibri\Exceptions\ValidationException;
 use Colibri\Rpc\Controller as RpcController;
 use App\Modules\Security\Module;
 use Colibri\Web\RequestCollection;
@@ -12,6 +13,7 @@ use App\Modules\Security\Models\Member;
 use App\Modules\Security\Models\Users;
 use App\Modules\Security\Models\UserRoles;
 use Colibri\App;
+use InvalidArgumentException;
 
 class ClientController extends RpcController
 {
@@ -87,17 +89,38 @@ class ClientController extends RpcController
             $user = Users::LoadEmpty();
         }
 
-        $user->login = $login;
-        if ($password) {
-            $user->password = $password;
-        }
+        $accessPoint = $user->Storage()->accessPoint;
+        $accessPoint->Begin();
 
-        $user->role = UserRoles::LoadById($role);
-        $user->fio = $fio;
-        $user->phone = $phone;
-        $user->permissions = $post->permissions ?: '[]';
-        $user->avatar = $avatar;
-        $user->Save();
+        try {
+                   
+            $user->login = $login;
+            if ($password) {
+                $user->password = $password;
+            }
+
+            $user->role = UserRoles::LoadById($role);
+            $user->fio = $fio;
+            $user->phone = $phone;
+            $user->permissions = $post->permissions ?: '[]';
+            $user->avatar = $avatar;
+    
+            if ( ($res = $user->Save(true)) !== true ) {
+                throw new InvalidArgumentException($res->error, 400); 
+            }
+    
+        } catch (InvalidArgumentException $e) {
+            $accessPoint->Rollback();
+            return $this->Finish(400, 'Bad request', ['message' => $e->getMessage(), 'code' => 400]);
+        } catch (ValidationException $e) {
+            $accessPoint->Rollback();
+            return $this->Finish(500, 'Application validation error', ['message' => $e->getMessage(), 'code' => 400, 'data' => $e->getExceptionDataAsArray()]);
+        } catch (\Throwable $e) {
+            $accessPoint->Rollback();
+            return $this->Finish(500, 'Application error', ['message' => $e->getMessage(), 'code' => 500]);
+        } 
+
+        $accessPoint->Commit();
 
         return $this->Finish(200, 'ok', $user->ToArray(true));
     }
@@ -124,9 +147,31 @@ class ClientController extends RpcController
         else {
             $role = UserRoles::LoadEmpty();
         }
-        $role->name = $post->name;
-        $role->permissions = $post->permissions;
-        $role->Save();
+        
+        $accessPoint = $role->Storage()->accessPoint;
+        $accessPoint->Begin();
+
+        try {
+                   
+            $role->name = $post->name;
+            $role->permissions = $post->permissions;
+    
+            if ( ($res = $role->Save(true)) !== true ) {
+                throw new InvalidArgumentException($res->error, 400); 
+            }
+    
+        } catch (InvalidArgumentException $e) {
+            $accessPoint->Rollback();
+            return $this->Finish(400, 'Bad request', ['message' => $e->getMessage(), 'code' => 400]);
+        } catch (ValidationException $e) {
+            $accessPoint->Rollback();
+            return $this->Finish(500, 'Application validation error', ['message' => $e->getMessage(), 'code' => 400, 'data' => $e->getExceptionDataAsArray()]);
+        } catch (\Throwable $e) {
+            $accessPoint->Rollback();
+            return $this->Finish(500, 'Application error', ['message' => $e->getMessage(), 'code' => 500]);
+        } 
+
+        $accessPoint->Commit();
 
         return $this->Finish(200, 'ok', $role->ToArray(true));
 

@@ -12,10 +12,13 @@ class Permission extends ObjectField
 
     public const JsonSchema = [
         'type' => 'object',
-        'patternProperties' => [
-            '.*' => [
-                'type' => 'string'
-            ]
+        'required' => [
+            'path',
+            'value',
+        ],
+        'properties' => [
+            'path' => ['type' => 'string'],
+            'value' => ['type' => 'string'],
         ]
     ];
 

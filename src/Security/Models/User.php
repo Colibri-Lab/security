@@ -2,6 +2,7 @@
 
 namespace App\Modules\Security\Models;
 
+use Colibri\Data\SqlClient\QueryInfo;
 use Colibri\Data\Storages\Fields\DateTimeField;
 use Colibri\Data\Storages\Models\DataRow as BaseModelDataRow;
 use Colibri\Data\Storages\Fields\ObjectField;
@@ -21,12 +22,12 @@ use Colibri\Data\Storages\Fields\FileField;
  * @property-read int $id ID строки
  * @property-read DateTimeField $datecreated Дата создания строки
  * @property-read DateTimeField $datemodified Дата последнего обновления строки
- * @property string|null $login Логин пользователя
- * @property string|null $password Пароль
+ * @property string $login Логин пользователя
+ * @property string $password Пароль
  * @property ObjectField|null $fio ФИО пользователя
  * @property string|null $phone Телефон
  * @property RemoteFileField|null $avatar Аватар пользователя
- * @property UserRole|null $role Роль
+ * @property UserRole $role Роль
  * @property Permissions|null $permissions Права доступа
  * @property ObjectField|null $settings 
  * endregion Properties;
@@ -49,14 +50,14 @@ class User extends BaseModelDataRow
             'datecreated' => ['type' => 'string', 'format' => 'db-date-time'],
             'datemodified' => ['type' => 'string', 'format' => 'db-date-time'],
             # region SchemaProperties:
-			'login' => ['type' => ['string', 'null'], 'maxLength' => 255],
+			'login' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 255] ] ],
 			'password' => ['type' => 'string', 'maxLength' => 255],
-			'fio' => ['type' => 'object', 'required' => [], 'properties' => ['firstName' => ['type' => ['string', 'null'], 'maxLength' => 50],'lastName' => ['type' => ['string', 'null'], 'maxLength' => 50],'patronymic' => ['type' => ['string', 'null'], 'maxLength' => 50],]],
-			'phone' => ['type' => ['string', 'null'], 'maxLength' => 12],
-			'avatar' => RemoteFileField::JsonSchema,
-			'role' => UserRole::JsonSchema,
-			'permissions' => Permissions::JsonSchema,
-			'settings' => ['type' => 'object', 'required' => [], 'properties' => ['logged' => ['type' => ['boolean', 'null'], ],]],
+			'fio' => ['type' => 'object', 'required' => [], 'properties' => ['firstName' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 50] ] ],'lastName' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 50] ] ],'patronymic' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 50] ] ],]],
+			'phone' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 12] ] ],
+			'avatar' => [ 'oneOf' => [ [ 'type' => 'null'], RemoteFileField::JsonSchema ] ],
+			'role' => [ 'oneOf' => [ [ 'type' => 'null'], UserRole::JsonSchema ] ],
+			'permissions' => [ 'oneOf' => [ [ 'type' => 'null'], Permissions::JsonSchema ] ],
+			'settings' => ['type' => 'object', 'required' => [], 'properties' => ['logged' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'boolean', ] ] ],]],
 			# endregion SchemaProperties;
         ]
     ];
@@ -132,7 +133,7 @@ class User extends BaseModelDataRow
         return false;
     }
 
-    public function Save(bool $performValidationBeforeSave = false): bool 
+    public function Save(bool $performValidationBeforeSave = false): bool|QueryInfo
     {
         return $this->table->SaveRow($this);
     }
