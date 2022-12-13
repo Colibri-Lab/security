@@ -2,7 +2,7 @@ App.Modules.Security.Login = class extends Colibri.UI.Component {
 
     constructor(name, container) {
         /* создаем компонент и передаем шаблон */
-        super(name, container, Colibri.UI.Templates['App.Modules.Security.Login']);
+        super(name, container, Colibri.UI.Templates['App.Modules.Security.Login']); 
 
         this.AddClass('app-security-login-component');
 
@@ -14,7 +14,7 @@ App.Modules.Security.Login = class extends Colibri.UI.Component {
             login: {
                 component: 'Text',
                 params: {
-                    required: true,
+                    required: true, 
                     readonly: false,
                     validate: [
                         {

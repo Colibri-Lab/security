@@ -173,12 +173,14 @@ users:
           type: varchar
           length: 255
           component: Colibri.UI.Forms.Hidden
+          class: string
           params:
             required: true
             readonly: false
         value:
           type: enum
           default: deny
+          class: string
           values:
           - value: deny
             title: Нет доступа
@@ -236,6 +238,7 @@ roles:
         path:
           type: varchar
           length: 255
+          class: string
           component: Colibri.UI.Forms.Hidden
           params:
             required: true
@@ -243,6 +246,7 @@ roles:
         value:
           type: enum
           default: deny
+          class: string
           values:
           - value: deny
             title: Нет доступа
