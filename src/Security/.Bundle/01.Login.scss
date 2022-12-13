@@ -81,6 +81,7 @@
             align-items: center;
             justify-content: center;
             flex: 1 1;
+            margin-top: 24px;
 
             input {
                 font-size: 18px;
@@ -90,6 +91,7 @@
         }
 
         [data-object-name="button-container"] {
+            margin-top: 24px;
             button {
                 font-size: 18px;
                 color: white;
