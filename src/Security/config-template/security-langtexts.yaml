@@ -1,4 +1,3 @@
----
 security-user-profile:
   ru: Пользователь
   en: User
@@ -94,11 +93,12 @@ security-windowtitle-removeuser:
 security-messages-removeusermessage:
   ru: Вы уверены, что хотите удалить пользователя?
   en: Are you sure you want to delete the user?
-  hy: 'Վստահ եք, որ ցանկանում եք ջնջել օգտվողին:'
+  hy: "Վստահ եք, որ ցանկանում եք ջնջել օգտվողին:"
 security-messages-removerolemessage:
-  ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль Readonly
-  en: Are you sure you want to delete the role? Users will be moved to the Readonly
-    role
+  ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль
+    Readonly
+  en: Are you sure you want to delete the role? Users will be moved to the
+    Readonly role
   hy: Վստահ եք, որ ցանկանում եք հեռացնել դերը? Users կտեղափոխվի դերի Readonly
 security-global-notallowed:
   ru: Действие запрещено
@@ -107,7 +107,7 @@ security-global-notallowed:
 security-login-success-message:
   ru: Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!
   en: You have successfully logged in, please wait until we launch!
-  hy: 'Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչեւ մենք սկսենք:'
+  hy: "Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչեւ մենք սկսենք:"
 security-logout-success-message:
   ru: До свидания!
   en: Goodbye!
@@ -117,12 +117,12 @@ security-register-success-message:
   en: You have successfully registered, please check your mailbox
   hy: Դուք հաջողությամբ գրանցվել, խնդրում ենք ստուգել փոստարկղը
 security-reset-message:
-  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите
-    по ссылке в письме!
+  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста,
+    перейдите по ссылке в письме!
   en: The recovery request has been successfully sent to your email, please follow
     the link in the email!
-  hy: 'Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեզ փոստով, խնդրում ենք հետեւել
-    հղմանը նամակում:'
+  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեզ փոստով, խնդրում ենք
+    հետեւել հղմանը նամակում:"
 security-menu-usersandroles:
   ru: Пользователи и роли
   en: Users and roles
@@ -139,4 +139,3 @@ security-loginform-password-validation1:
   ru: Пожалуйста, введите пароль
   en: Please enter your password
   hy: Խնդրում ենք մուտքագրել գաղտնաբառը
-...
