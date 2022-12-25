@@ -15,3 +15,9 @@ security-reset-message:
     перейдите по ссылке в письме!
   en: The recovery request has been successfully sent to your email, please follow
     the link in the email!
+security-messages-datasaved:
+  ru: Данные успешно сохранены
+  en: Data saved successfuly
+security-messages-dataremoved:
+  ru: Данные успешно удалены
+  en: Data removed successfuly

@@ -224,7 +224,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
                 }
                 this._store.Set('security.users', users);
 
-                App.Notices.Add(new Colibri.UI.Notice('#{app-messages-datasaved;Данные успешно сохранены}', Colibri.UI.Notice.Success, 3000));
+                App.Notices.Add(new Colibri.UI.Notice('#{security-messages-datasaved}', Colibri.UI.Notice.Success, 3000));
             })
             .catch(error => {
                 App.Notices.Add(new Colibri.UI.Notice(error.result));
@@ -252,7 +252,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
                 }
                 this._store.Set('security.roles', roles);
                 this._store.DispatchPath('security.users');
-                App.Notices.Add(new Colibri.UI.Notice('#{app-messages-datasaved;Данные успешно сохранены}', Colibri.UI.Notice.Success, 3000));
+                App.Notices.Add(new Colibri.UI.Notice('#{security-messages-datasaved}', Colibri.UI.Notice.Success, 3000));
             })
             .catch(error => {
                 App.Notices.Add(new Colibri.UI.Notice(error.result));
@@ -272,7 +272,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
                 });
                 this._store.Set('security.roles', newRoles);
                 this._store.Reload('security.users', false);
-                App.Notices.Add(new Colibri.UI.Notice('#{app-messages-dataremoved;Данные успешно удалены}', Colibri.UI.Notice.Success, 3000));
+                App.Notices.Add(new Colibri.UI.Notice('#{security-messages-dataremoved}', Colibri.UI.Notice.Success, 3000));
             })
             .catch(error => {
                 App.Notices.Add(new Colibri.UI.Notice(error.result));
@@ -296,7 +296,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
                 });
 
                 this._store.Set('security.users', newUsers);
-                App.Notices.Add(new Colibri.UI.Notice('#{app-messages-dataremoved;Данные успешно удалены}', Colibri.UI.Notice.Success, 3000));
+                App.Notices.Add(new Colibri.UI.Notice('#{security-messages-dataremoved}', Colibri.UI.Notice.Success, 3000));
             })
             .catch(error => {
                 App.Notices.Add(new Colibri.UI.Notice(error.result));
