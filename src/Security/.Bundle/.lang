@@ -1,0 +1,17 @@
+security-global-notallowed:
+  ru: Действие запрещено
+  en: Operation not permitted
+security-login-success-message:
+  ru: Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!
+  en: You have successfully logged in, please wait while we launch!
+security-logout-success-message:
+  ru: До свидания!
+  en: Goodbye!
+security-register-success-message:
+  ru: Вы успешно зарегистрировались, пожалуйста, проверьте почтовый ящик
+  en: You have successfully registered, please check your mailbox
+security-reset-message:
+  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста,
+    перейдите по ссылке в письме!
+  en: The recovery request has been successfully sent to your email, please follow
+    the link in the email!

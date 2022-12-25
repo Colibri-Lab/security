@@ -18,7 +18,7 @@ App.Modules.Security.Login = class extends Colibri.UI.Component {
                     readonly: false,
                     validate: [
                         {
-                            message: '#{security-loginform-login-validation1;Пожалуйста, введите эл. адрес}',
+                            message: '#{security-loginform-login-validation1}',
                             method: '(field, validator) => !!field.value'
                         }
                     ]
@@ -31,7 +31,7 @@ App.Modules.Security.Login = class extends Colibri.UI.Component {
                     reqdonly: false,
                     validate: [
                         {
-                            message: '#{security-loginform-password-validation1;Пожалуйста, введите пароль}',
+                            message: '#{security-loginform-password-validation1}',
                             method: '(field, validator) => !!field.value'
                         }
                     ]

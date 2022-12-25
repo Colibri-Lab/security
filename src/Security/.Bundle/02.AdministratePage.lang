@@ -1,0 +1,68 @@
+security-administration-userroles-title:
+  ru: Пользователи и роли
+  en: Users and roles
+security-administration-permission-title:
+  ru: Права доступа
+  en: Permissions
+security-permissions-cleareverywere:
+  ru: Очистить везде
+  en: Clear all
+security-permissions-denyeveryware:
+  ru: Запретить везде
+  en: Disallow everyware
+security-permissions-alloweveryware:
+  ru: Разрешить везде
+  en: Allow everyware
+security-permissions-clear:
+  ru: Очистить
+  en: Clear
+security-permissions-clearall:
+  ru: Очистить все
+  en: Clear all
+security-permissions-allow:
+  ru: Разрешить
+  en: Allow
+security-permissions-deny:
+  ru: Запретить
+  en: Disallow
+security-permissions-allowall:
+  ru: Разрешить все
+  en: Allow all
+security-permissions-denyall:
+  ru: Запретить все
+  en: Disallow all
+security-contextmenu-addrole:
+  ru: Добавить роль
+  en: Add role
+security-contextmenu-adduser:
+  ru: Добавить пользователя
+  en: Add user
+security-windowtitle-adduser:
+  ru: Добавить пользователя
+  en: Add user
+security-windowtitle-addrole:
+  ru: Добавить роль
+  en: Add role
+security-windowtitle-editrole:
+  ru: Редактировать роль
+  en: Edit role
+security-windowtitle-removerole:
+  ru: Удаление роли
+  en: Delete role
+security-messages-removerolemessage:
+  ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль
+    Readonly
+  en: Are you sure you want to delete the role? Users will be moved to the
+    Readonly role
+security-windowtitle-edituser:
+  ru: Редактировать пользователя
+  en: Edit user
+security-messages-removeselfmessage:
+  ru: Вы не можете удалить самого себя!
+  en: You cannot delete yourself!
+security-windowtitle-removeuser:
+  ru: Удаление пользователя
+  en: User delete
+security-messages-removeusermessage:
+  ru: Вы уверены, что хотите удалить пользователя?
+  en: Are you sure you want to delete the user?

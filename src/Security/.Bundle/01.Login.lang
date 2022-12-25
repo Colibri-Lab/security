@@ -1,0 +1,9 @@
+security-login-button:
+  ru: Вход в программу
+  en: Login to programm
+security-loginform-login-validation1:
+  ru: Пожалуйста, введите эл. адрес
+  en: Please enter the email address
+security-loginform-password-validation1:
+  ru: Пожалуйста, введите пароль
+  en: Please enter the password

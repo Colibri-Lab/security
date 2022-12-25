@@ -69,7 +69,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
                 .catch(() => {});
         }
         else {
-            App.Notices.Add(new Colibri.UI.Notice('#{security-global-notallowed;Действие запрещено}', Colibri.UI.Notice.Error, 5000));
+            App.Notices.Add(new Colibri.UI.Notice('#{security-global-notallowed}', Colibri.UI.Notice.Error, 5000));
         }
     }
 
@@ -154,7 +154,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     Login(login, password) {
         this.Call('Client', 'Login', {login: login, password: password})
             .then((response) => {
-                App.Notices.Add(new Colibri.UI.Notice('#{security-login-success-message;Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!}', Colibri.UI.Notice.Success, 3000));
+                App.Notices.Add(new Colibri.UI.Notice('#{security-login-success-message}', Colibri.UI.Notice.Success, 3000));
                 Colibri.Common.Delay(3000).then(() => {
                     location.reload();
                 });
@@ -169,7 +169,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     Logout(noreload) {
         this.Call('Client', 'Logout')
             .then((response) => {
-                App.Notices.Add(new Colibri.UI.Notice('#{security-logout-success-message;До свидания!}', Colibri.UI.Notice.Success, 3000));
+                App.Notices.Add(new Colibri.UI.Notice('#{security-logout-success-message}', Colibri.UI.Notice.Success, 3000));
                 Colibri.Common.Delay(3000).then(() => {
                     location.reload();
                 });
@@ -184,7 +184,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     Register(value) {
         this.Call('Client', 'Register', value)
             .then((response) => {
-                App.Notices.Add(new Colibri.UI.Notice('#{security-register-success-message;Вы успешно зарегистрировались, пожалуйста, проверьте почтовый ящик}', Colibri.UI.Notice.Success, 3000));
+                App.Notices.Add(new Colibri.UI.Notice('#{security-register-success-message}', Colibri.UI.Notice.Success, 3000));
                 Colibri.Common.Delay(3000).then(() => {
                     location.reload();
                 });
@@ -307,7 +307,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     ResetRequest(value) {
         this.Call('Client', 'ResetRequest', value)
             .then((response) => {
-                App.Notices.Add(new Colibri.UI.Notice('#{security-reset-message;Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите по ссылке в письме!}', Colibri.UI.Notice.Success, 3000));
+                App.Notices.Add(new Colibri.UI.Notice('#{security-reset-message}', Colibri.UI.Notice.Success, 3000));
                 Colibri.Common.Delay(3000).then(() => {
                     location.reload();
                 });

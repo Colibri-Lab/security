@@ -47,52 +47,52 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
             // нету setChilds isroot=1 haschilds=1
             
             if(commandSet) {
-                contextmenu.push({name: 'unset', title: '#{security-permissions-cleareverywere;Очистить везде}', icon: Colibri.UI.ContextMenuRemoveIcon});
+                contextmenu.push({name: 'unset', title: '#{security-permissions-cleareverywere}', icon: Colibri.UI.ContextMenuRemoveIcon});
             }
             if(access) {
-                contextmenu.push({name: 'deny', title: '#{security-permissions-denyeveryware;Запретить везде}', icon: App.Modules.Security.Icons.ContextMenuPermissionDenyIcon});
+                contextmenu.push({name: 'deny', title: '#{security-permissions-denyeveryware}', icon: App.Modules.Security.Icons.ContextMenuPermissionDenyIcon});
             }
             else {
-                contextmenu.push({name: 'allow', title: '#{security-permissions-alloweveryware;Разрешить везде}', icon: App.Modules.Security.Icons.ContextMenuPermissionAllowIcon});
+                contextmenu.push({name: 'allow', title: '#{security-permissions-alloweveryware}', icon: App.Modules.Security.Icons.ContextMenuPermissionAllowIcon});
             }
 
         }
         else {
             
             if(commandSet) {
-                contextmenu.push({name: 'unset', title: '#{security-permissions-clear;Очистить} (' + perm.name + ': ' + (commandSet) + ')', icon: Colibri.UI.ContextMenuRemoveIcon});
+                contextmenu.push({name: 'unset', title: '#{security-permissions-clear} (' + perm.name + ': ' + (commandSet) + ')', icon: Colibri.UI.ContextMenuRemoveIcon});
             }
             if(commandSetChilds) {
-                contextmenu.push({name: 'unset-all', title: '#{security-permissions-clearall;Очистить все} (' + perm.name + ': ' + (commandSetChilds) + ')', icon: Colibri.UI.ContextMenuRemoveIcon});
+                contextmenu.push({name: 'unset-all', title: '#{security-permissions-clearall} (' + perm.name + ': ' + (commandSetChilds) + ')', icon: Colibri.UI.ContextMenuRemoveIcon});
             }
             
             var allows = [];
             var denies = [];
             if(commandSet) {
                 if(commandSet == 'deny') {
-                    allows.push({name: 'allow', title: '#{security-permissions-allow;Разрешить} (' + perm.name + ': allow)', icon: App.Modules.Security.Icons.ContextMenuPermissionAllowIcon});
+                    allows.push({name: 'allow', title: '#{security-permissions-allow} (' + perm.name + ': allow)', icon: App.Modules.Security.Icons.ContextMenuPermissionAllowIcon});
                 }
                 else if(commandSet == 'allow') {
-                    denies.push({name: 'deny', title: '#{security-permissions-deny;Запретить} (' + perm.name + ': deny)', icon: App.Modules.Security.Icons.ContextMenuPermissionDenyIcon});
+                    denies.push({name: 'deny', title: '#{security-permissions-deny} (' + perm.name + ': deny)', icon: App.Modules.Security.Icons.ContextMenuPermissionDenyIcon});
                 }
             }
             else {
-                allows.push({name: 'allow', title: '#{security-permissions-allow;Разрешить} (' + perm.name + ': allow)', icon: App.Modules.Security.Icons.ContextMenuPermissionAllowIcon});
-                denies.push({name: 'deny', title: '#{security-permissions-deny;Запретить} (' + perm.name + ': deny)', icon: App.Modules.Security.Icons.ContextMenuPermissionDenyIcon});
+                allows.push({name: 'allow', title: '#{security-permissions-allow} (' + perm.name + ': allow)', icon: App.Modules.Security.Icons.ContextMenuPermissionAllowIcon});
+                denies.push({name: 'deny', title: '#{security-permissions-deny} (' + perm.name + ': deny)', icon: App.Modules.Security.Icons.ContextMenuPermissionDenyIcon});
             }
             
             if(hasChilds) {
                 if(commandSetChilds) {
                     if(commandSetChilds == 'deny') {
-                        allows.push({name: 'allow-all', title: '#{security-permissions-allowall;Разрешить все} (' + perm.name + '.*: allow)', icon: App.Modules.Security.Icons.ContextMenuPermissionAllowIcon});
+                        allows.push({name: 'allow-all', title: '#{security-permissions-allowall} (' + perm.name + '.*: allow)', icon: App.Modules.Security.Icons.ContextMenuPermissionAllowIcon});
                     }
                     else if (setChilds == 'allow') {
-                        denies.push({name: 'deny-all', title: '#{security-permissions-denyall;Запретить все} (' + perm.name + '.*: deny)', icon: App.Modules.Security.Icons.ContextMenuPermissionDenyIcon});
+                        denies.push({name: 'deny-all', title: '#{security-permissions-denyall} (' + perm.name + '.*: deny)', icon: App.Modules.Security.Icons.ContextMenuPermissionDenyIcon});
                     }
                 }
                 else {
-                    allows.push({name: 'allow-all', title: '#{security-permissions-allowall;Разрешить все} (' + perm.name + '.*: allow)', icon: App.Modules.Security.Icons.ContextMenuPermissionAllowIcon});
-                    denies.push({name: 'deny-all', title: '#{security-permissions-denyall;Запретить все} (' + perm.name + '.*: deny)', icon: App.Modules.Security.Icons.ContextMenuPermissionDenyIcon});
+                    allows.push({name: 'allow-all', title: '#{security-permissions-allowall} (' + perm.name + '.*: allow)', icon: App.Modules.Security.Icons.ContextMenuPermissionAllowIcon});
+                    denies.push({name: 'deny-all', title: '#{security-permissions-denyall} (' + perm.name + '.*: deny)', icon: App.Modules.Security.Icons.ContextMenuPermissionDenyIcon});
                 }
             }
             
@@ -164,8 +164,8 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
         const itemData = item?.tag;
 
         if(!itemData) {
-            contextmenu.push({name: 'add-role', title: '#{security-contextmenu-addrole;Добавить роль}', icon: Colibri.UI.ContextMenuAddIcon});
-            contextmenu.push({name: 'add-user', title: '#{security-contextmenu-adduser;Добавить пользователя}', icon: Colibri.UI.ContextMenuAddIcon});
+            contextmenu.push({name: 'add-role', title: '#{security-contextmenu-addrole}', icon: Colibri.UI.ContextMenuAddIcon});
+            contextmenu.push({name: 'add-user', title: '#{security-contextmenu-adduser}', icon: Colibri.UI.ContextMenuAddIcon});
             this._userAndRolesTree.contextmenu = contextmenu;
             this._userAndRolesTree.ShowContextMenu(args.isContextMenuEvent ? [Colibri.UI.ContextMenu.RB, Colibri.UI.ContextMenu.RB] : [Colibri.UI.ContextMenu.RB, Colibri.UI.ContextMenu.LB], '', args.isContextMenuEvent ? {left: args.domEvent.clientX, top: args.domEvent.clientY} : null);
         }
@@ -197,7 +197,7 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
 
         switch(menuData.name) {
             case 'add-user': {
-                Manage.FormWindow.Show('#{security-windowtitle-adduser;Добавить пользователя}', 800, 'app.manage.storages(users)', {})
+                Manage.FormWindow.Show('#{security-windowtitle-adduser}', 800, 'app.manage.storages(users)', {})
                     .then((data) => {
                         Security.SaveUser(data);
                     })
@@ -205,7 +205,7 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
                 break;                                
             }
             case 'add-role': {
-                Manage.FormWindow.Show('#{security-windowtitle-addrole;Добавить роль}', 800, 'app.manage.storages(roles)', {})
+                Manage.FormWindow.Show('#{security-windowtitle-addrole}', 800, 'app.manage.storages(roles)', {})
                     .then((data) => {
                         Security.SaveRole(data);
                     })
@@ -213,7 +213,7 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
                 break;                                
             }
             case 'edit-role': {
-                Manage.FormWindow.Show('#{security-windowtitle-editrole;Редактировать роль}', 800, 'app.manage.storages(roles)', item.tag)
+                Manage.FormWindow.Show('#{security-windowtitle-editrole}', 800, 'app.manage.storages(roles)', item.tag)
                     .then((data) => {
                         Security.SaveRole(data);
                     })
@@ -222,13 +222,13 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
                 break;                                
             }
             case 'delete-role': {
-                App.Confirm.Show('#{security-windowtitle-removerole;Удаление роли}', '#{security-messages-removerolemessage;Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль Readonly}').then(() => {
+                App.Confirm.Show('#{security-windowtitle-removerole}', '#{security-messages-removerolemessage}').then(() => {
                     Security.RemoveRole(item.tag);
                 });
                 break;                                
             }
             case 'edit-user': {
-                Manage.FormWindow.Show('#{security-windowtitle-edituser;Редактировать пользователя}', 800, 'app.manage.storages(users)', item.tag)
+                Manage.FormWindow.Show('#{security-windowtitle-edituser}', 800, 'app.manage.storages(users)', item.tag)
                     .then((data) => {
                         Security.SaveUser(data);
                     })
@@ -238,10 +238,10 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
             case 'delete-user': {
                 const current = Security.Store.Query('security.user');
                 if(current.id == item.tag.id) {
-                    App.Notices.Add(new Colibri.UI.Notice('#{security-messages-removeselfmessage;Вы не можете удалить самого себя!}'));
+                    App.Notices.Add(new Colibri.UI.Notice('#{security-messages-removeselfmessage}'));
                 }
                 else {
-                    App.Confirm.Show('#{security-windowtitle-removeuser;Удаление пользователя}', '#{security-messages-removeusermessage;Вы уверены, что хотите удалить пользователя?}').then(() => {
+                    App.Confirm.Show('#{security-windowtitle-removeuser}', '#{security-messages-removeusermessage}').then(() => {
                         Security.RemoveUser(item.tag);
                     });    
                 }

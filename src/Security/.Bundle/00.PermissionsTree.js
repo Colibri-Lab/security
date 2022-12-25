@@ -100,10 +100,10 @@ App.Modules.Security.PermissionsTree = class extends Colibri.UI.Tree {
         if(!newNode) {
             newNode = this.nodes.Add('app');
         }
-        newNode.text = '#{security-permissions-all;Права на все} (*)'; 
+        newNode.text = '#{security-permissions-all} (*)'; 
         newNode.isLeaf = false;
         newNode.icon = App.Modules.Security.Icons.PermissionNotSetIcon;
-        newNode.tag = {name: 'app', desc: 'Права на все', isLeaf: false};
+        newNode.tag = {name: 'app', desc: '#{security-permissions-all}', isLeaf: false};
         this._renderLevel(newNode, 'app');
         this._removeUnexistent();
 
