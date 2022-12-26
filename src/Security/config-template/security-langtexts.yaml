@@ -160,7 +160,6 @@ security-profile-loginchange-permissions:
 security-administrate-permissions:
   ru: Доступ к администрированию
   en: Access to administration
-security-administrate-roles=permissions: {}
 security-administrate-roles-permissions:
   ru: Список ролей
   en: List of roles
