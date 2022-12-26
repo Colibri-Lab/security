@@ -161,23 +161,23 @@ class Module extends BaseModule
     {
         $permissions = parent::GetPermissions();
 
-        $permissions['security'] = 'Использовать модуль';
-        $permissions['security.login'] = 'Выполнять вход в административную консоль';
-        $permissions['security.profile'] = 'Редактировать свой профиль';
+        $permissions['security'] = '#{security-permissions}';
+        $permissions['security.login'] = '#{security-login-permissions}';
+        $permissions['security.profile'] = '#{security-profile-permissions}';
 
-        $permissions['security.profile.passwordchange'] = 'Изменять свой пароль';
-        $permissions['security.profile.rolechange'] = 'Изменять свою роль';
-        $permissions['security.profile.loginchange'] = 'Изменять свой логин';
+        $permissions['security.profile.passwordchange'] = '#{security-profile-passwordchange-permissions}';
+        $permissions['security.profile.rolechange'] = '#{security-profile-rolechange-permissions}';
+        $permissions['security.profile.loginchange'] = '#{security-profile-loginchange-permissions}';
 
-        $permissions['security.administrate'] = 'Доступ к администрированию';
-        $permissions['security.administrate.roles'] = 'Список ролей';
-        $permissions['security.administrate.roles.add'] = 'Создать роль';
-        $permissions['security.administrate.roles.save'] = 'Сохранить роль';
-        $permissions['security.administrate.roles.remove'] = 'Удалить роль';
-        $permissions['security.administrate.users'] = 'Список пользователей';
-        $permissions['security.administrate.users.add'] = 'Создать пользователя';
-        $permissions['security.administrate.users.save'] = 'Сохранить пользователя';
-        $permissions['security.administrate.users.remove'] = 'Удалить пользователя';
+        $permissions['security.administrate'] = '#{security-administrate-permissions}';
+        $permissions['security.administrate.roles'] = '#{security-administrate-roles-permissions}';
+        $permissions['security.administrate.roles.add'] = '#{security-administrate-roles-add-permissions}';
+        $permissions['security.administrate.roles.save'] = '#{security-administrate-roles-save-permissions}';
+        $permissions['security.administrate.roles.remove'] = '#{security-administrate-roles-remove-permissions}';
+        $permissions['security.administrate.users'] = '#{security-administrate-users-permissions}';
+        $permissions['security.administrate.users.add'] = '#{security-administrate-users-add-permissions}';
+        $permissions['security.administrate.users.save'] = '#{security-administrate-users-save-permissions}';
+        $permissions['security.administrate.users.remove'] = '#{security-administrate-users-remove-permissions}';
 
         return $permissions;
     }
