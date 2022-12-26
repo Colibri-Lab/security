@@ -172,12 +172,12 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
         else {
             if(itemData.role === undefined) {
                 // это роле
-                contextmenu.push({name: 'edit-role', title: '#{contextmenu-edit;Редактировать}', icon: Colibri.UI.ContextMenuEditIcon});
-                contextmenu.push({name: 'delete-role', title: '#{contextmenu-remove;Удалить}', icon: Colibri.UI.ContextMenuRemoveIcon});
+                contextmenu.push({name: 'edit-role', title: '#{security-contextmenu-edit}', icon: Colibri.UI.ContextMenuEditIcon});
+                contextmenu.push({name: 'delete-role', title: '#{security-contextmenu-remove}', icon: Colibri.UI.ContextMenuRemoveIcon});
             }
             else {
-                contextmenu.push({name: 'edit-user', title: '#{contextmenu-edit;Редактировать}', icon: Colibri.UI.ContextMenuEditIcon});
-                contextmenu.push({name: 'delete-user', title: '#{contextmenu-remove;Удалить}', icon: Colibri.UI.ContextMenuRemoveIcon});
+                contextmenu.push({name: 'edit-user', title: '#{security-contextmenu-edit}', icon: Colibri.UI.ContextMenuEditIcon});
+                contextmenu.push({name: 'delete-user', title: '#{security-contextmenu-remove}', icon: Colibri.UI.ContextMenuRemoveIcon});
             }
 
             item.contextmenu = contextmenu;

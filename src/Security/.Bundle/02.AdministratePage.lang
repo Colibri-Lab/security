@@ -66,3 +66,9 @@ security-windowtitle-removeuser:
 security-messages-removeusermessage:
   ru: Вы уверены, что хотите удалить пользователя?
   en: Are you sure you want to delete the user?
+security-contextmenu-edit:
+  ru: Редактировать
+  en: Edit
+security-contextmenu-remove:
+  ru: Удалить
+  en: Delete
