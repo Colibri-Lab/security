@@ -43,7 +43,9 @@ users:
   models:
     row: Models\User
     table: Models\Users
-  desc: Пользователи системы безопасности
+  desc: 
+    ru: Пользователи системы безопасности
+    en: Security users
   params:
     visible: false
     maybepublished: false
@@ -52,8 +54,12 @@ users:
       type: varchar
       length: 255
       class: string
-      desc: Логин пользователя
-      note: Введите наименование роли. Только латинские буквы, без пробелов
+      desc:  
+        ru: Логин пользователя
+        en: User login
+      note:  
+        ru: Введите имя пользователя. Только латинские буквы, без пробелов
+        en: Enter a username. Latin letters only, no spaces
       attrs:
         width: 100%
       params:
@@ -63,9 +69,12 @@ users:
       type: varchar
       length: 255
       class: string
-      desc: Пароль
-      note: Пароль. Только латинские буквы, цифры и спец. символы. Обязательно должна
-        быть одна цифра и один символ в верхнем регистре
+      desc:  
+        ru: Пароль
+        en: Password
+      note:  
+        ru: Пароль. Только латинские буквы, цифры и спец. символы. Обязательно должна быть одна цифра и один символ в верхнем регистре
+        en: Password. Only Latin letters, numbers and specials. symbols. Must be one number and one uppercase character
       component: Colibri.UI.Forms.Password
       attrs:
         width: 100%
@@ -77,8 +86,12 @@ users:
     fio:
       type: json
       class: ObjectField
-      desc: ФИО пользователя
-      note: Введите имя, фамилию и отчество
+      desc:  
+        ru: ФИО пользователя
+        en: User full name
+      note:  
+        ru: Введите имя, фамилию и отчество
+        en: Enter first name, last name and patronymic
       component: Colibri.UI.Forms.Object
       default: json_object()
       attrs:
@@ -88,7 +101,9 @@ users:
           type: varchar
           length: 50
           component: Colibri.UI.Forms.Text
-          desc: Имя
+          desc:  
+            ru: Имя
+            en: First name
           class: string
           params:
             readonly: false
@@ -96,7 +111,9 @@ users:
         lastName:
           type: varchar
           length: 50
-          desc: Фамилия
+          desc:  
+            ru: Фамилия
+            en: Last name
           component: Colibri.UI.Forms.Text
           class: string
           params:
@@ -105,7 +122,9 @@ users:
         patronymic:
           type: varchar
           length: 50
-          desc: Отчество
+          desc:  
+            ru: Отчество
+            en: Patronymic
           component: Colibri.UI.Forms.Text
           class: string
           params:
@@ -115,35 +134,51 @@ users:
         required: false
         reqdonly: true
         validate:
-        - message: Пожалуйста, введите ваше имя и фамилию
+        - message: 
+            ru: Пожалуйста, введите ваше имя и фамилию
+            en: Please enter your first and last name
           method: (field, validator) => !!field.value.firstName && !!field.value.lastName
     phone:
       type: varchar
       length: 12
       component: Colibri.UI.Forms.Text
       class: string
-      desc: Телефон
-      note: Введите телефон в формате 7999999999 или 3749998877
+      desc:  
+        ru: Телефон
+        en: Phone
+      note:  
+        ru: Введите телефон в формате 7999999999 или 3749998877
+        en: Enter your phone in the format 7999999999 or 3749998877
       attrs:
         width: 100%
       params:
         required: false
         readonly: false
         validate:
-        - message: 'Пожалуйста, введите ваш телефон, формат: 7999999999 или 3749998877'
+        - message:    
+            ru: 'Пожалуйста, введите ваш телефон, формат: 7999999999 или 3749998877'
+            en: 'Please enter your phone number, format: 7999999999 or 3749998877'
           method: (field, validator) => !!field.value && field.value.isNumeric()
     avatar:
       type: json
       class: App\Modules\Manage\Models\Fields\RemoteFileField
       component: App.Modules.Manage.UI.RemoteFile
       default: json_object()
-      desc: Аватар пользователя
-      note: Загрузите аватарку
+      desc:  
+        ru: Аватар пользователя
+        en: User avatar
+      note:  
+        ru: Загрузите аватарку
+        en: Upload avatar
     role:
       type: bigint unsigned
       class: App\Modules\Security\Models\UserRole
-      desc: Роль
-      note: Выберите роль пользователя
+      desc:  
+        ru: Роль
+        en: Role
+      note:  
+        ru: Выберите роль пользователя
+        en: Choose the user role
       attrs:
         width: 100%
       lookup:
@@ -164,7 +199,9 @@ users:
       class: App\Modules\Security\Models\Permissions
       component: Colibri.UI.Forms.Hidden
       default: json_array()
-      desc: Права доступа
+      desc:  
+        ru: Права доступа
+        en: User permissions
       params:
         readonly: false
         required: false
@@ -183,9 +220,11 @@ users:
           class: string
           values:
           - value: deny
-            title: Нет доступа
+            title:  
+              ru: Нет доступа
           - value: allow
-            title: Есть доступ
+            title:  
+              ru: Есть доступ
     settings:
       type: json
       class: ObjectField
@@ -211,7 +250,9 @@ roles:
   models:
     row: Models\UserRole
     table: Models\UserRoles
-  desc: Роль пользователя
+  desc:  
+    ru: Роль пользователя
+    en: User roles
   params:
     visible: false
     maybepublished: false
@@ -221,7 +262,9 @@ roles:
       length: 255
       class: string
       component: Colibri.UI.Forms.Text
-      desc: Наименование роли
+      desc:  
+        ru: Наименование роли
+        en: Role name
       params:
         readonly: false
         required: true
@@ -230,7 +273,9 @@ roles:
       component: Colibri.UI.Forms.Hidden
       class: App\Modules\Security\Models\Permissions
       default: json_array()
-      desc: Права доступа
+      desc:  
+        ru: Права доступа
+        en: Permissions
       params:
         readonly: false
         required: false
@@ -249,9 +294,11 @@ roles:
           class: string
           values:
           - value: deny
-            title: Нет доступа
+            title:  
+              ru: Нет доступа
           - value: allow
-            title: Есть доступ
+            title:  
+              ru: Есть доступ
   indices:
     roles_name_idx:
       fields: ['name']

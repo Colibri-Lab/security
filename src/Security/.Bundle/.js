@@ -62,7 +62,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
 
     ShowProfileWindow() {
         if(this.IsCommandAllowed('security.profile')) {
-            Manage.FormWindow.Show('Личный кабинет', 800, 'app.manage.storages(users)', this._store.Query('security.user'))
+            Manage.FormWindow.Show('#{security-userprofile}', 800, 'app.manage.storages(users)', this._store.Query('security.user'))
                 .then((data) => {
                     this.SaveUser(data);
                 })
@@ -79,9 +79,9 @@ App.Modules.Security = class extends Colibri.Modules.Module {
 
         let profile = [];
         profile.push({title: userData.fio.firstName + ' ' + userData.fio.lastName, route: ''});
-        profile.push({title: 'Личный кабинет', route: '/app/more/security/profile/', icon: Colibri.UI.LkIcon,});
+        profile.push({title: '#{security-menu-userprofile}', route: '/app/more/security/profile/', icon: Colibri.UI.LkIcon,});
         if(isadmin) {
-            profile.push({title: 'Администрирование', route: '/app/more/security/users/', icon: Colibri.UI.AdministrationIcon,});
+            profile.push({title: '#{security-menu-admin}', route: '/app/more/security/users/', icon: Colibri.UI.AdministrationIcon,});
         }
 
         let menu = {

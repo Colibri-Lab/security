@@ -21,3 +21,12 @@ security-messages-datasaved:
 security-messages-dataremoved:
   ru: Данные успешно удалены
   en: Data removed successfuly
+security-userprofile:
+  ru: Личный кабинет
+  en: Your profile
+security-menu-userprofile:
+  ru: Личный кабинет
+  en: User profile
+security-menu-admin:
+  ru: Администрирование
+  en: Administration
