@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Modules\Security\Models;
+
 use Colibri\Data\Storages\Fields\ObjectField;
 
 /**

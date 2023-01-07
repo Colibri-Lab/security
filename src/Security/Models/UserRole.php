@@ -29,17 +29,17 @@ class UserRole extends BaseModelDataRow
             'datecreated',
             'datemodified',
             # region SchemaRequired:
-			'name',
-			# endregion SchemaRequired;
+            'name',
+            # endregion SchemaRequired;
         ],
         'properties' => [
             'id' => ['type' => 'integer'],
             'datecreated' => ['type' => 'string', 'format' => 'db-date-time'],
             'datemodified' => ['type' => 'string', 'format' => 'db-date-time'],
             # region SchemaProperties:
-			'name' => ['type' => 'string', 'maxLength' => 255],
-			'permissions' => [ 'oneOf' => [ [ 'type' => 'null'], Permissions::JsonSchema ] ],
-			# endregion SchemaProperties;
+            'name' => ['type' => 'string', 'maxLength' => 255],
+            'permissions' => ['oneOf' => [['type' => 'null'], Permissions::JsonSchema]],
+            # endregion SchemaProperties;
         ]
     ];
 

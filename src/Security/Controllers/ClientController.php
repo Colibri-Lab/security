@@ -18,7 +18,7 @@ use InvalidArgumentException;
 class ClientController extends RpcController
 {
 
-    public function Settings(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    public function Settings(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
         $isLogged = Module::$instance->IsLogged();
         $member = null;
@@ -29,14 +29,14 @@ class ClientController extends RpcController
         return $this->Finish(200, 'ok', ['settings' => ['logged' => $isLogged, 'permissions' => $permissions], 'user' => $member]);
     }
 
-    public function Roles(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    public function Roles(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
 
-        if(!Module::$instance->current) {
+        if (!Module::$instance->current) {
             return $this->Finish(403, 'Permission denied');
         }
 
-        if(!Module::$instance->current->IsCommandAllowed('security.administrate.roles')) {
+        if (!Module::$instance->current->IsCommandAllowed('security.administrate.roles')) {
             return $this->Finish(403, 'Permission denied');
         }
 
@@ -45,13 +45,13 @@ class ClientController extends RpcController
         return $this->Finish(200, 'ok', $roles->ToArray(true));
     }
 
-    public function Users(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    public function Users(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
-        if(!Module::$instance->current) {
+        if (!Module::$instance->current) {
             return $this->Finish(403, 'Permission denied');
         }
 
-        if(!Module::$instance->current->IsCommandAllowed('security.administrate.users')) {
+        if (!Module::$instance->current->IsCommandAllowed('security.administrate.users')) {
             return $this->Finish(403, 'Permission denied');
         }
 
@@ -60,17 +60,17 @@ class ClientController extends RpcController
         return $this->Finish(200, 'ok', $users->ToArray(true));
     }
 
-    public function SaveUser(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    public function SaveUser(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
 
-        if(!Module::$instance->current) {
+        if (!Module::$instance->current) {
             return $this->Finish(403, 'Permission denied');
         }
 
         $id = $post->id;
-        if ( 
+        if (
             (!$id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.add')) ||
-            (Module::$instance->current->id != $id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.save')) 
+            (Module::$instance->current->id != $id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.save'))
         ) {
             return $this->Finish(403, 'Permission denied');
         }
@@ -82,10 +82,9 @@ class ClientController extends RpcController
         $phone = $post->phone;
         $avatar = $post->avatar;
 
-        if($id) {
+        if ($id) {
             $user = Users::LoadById($id);
-        }
-        else {
+        } else {
             $user = Users::LoadEmpty();
         }
 
@@ -93,7 +92,7 @@ class ClientController extends RpcController
         $accessPoint->Begin();
 
         try {
-                   
+
             $user->login = $login;
             if ($password) {
                 $user->password = $password;
@@ -104,11 +103,11 @@ class ClientController extends RpcController
             $user->phone = $phone;
             $user->permissions = $post->permissions ?: '[]';
             $user->avatar = $avatar;
-    
-            if ( ($res = $user->Save(true)) !== true ) {
-                throw new InvalidArgumentException($res->error, 400); 
+
+            if (($res = $user->Save(true)) !== true) {
+                throw new InvalidArgumentException($res->error, 400);
             }
-    
+
         } catch (InvalidArgumentException $e) {
             $accessPoint->Rollback();
             return $this->Finish(400, 'Bad request', ['message' => $e->getMessage(), 'code' => 400]);
@@ -118,7 +117,7 @@ class ClientController extends RpcController
         } catch (\Throwable $e) {
             $accessPoint->Rollback();
             return $this->Finish(500, 'Application error', ['message' => $e->getMessage(), 'code' => 500]);
-        } 
+        }
 
         $accessPoint->Commit();
 
@@ -126,40 +125,38 @@ class ClientController extends RpcController
     }
 
 
-    public function SaveRole(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    public function SaveRole(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
 
-        if(!Module::$instance->current) {
+        if (!Module::$instance->current) {
             return $this->Finish(403, 'Permission denied');
         }
 
         $id = $post->id;
-        if(!$id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.add')) {
+        if (!$id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.add')) {
             return $this->Finish(403, 'Permission denied');
-        }
-        else if(!Module::$instance->current->IsCommandAllowed('security.administrate.users.save')) {
+        } elseif (!Module::$instance->current->IsCommandAllowed('security.administrate.users.save')) {
             return $this->Finish(403, 'Permission denied');
         }
 
-        if($id) {
+        if ($id) {
             $role = UserRoles::LoadById($id);
-        }
-        else {
+        } else {
             $role = UserRoles::LoadEmpty();
         }
-        
+
         $accessPoint = $role->Storage()->accessPoint;
         $accessPoint->Begin();
 
         try {
-                   
+
             $role->name = $post->name;
             $role->permissions = $post->permissions;
-    
-            if ( ($res = $role->Save(true)) !== true ) {
-                throw new InvalidArgumentException($res->error, 400); 
+
+            if (($res = $role->Save(true)) !== true) {
+                throw new InvalidArgumentException($res->error, 400);
             }
-    
+
         } catch (InvalidArgumentException $e) {
             $accessPoint->Rollback();
             return $this->Finish(400, 'Bad request', ['message' => $e->getMessage(), 'code' => 400]);
@@ -169,7 +166,7 @@ class ClientController extends RpcController
         } catch (\Throwable $e) {
             $accessPoint->Rollback();
             return $this->Finish(500, 'Application error', ['message' => $e->getMessage(), 'code' => 500]);
-        } 
+        }
 
         $accessPoint->Commit();
 
@@ -177,13 +174,13 @@ class ClientController extends RpcController
 
     }
 
-    public function RemoveRole(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    public function RemoveRole(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
-        if(!Module::$instance->current) {
+        if (!Module::$instance->current) {
             return $this->Finish(403, 'Permission denied');
         }
 
-        if(!Module::$instance->current->IsCommandAllowed('security.administrate.roles.remove')) {
+        if (!Module::$instance->current->IsCommandAllowed('security.administrate.roles.remove')) {
             return $this->Finish(403, 'Permission denied');
         }
 
@@ -193,7 +190,7 @@ class ClientController extends RpcController
         $readonlyRole = UserRoles::LoadByName('Readonly');
 
         $users = $role->Users();
-        foreach($users as $user) {
+        foreach ($users as $user) {
             $user->role = $readonlyRole;
             $user->Save();
         }
@@ -204,18 +201,18 @@ class ClientController extends RpcController
 
     }
 
-    public function RemoveUser(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    public function RemoveUser(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
-        if(!Module::$instance->current) {
+        if (!Module::$instance->current) {
             return $this->Finish(403, 'Permission denied');
         }
 
-        if(!Module::$instance->current->IsCommandAllowed('security.administrate.roles.remove')) {
+        if (!Module::$instance->current->IsCommandAllowed('security.administrate.roles.remove')) {
             return $this->Finish(403, 'Permission denied');
         }
 
         $id = $post->id;
-        if(!$id || Module::$instance->current->id == $id) {
+        if (!$id || Module::$instance->current->id == $id) {
             return $this->Finish(400, 'Bad request');
         }
 
@@ -226,7 +223,7 @@ class ClientController extends RpcController
 
     }
 
-    public function Login(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    public function Login(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
 
         if (!$post->login || !$post->password) {
@@ -236,14 +233,13 @@ class ClientController extends RpcController
         $result = Module::$instance->Login($post->login, $post->password);
         if ($result) {
             return $this->Finish(200, 'Logged');
-        }
-        else {
+        } else {
             return $this->Finish(403, 'Access denied');
         }
 
     }
 
-    public function Logout(RequestCollection $get, RequestCollection $post, ?PayloadCopy $payload): object
+    public function Logout(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
         Module::$instance->current->Logout();
         Module::$instance->ClearSession();

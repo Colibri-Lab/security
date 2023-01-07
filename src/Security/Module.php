@@ -77,7 +77,7 @@ class Module extends BaseModule
         $this->_hash = isset($_SESSION['SS_HASH']) ? $_SESSION['SS_HASH'] : null;
         session_write_close();
 
-        if(!$this->_id) {
+        if (!$this->_id) {
             return;
         }
 
@@ -129,7 +129,7 @@ class Module extends BaseModule
 
     public function IsLogged(): bool
     {
-        return (bool)$this->_id;
+        return (bool) $this->_id;
     }
 
     public function Login(string $login, string $password): bool
@@ -182,7 +182,7 @@ class Module extends BaseModule
         return $permissions;
     }
 
-    public function GetTopmostMenu(bool $hideExecuteCommand = true): Item|array|null
+    public function GetTopmostMenu(bool $hideExecuteCommand = true): Item|array |null
     {
         return Item::Create('more', '#{mainframe-menu-more}', '', 'App.Modules.MainFrame.Icons.MoreIcon', '')->Add(
             Item::Create('users', '#{security-menu-usersandroles}', '#{security-menu-usersandroles-desc}', 'App.Modules.Security.Icons.UserAndRolesIcon', 'App.Modules.Security.AdministratePage')
@@ -190,9 +190,10 @@ class Module extends BaseModule
     }
 
 
-    public function Backup(Logger $logger, string $path) {
+    public function Backup(Logger $logger, string $path)
+    {
         // Do nothing        
-        
+
         $logger->debug('Exporting data...');
 
         $modulePath = $path . 'modules/Security/';

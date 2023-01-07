@@ -27,7 +27,7 @@ use Colibri\Data\Storages\Fields\FileField;
  * @property ObjectField|null $fio ФИО пользователя
  * @property string|null $phone Телефон
  * @property RemoteFileField|null $avatar Аватар пользователя
- * @property UserRole $role Роль
+ * @property UserRole|int $role Роль
  * @property Permissions|null $permissions Права доступа
  * @property ObjectField|null $settings 
  * endregion Properties;
@@ -42,23 +42,23 @@ class User extends BaseModelDataRow
             'datecreated',
             'datemodified',
             # region SchemaRequired:
-			'password',
-			# endregion SchemaRequired;
+            'password',
+            # endregion SchemaRequired;
         ],
         'properties' => [
             'id' => ['type' => 'integer'],
             'datecreated' => ['type' => 'string', 'format' => 'db-date-time'],
             'datemodified' => ['type' => 'string', 'format' => 'db-date-time'],
             # region SchemaProperties:
-			'login' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 255] ] ],
-			'password' => ['type' => 'string', 'maxLength' => 255],
-			'fio' => ['type' => 'object', 'required' => [], 'properties' => ['firstName' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 50] ] ],'lastName' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 50] ] ],'patronymic' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 50] ] ],]],
-			'phone' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 12] ] ],
-			'avatar' => [ 'oneOf' => [ [ 'type' => 'null'], RemoteFileField::JsonSchema ] ],
-			'role' => [ 'oneOf' => [ [ 'type' => 'null'], UserRole::JsonSchema ] ],
-			'permissions' => [ 'oneOf' => [ [ 'type' => 'null'], Permissions::JsonSchema ] ],
-			'settings' => ['type' => 'object', 'required' => [], 'properties' => ['logged' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'boolean', ] ] ],]],
-			# endregion SchemaProperties;
+            'login' => ['oneOf' => [['type' => 'null'], ['type' => 'string', 'maxLength' => 255]]],
+            'password' => ['type' => 'string', 'maxLength' => 255],
+            'fio' => ['type' => 'object', 'required' => [], 'properties' => ['firstName' => ['oneOf' => [['type' => 'null'], ['type' => 'string', 'maxLength' => 50]]], 'lastName' => ['oneOf' => [['type' => 'null'], ['type' => 'string', 'maxLength' => 50]]], 'patronymic' => ['oneOf' => [['type' => 'null'], ['type' => 'string', 'maxLength' => 50]]],]],
+            'phone' => ['oneOf' => [['type' => 'null'], ['type' => 'string', 'maxLength' => 12]]],
+            'avatar' => ['oneOf' => [['type' => 'null'], RemoteFileField::JsonSchema]],
+            'role' => ['oneOf' => [['type' => 'null'], UserRole::JsonSchema]],
+            'permissions' => ['oneOf' => [['type' => 'null'], Permissions::JsonSchema]],
+            'settings' => ['type' => 'object', 'required' => [], 'properties' => ['logged' => ['oneOf' => [['type' => 'null'], ['type' => 'boolean',]]],]],
+            # endregion SchemaProperties;
         ]
     ];
 

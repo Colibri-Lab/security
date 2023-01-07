@@ -46,16 +46,16 @@ class UserRoles extends BaseModelDataTable
      * @param array $params параметры к запросу
      * @return UserRoles
      */
-    static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = [], bool $calculateAffected = true): ?UserRoles
+    static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = [], bool $calculateAffected = true): ? UserRoles
     {
         $storage = Storages::Create()->Load('roles');
         $additionalParams = ['page' => $page, 'pagesize' => $pagesize, 'params' => $params];
         $additionalParams['type'] = $calculateAffected ? DataAccessPoint::QueryTypeReader : DataAccessPoint::QueryTypeBigData;
         return self::LoadByQuery(
             $storage,
-            'select * from ' . $storage->name . 
-                ($filter ? ' where ' . $filter : '') . 
-                ($order ? ' order by ' . $order : ''), 
+            'select * from ' . $storage->name .
+            ($filter ? ' where ' . $filter : '') .
+            ($order ? ' order by ' . $order : ''),
             $additionalParams
         );
     }
@@ -66,7 +66,7 @@ class UserRoles extends BaseModelDataTable
      * @param int $pagesize размер страницы
      * @return UserRoles 
      */
-    static function LoadAll(int $page = -1, int $pagesize = 20, bool $calculateAffected = false): ?UserRoles
+    static function LoadAll(int $page = -1, int $pagesize = 20, bool $calculateAffected = false): ? UserRoles
     {
         return self::LoadByFilter($page, $pagesize, null, null, [], $calculateAffected);
     }
@@ -76,7 +76,7 @@ class UserRoles extends BaseModelDataTable
      * @param int $id ID строки
      * @return UserRole|null
      */
-    static function LoadById(int $id): ?UserRole
+    static function LoadById(int $id): ? UserRole
     {
         $table = self::LoadByFilter(1, 1, '{id}=[[id:integer]]', null, ['id' => $id], false);
         return $table && $table->Count() > 0 ? $table->First() : null;
@@ -87,7 +87,7 @@ class UserRoles extends BaseModelDataTable
      * @param string $name наименование
      * @return UserRole|null
      */
-    static function LoadByName(string $name): ?UserRole
+    static function LoadByName(string $name): ? UserRole
     {
         $table = self::LoadByFilter(1, 1, '{name}=[[name:string]]', null, ['name' => $name]);
         return $table && $table->Count() > 0 ? $table->First() : null;
@@ -97,13 +97,13 @@ class UserRoles extends BaseModelDataTable
      * Создание модели по названию хранилища
      * @return UserRole
      */
-    static function LoadEmpty(): ?UserRole
+    static function LoadEmpty(): ? UserRole
     {
         $table = self::LoadByFilter(-1, 20, 'false');
         return $table->CreateEmptyRow();
     }
 
-    static function DataMigrate(?Logger $logger = null): bool
+    static function DataMigrate(? Logger $logger = null): bool
     {
 
         $defaultRoles = [
@@ -115,14 +115,14 @@ class UserRoles extends BaseModelDataTable
 
         $logger->info('Migrating data of storage: roles');
 
-        foreach($defaultRoles as $roleName => $rolePermissions) {
+        foreach ($defaultRoles as $roleName => $rolePermissions) {
             $role = UserRoles::LoadByName($roleName);
-            if(!$role) {
+            if (!$role) {
                 $role = UserRoles::LoadEmpty();
                 $role->name = $roleName;
                 $role->permissions = $rolePermissions;
                 $role->Save();
-            }    
+            }
         }
 
         return true;
