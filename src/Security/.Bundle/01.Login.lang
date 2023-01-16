@@ -1,6 +1,6 @@
 security-login-button:
   ru: Вход в программу
-  en: Login to programm
+  en: Login to backend
 security-loginform-login-validation1:
   ru: Пожалуйста, введите эл. адрес
   en: Please enter the email address
