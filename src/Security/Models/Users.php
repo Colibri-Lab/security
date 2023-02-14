@@ -18,6 +18,7 @@ use Colibri\Utils\Logs\Logger;
  * @method User[] getIterator()
  * @method User _createDataRowObject()
  * @method User _read()
+ * @method User offsetGet(mixed $offset)
  * 
  */
 class Users extends BaseModelDataTable
@@ -138,11 +139,11 @@ class Users extends BaseModelDataTable
         $adminUser = Users::LoadEmpty();
         $adminUser->login = 'admin';
         $adminUser->password = '12345678';
-        $adminUser->users_fio = '{"lastName": "DefaultAdmin", "firstName": "User", "patronymic": ""}';
+        $adminUser->fio = ["lastName" => "DefaultAdmin", "firstName" => "User", "patronymic" => ""];
         $adminUser->avatar = '{}';
         $adminUser->permissions = '[]';
         $adminUser->settings = '{"logged": 0}';
-        $adminUser->role = $role->id;
+        $adminUser->role = $role;
         return $adminUser->Save();
 
     }
