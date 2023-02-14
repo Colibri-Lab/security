@@ -2,9 +2,13 @@
 
 namespace App\Modules\Security\Models;
 
-use Colibri\Data\Storages\Fields\DateTimeField;
 use Colibri\Data\Storages\Models\DataRow as BaseModelDataRow;
 use Colibri\Data\Storages\Fields\ObjectField;
+
+# region Uses:
+use App\Modules\Security\Models\Permissions;
+use Colibri\Data\Storages\Fields\DateTimeField;
+# endregion Uses;
 
 /**
  * Представление строки в таблице в хранилище Роль пользователя
@@ -12,9 +16,9 @@ use Colibri\Data\Storages\Fields\ObjectField;
  * @package App\Modules\Security\Models
  * 
  * region Properties:
- * @property-read int $id ID строки
- * @property-read DateTimeField $datecreated Дата создания строки
- * @property-read DateTimeField $datemodified Дата последнего обновления строки
+ * @property int $id ID строки
+ * @property DateTimeField $datecreated Дата создания строки
+ * @property DateTimeField $datemodified Дата последнего обновления строки
  * @property string $name Наименование роли
  * @property Permissions|null $permissions Права доступа
  * endregion Properties;

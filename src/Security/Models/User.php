@@ -3,15 +3,19 @@
 namespace App\Modules\Security\Models;
 
 use Colibri\Data\SqlClient\QueryInfo;
-use Colibri\Data\Storages\Fields\DateTimeField;
 use Colibri\Data\Storages\Models\DataRow as BaseModelDataRow;
-use Colibri\Data\Storages\Fields\ObjectField;
-use App\Modules\Manage\Models\Fields\RemoteFileField;
-use App\Modules\Security\Models\UserRole;
 use Colibri\Encryption\Crypt;
-use Colibri\Web\RequestedFile;
-use Colibri\IO\FileSystem\File;
-use Colibri\Data\Storages\Fields\FileField;
+
+# region Uses:
+use App\Modules\Manage\Models\Fields\RemoteFileField;
+use App\Modules\Security\Models\Fields\Users\FioObjectField;
+use App\Modules\Security\Models\Fields\Users\SettingsObjectField;
+use App\Modules\Security\Models\Permissions;
+use App\Modules\Security\Models\UserRole;
+use Colibri\Data\Storages\Fields\DateTimeField;
+use Colibri\Data\Storages\Fields\ObjectField;
+# endregion Uses;
+
 
 /**
  * Представление строки в таблице в хранилище Пользователи системы безопасности
@@ -19,17 +23,17 @@ use Colibri\Data\Storages\Fields\FileField;
  * @package App\Modules\Security\Models
  * 
  * region Properties:
- * @property-read int $id ID строки
- * @property-read DateTimeField $datecreated Дата создания строки
- * @property-read DateTimeField $datemodified Дата последнего обновления строки
+ * @property int $id ID строки
+ * @property DateTimeField $datecreated Дата создания строки
+ * @property DateTimeField $datemodified Дата последнего обновления строки
  * @property string $login Логин пользователя
  * @property string $password Пароль
- * @property ObjectField|null $fio ФИО пользователя
+ * @property FioObjectField|null $fio ФИО пользователя
  * @property string|null $phone Телефон
  * @property RemoteFileField|null $avatar Аватар пользователя
- * @property UserRole|int $role Роль
+ * @property UserRole $role Роль
  * @property Permissions|null $permissions Права доступа
- * @property ObjectField|null $settings 
+ * @property SettingsObjectField|null $settings 
  * endregion Properties;
  */
 class User extends BaseModelDataRow
@@ -42,23 +46,23 @@ class User extends BaseModelDataRow
             'datecreated',
             'datemodified',
             # region SchemaRequired:
-            'password',
-            # endregion SchemaRequired;
+			'password',
+			# endregion SchemaRequired;
         ],
         'properties' => [
             'id' => ['type' => 'integer'],
             'datecreated' => ['type' => 'string', 'format' => 'db-date-time'],
             'datemodified' => ['type' => 'string', 'format' => 'db-date-time'],
             # region SchemaProperties:
-            'login' => ['oneOf' => [['type' => 'null'], ['type' => 'string', 'maxLength' => 255]]],
-            'password' => ['type' => 'string', 'maxLength' => 255],
-            'fio' => ['type' => 'object', 'required' => [], 'properties' => ['firstName' => ['oneOf' => [['type' => 'null'], ['type' => 'string', 'maxLength' => 50]]], 'lastName' => ['oneOf' => [['type' => 'null'], ['type' => 'string', 'maxLength' => 50]]], 'patronymic' => ['oneOf' => [['type' => 'null'], ['type' => 'string', 'maxLength' => 50]]],]],
-            'phone' => ['oneOf' => [['type' => 'null'], ['type' => 'string', 'maxLength' => 12]]],
-            'avatar' => ['oneOf' => [['type' => 'null'], RemoteFileField::JsonSchema]],
-            'role' => ['oneOf' => [['type' => 'null'], UserRole::JsonSchema]],
-            'permissions' => ['oneOf' => [['type' => 'null'], Permissions::JsonSchema]],
-            'settings' => ['type' => 'object', 'required' => [], 'properties' => ['logged' => ['oneOf' => [['type' => 'null'], ['type' => 'boolean',]]],]],
-            # endregion SchemaProperties;
+			'login' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 255, ] ] ],
+			'password' => ['type' => 'string', 'maxLength' => 255, ],
+			'fio' => [  'oneOf' => [ FioObjectField::JsonSchema, [ 'type' => 'null'] ] ],
+			'phone' => [ 'oneOf' => [ [ 'type' => 'null'], ['type' => 'string', 'maxLength' => 12, ] ] ],
+			'avatar' => [ 'oneOf' => [ [ 'type' => 'null'], RemoteFileField::JsonSchema ] ],
+			'role' => [ 'oneOf' => [ [ 'type' => 'null'], UserRole::JsonSchema ] ],
+			'permissions' => [ 'oneOf' => [ [ 'type' => 'null'], Permissions::JsonSchema ] ],
+			'settings' => [  'oneOf' => [ SettingsObjectField::JsonSchema, [ 'type' => 'null'] ] ],
+			# endregion SchemaProperties;
         ]
     ];
 
