@@ -2,8 +2,9 @@
 
 namespace App\Modules\Security;
 
-use ReflectionClass;
-
+/**
+ * @suppress PHP0419
+ */
 class Installer
 {
 
