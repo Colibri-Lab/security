@@ -53,7 +53,7 @@ class UserRoles extends BaseModelDataTable
         $additionalParams['type'] = $calculateAffected ? DataAccessPoint::QueryTypeReader : DataAccessPoint::QueryTypeBigData;
         return self::LoadByQuery(
             $storage,
-            'select * from ' . $storage->name .
+            'select * from ' . $storage->table .
             ($filter ? ' where ' . $filter : '') .
             ($order ? ' order by ' . $order : ''),
             $additionalParams
