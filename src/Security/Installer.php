@@ -122,10 +122,6 @@ class Installer
         print_r('Встраиваем модуль' . "\n");
         self::_injectIntoModuleConfig($configDir . 'modules.yaml');
 
-        print_r('Установка скриптов' . "\n");
-        self::_copyOrSymlink($mode, $path . '/src/Security/bin/', './bin/', 'security-migrate.sh', 'security-migrate.sh');
-        self::_copyOrSymlink($mode, $path . '/src/Security/bin/', './bin/', 'security-models-generate.sh', 'security-models-generate.sh');
-
         print_r('Копирование изображений' . "\n");
         self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './' . $webRoot . '/res/img/', 'security-arrow.svg', 'security-arrow.svg');
         self::_copyOrSymlink($mode, $path . '/src/Security/web/res/img/', './' . $webRoot . '/res/img/', 'security-logo-only.svg', 'security-logo-only.svg');
