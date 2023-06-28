@@ -45,7 +45,7 @@ databases:
     points:
       security: 
         connection: security
-        database: products
+        database: productivity
 
   storages: include(security-storages.yaml)
       
