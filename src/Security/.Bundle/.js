@@ -16,10 +16,14 @@ App.Modules.Security = class extends Colibri.Modules.Module {
 
         this._loginForm = null;
 
-        this._store = App.Store.AddChild('app.security', {});
+        this._store = App.Store.AddChild('app.security', {}, this);
         this._store.AddPathLoader('security.roles', () => this.Roles(true));
         this._store.AddPathLoader('security.users', () => this.Users(true));
-
+        this._store.AddHandler('StoreLoaderCrushed', (event, args) => {
+            if(args.status === 403) {
+                location.reload();
+            }
+        });
         this._store.AddPathHandler('security.settings', (data) => {
             if(!data.logged) {
                 this.LoginForm.Show();
