@@ -3,6 +3,9 @@
 
 namespace App\Modules\Security\Controllers;
 
+use Colibri\Exceptions\ApplicationErrorException;
+use Colibri\Exceptions\BadRequestException;
+use Colibri\Exceptions\PermissionDeniedException;
 use Colibri\Exceptions\ValidationException;
 use Colibri\Rpc\Controller as RpcController;
 use App\Modules\Security\Module;
@@ -33,11 +36,11 @@ class ClientController extends RpcController
     {
 
         if (!Module::$instance->current) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
         if (!Module::$instance->current->IsCommandAllowed('security.administrate.roles')) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
         $roles = UserRoles::LoadAll();
@@ -48,11 +51,11 @@ class ClientController extends RpcController
     public function Users(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
         if (!Module::$instance->current) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
         if (!Module::$instance->current->IsCommandAllowed('security.administrate.users')) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
         $users = Users::LoadAll();
@@ -64,7 +67,7 @@ class ClientController extends RpcController
     {
 
         if (!Module::$instance->current) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
         $id = $post->{'id'};
@@ -72,7 +75,7 @@ class ClientController extends RpcController
             (!$id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.add')) ||
             (Module::$instance->current->id != $id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.save'))
         ) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
         $password = $post->{'password'};
@@ -110,13 +113,13 @@ class ClientController extends RpcController
 
         } catch (InvalidArgumentException $e) {
             $accessPoint->Rollback();
-            return $this->Finish(400, 'Bad request', ['message' => $e->getMessage(), 'code' => 400]);
+            throw new BadRequestException($e->getMessage(), 400, $e);
         } catch (ValidationException $e) {
             $accessPoint->Rollback();
-            return $this->Finish(500, 'Application validation error', ['message' => $e->getMessage(), 'code' => 400, 'data' => $e->getExceptionDataAsArray()]);
+            throw new ApplicationErrorException($e->getMessage(), 500, $e);
         } catch (\Throwable $e) {
             $accessPoint->Rollback();
-            return $this->Finish(500, 'Application error', ['message' => $e->getMessage(), 'code' => 500]);
+            throw new ApplicationErrorException($e->getMessage(), 500, $e);
         }
 
         $accessPoint->Commit();
@@ -129,14 +132,14 @@ class ClientController extends RpcController
     {
 
         if (!Module::$instance->current) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
         $id = $post->{'id'};
         if (!$id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.add')) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         } elseif (!Module::$instance->current->IsCommandAllowed('security.administrate.users.save')) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
         if ($id) {
@@ -159,13 +162,13 @@ class ClientController extends RpcController
 
         } catch (InvalidArgumentException $e) {
             $accessPoint->Rollback();
-            return $this->Finish(400, 'Bad request', ['message' => $e->getMessage(), 'code' => 400]);
+            throw new BadRequestException($e->getMessage(), 400, $e);
         } catch (ValidationException $e) {
             $accessPoint->Rollback();
-            return $this->Finish(500, 'Application validation error', ['message' => $e->getMessage(), 'code' => 400, 'data' => $e->getExceptionDataAsArray()]);
+            throw new ApplicationErrorException($e->getMessage(), 500, $e);
         } catch (\Throwable $e) {
             $accessPoint->Rollback();
-            return $this->Finish(500, 'Application error', ['message' => $e->getMessage(), 'code' => 500]);
+            throw new ApplicationErrorException($e->getMessage(), 500, $e);
         }
 
         $accessPoint->Commit();
@@ -177,11 +180,11 @@ class ClientController extends RpcController
     public function RemoveRole(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
         if (!Module::$instance->current) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
         if (!Module::$instance->current->IsCommandAllowed('security.administrate.roles.remove')) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
 
@@ -204,16 +207,16 @@ class ClientController extends RpcController
     public function RemoveUser(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
         if (!Module::$instance->current) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
         if (!Module::$instance->current->IsCommandAllowed('security.administrate.roles.remove')) {
-            return $this->Finish(403, 'Permission denied');
+            throw new PermissionDeniedException('Permission denied', 403);
         }
 
         $id = $post->{'id'};
         if (!$id || Module::$instance->current->id == $id) {
-            return $this->Finish(400, 'Bad request');
+            throw new BadRequestException('Bad request', 400);
         }
 
         $user = Users::LoadById($id);
