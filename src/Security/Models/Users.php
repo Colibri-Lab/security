@@ -14,26 +14,29 @@ use Colibri\Utils\Logs\Logger;
  * Таблица, представление данных в хранилище Пользователи системы безопасности
  * @author <author name and email>
  * @package App\Modules\Security\Models
- * 
+ *
  * @method User[] getIterator()
  * @method User _createDataRowObject()
  * @method User _read()
  * @method User offsetGet(mixed $offset)
- * 
+ *
  */
 class Users extends BaseModelDataTable
 {
-
     /**
      * Конструктор
      * @param DataAccessPoint $point точка доступа
      * @param IDataReader|null $reader ридер
      * @param string|\Closure $returnAs возвращать в виде класса
      * @param Storage|null $storage хранилище
-     * @return void 
+     * @return void
      */
-    public function __construct(DataAccessPoint $point, IDataReader $reader = null, string $returnAs = 'User', Storage|null $storage = null)
-    {
+    public function __construct(
+        DataAccessPoint $point,
+        IDataReader $reader = null,
+        string $returnAs = 'User',
+        Storage|null $storage = null
+    ) {
         parent::__construct($point, $reader, $returnAs, $storage);
     }
 
@@ -47,18 +50,16 @@ class Users extends BaseModelDataTable
      * @param array $params параметры к запросу
      * @return Users
      */
-    static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = [], bool $calculateAffected = true): ? Users
-    {
+    public static function LoadByFilter(
+        int $page = -1,
+        int $pagesize = 20,
+        string $filter = null,
+        string $order = null,
+        array $params = [],
+        bool $calculateAffected = true
+    ): ?Users {
         $storage = Storages::Create()->Load('users');
-        $additionalParams = ['page' => $page, 'pagesize' => $pagesize, 'params' => $params];
-        $additionalParams['type'] = $calculateAffected ? DataAccessPoint::QueryTypeReader : DataAccessPoint::QueryTypeBigData;
-        return self::LoadByQuery(
-            $storage,
-            'select * from ' . $storage->table .
-            ($filter ? ' where ' . $filter : '') .
-            ($order ? ' order by ' . $order : ''),
-            $additionalParams
-        );
+        return parent::_loadByFilter($storage, $page, $pagesize, $filter, $order, $params, $calculateAffected);
 
     }
 
@@ -66,9 +67,9 @@ class Users extends BaseModelDataTable
      * Загружает без фильтра
      * @param int $page страница
      * @param int $pagesize размер страницы
-     * @return Users 
+     * @return Users
      */
-    static function LoadAll(int $page = -1, int $pagesize = 20, bool $calculateAffected = false): ? Users
+    public static function LoadAll(int $page = -1, int $pagesize = 20, bool $calculateAffected = false): ?Users
     {
         return self::LoadByFilter($page, $pagesize, null, null, [], $calculateAffected);
     }
@@ -78,7 +79,7 @@ class Users extends BaseModelDataTable
      * @param int $id ID строки
      * @return User|null
      */
-    static function LoadById(int $id): User|null
+    public static function LoadById(int $id): User|null
     {
         $table = self::LoadByFilter(1, 1, '{id}=[[id:integer]]', null, ['id' => $id], false);
         return $table && $table->Count() > 0 ? $table->First() : null;
@@ -89,7 +90,7 @@ class Users extends BaseModelDataTable
      * @param string $login Логин строки
      * @return User|null
      */
-    static function LoadByLogin(string $login): User|null
+    public static function LoadByLogin(string $login): User|null
     {
         $table = self::LoadByFilter(1, 1, '{login}=[[login:string]]', null, ['login' => $login]);
         return $table && $table->Count() > 0 ? $table->First() : null;
@@ -100,7 +101,7 @@ class Users extends BaseModelDataTable
      * @param UserRole|int $role роль
      * @return Users
      */
-    static function LoadByRole(UserRole|int $role): ? Users
+    public static function LoadByRole(UserRole|int $role): ?Users
     {
         if (!is_numeric($role)) {
             $role = $role->id;
@@ -113,13 +114,13 @@ class Users extends BaseModelDataTable
      * Создание модели по названию хранилища
      * @return User
      */
-    static function LoadEmpty(): ? User
+    public static function LoadEmpty(): ?User
     {
         $table = self::LoadByFilter(-1, 20, 'false');
         return $table->CreateEmptyRow();
     }
 
-    static function DataMigrate(? Logger $logger = null): bool
+    public static function DataMigrate(?Logger $logger = null): bool
     {
 
         $logger->info('Migrating data of storage: users');
