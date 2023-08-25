@@ -132,6 +132,26 @@ class Module extends BaseModule
         return (bool) $this->_id;
     }
 
+    public function SetMemberInCommandline(string $login): bool
+    {
+        if(!App::$request->server->{'commandline'}) {
+            throw new Exception('This function only for commandline');
+        }
+
+        $member = Users::LoadByLogin($login);
+        if(!$member) {
+            return false;
+        }
+
+        $this->_id = $member->id;
+        $this->_hash = 'commandline';
+        $this->_current = $member;
+        $this->Store();
+
+        return true;
+
+    }
+
     public function Login(string $login, string $password): bool
     {
 
