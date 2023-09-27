@@ -10,10 +10,10 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
 
         Security.Store.AsyncQuery('security.roles').then((roles) =>{
 
-            if(!Array.isArray(users) && data instanceof Object) {
+            if(!Array.isArray(users) && Object.isObject(data)) {
                 users = Object.values(users);
             }
-            if(!Array.isArray(roles) && data instanceof Object) {
+            if(!Array.isArray(roles) && Object.isObject(data)) {
                 roles = Object.values(roles);
             }
     
