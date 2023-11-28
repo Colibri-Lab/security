@@ -72,10 +72,10 @@ class Module extends BaseModule
             session_set_cookie_params(["SameSite" => "None"]); //none, lax, strict
             session_set_cookie_params(["Secure" => "true"]); //false, true        
         }
-        session_start();
+        @session_start();
         $this->_id = isset($_SESSION['SS_MEMBER']) ? $_SESSION['SS_MEMBER'] : null;
         $this->_hash = isset($_SESSION['SS_HASH']) ? $_SESSION['SS_HASH'] : null;
-        session_write_close();
+        @session_write_close();
 
         if (!$this->_id) {
             return;
@@ -104,10 +104,10 @@ class Module extends BaseModule
             session_set_cookie_params(["Secure" => "true"]); //false, true        
         }
 
-        session_start();
+        @session_start();
         $_SESSION['SS_MEMBER'] = $this->_id;
         $_SESSION['SS_HASH'] = $this->_hash;
-        session_write_close();
+        @session_write_close();
 
     }
 
@@ -117,10 +117,10 @@ class Module extends BaseModule
             session_set_cookie_params(["SameSite" => "None"]); //none, lax, strict
             session_set_cookie_params(["Secure" => "true"]); //false, true        
         }
-        session_start();
+        @session_start();
         $_SESSION['SS_MEMBER'] = null;
         $_SESSION['SS_HASH'] = null;
-        session_write_close();
+        @session_write_close();
 
         $this->_id = null;
         $this->_hash = null;
