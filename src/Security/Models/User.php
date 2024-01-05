@@ -109,9 +109,9 @@ class User extends BaseModelDataRow
     //     return is_string($this->_data['users_avatar']) ? json_decode($this->_data['users_avatar']) : $this->_data['users_avatar'];
     // }
 
-    public function ToArray(bool $noPrefix = false): array
+    public function ToArray(bool $noPrefix = false, ?\Closure $callback = null): array
     {
-        $ar = parent::ToArray($noPrefix);
+        $ar = parent::ToArray($noPrefix, $callback);
         unset($ar['password']);
         return $ar;
     }

@@ -39,7 +39,7 @@ class Permission extends ObjectField
         return null;
     }
 
-    public function ToArray(bool $noPrefix = false): array
+    public function ToArray(bool $noPrefix = false, ?\Closure $callback = null): array
     {
         return $this->_data;
     }
