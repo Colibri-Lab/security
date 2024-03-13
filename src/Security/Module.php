@@ -40,6 +40,13 @@ class Module extends BaseModule
 
         self::$instance = $this;
 
+        try {
+            ini_set('session.gc_maxlifetime', 86400);
+            ini_set('session.cookie_lifetime', 86400);
+        } catch(\Throwable $e) {
+            // do nothing
+        }
+
         $this->Restore();
 
     }
@@ -72,6 +79,7 @@ class Module extends BaseModule
             session_set_cookie_params(["SameSite" => "None"]); //none, lax, strict
             session_set_cookie_params(["Secure" => "true"]); //false, true        
         }
+        
         @session_start();
         $this->_id = isset($_SESSION['SS_MEMBER']) ? $_SESSION['SS_MEMBER'] : null;
         $this->_hash = isset($_SESSION['SS_HASH']) ? $_SESSION['SS_HASH'] : null;
