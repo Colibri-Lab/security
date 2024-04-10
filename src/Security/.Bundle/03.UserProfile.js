@@ -18,9 +18,15 @@ App.Modules.Security.UserProfile = class extends Colibri.UI.Component {
         super._registerEvents();
         this.RegisterEvent('LogoutClicked', false, 'Когда кликнули на выход');
         this.RegisterEvent('ProfileClicked', false, 'Когда кликнули на профиль');
-    }
+    } 
 
-    __renderBoundedValues(data) {
+    /**
+     * Render bounded to component data
+     * @protected
+     * @param {*} data 
+     * @param {String} path 
+     */
+    __renderBoundedValues(data, path) {
         if(!data || !data?.id) {
             return;
         }

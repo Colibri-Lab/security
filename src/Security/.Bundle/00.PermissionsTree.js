@@ -84,9 +84,15 @@ App.Modules.Security.PermissionsTree = class extends Colibri.UI.Tree {
 
             });
         }
-    }
+    } 
 
-    __renderBoundedValues(data) {
+    /**
+     * Render bounded to component data
+     * @protected
+     * @param {*} data 
+     * @param {String} path 
+     */
+    __renderBoundedValues(data, path) {
 
         let ret = {};
         ret['app'] = 'Права на все';
