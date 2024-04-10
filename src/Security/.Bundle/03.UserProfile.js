@@ -13,6 +13,7 @@ App.Modules.Security.UserProfile = class extends Colibri.UI.Component {
         this._userName.AddHandler('Clicked', (event, args) => this.Dispatch('ProfileClicked'));
     }
 
+    /** @protected */
     _registerEvents() {
         super._registerEvents();
         this.RegisterEvent('LogoutClicked', false, 'Когда кликнули на выход');

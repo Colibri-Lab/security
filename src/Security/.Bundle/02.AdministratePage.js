@@ -20,10 +20,20 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
 
     }
 
+    /**
+     * @private
+     * @param {Colibri.Events.Event} event event object
+     * @param {*} args event arguments
+     */ 
     __userAndRolesTreeSelectionChanged(event, args) {
         this._permissionsTree.user = this._userAndRolesTree.selected?.tag;
     }
 
+    /**
+     * @private
+     * @param {Colibri.Events.Event} event event object
+     * @param {*} args event arguments
+     */ 
     __renderPermissionsTreeContextMenu(event, args) {
 
         if(!this._userAndRolesTree.selected) {
@@ -105,6 +115,11 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
 
     }
 
+    /**
+     * @private
+     * @param {Colibri.Events.Event} event event object
+     * @param {*} args event arguments
+     */ 
     __clickOnPermissionsContextMenu(event, args) {
 
         const item = args?.item;
@@ -158,6 +173,11 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
 
     }
 
+    /**
+     * @private
+     * @param {Colibri.Events.Event} event event object
+     * @param {*} args event arguments
+     */ 
     __renderUserAndRolesTreeContextMenu(event, args) {
         let contextmenu = [];
         const item = args.item;
@@ -187,6 +207,11 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
 
     }
 
+    /**
+     * @private
+     * @param {Colibri.Events.Event} event event object
+     * @param {*} args event arguments
+     */ 
     __clickOnUserAndRolesContextMenu(event, args) {
 
         const item = args?.item;
