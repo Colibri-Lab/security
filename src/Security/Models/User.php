@@ -26,12 +26,13 @@ use Colibri\Data\Storages\Fields\ObjectField;
  * @property int $id ID строки
  * @property DateTimeField $datecreated Дата создания строки
  * @property DateTimeField $datemodified Дата последнего обновления строки
- * @property string $login Логин пользователя
+ * @property DateTimeField $datedeleted Дата удаления строки (если включно мягкое удаление)
+ * @property string|null $login Логин пользователя
  * @property string $password Пароль
  * @property FioObjectField|null $fio ФИО пользователя
  * @property string|null $phone Телефон
  * @property RemoteFileField|null $avatar Аватар пользователя
- * @property UserRole $role Роль
+ * @property UserRole|null $role Роль
  * @property Permissions|null $permissions Права доступа
  * @property SettingsObjectField|null $settings 
  * endregion Properties;
