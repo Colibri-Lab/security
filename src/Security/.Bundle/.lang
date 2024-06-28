@@ -1,32 +1,44 @@
 security-global-notallowed:
   ru: Действие запрещено
   en: Operation not permitted
+  hy: Գործողությունը չի թույլատրվում
 security-login-success-message:
   ru: Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!
   en: You have successfully logged in, please wait while we launch!
+  hy: "Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչև մենք
+    գործարկենք:"
 security-logout-success-message:
   ru: До свидания!
   en: Goodbye!
+  hy: Ցտեսություն!
 security-register-success-message:
   ru: Вы успешно зарегистрировались, пожалуйста, проверьте почтовый ящик
   en: You have successfully registered, please check your mailbox
+  hy: Դուք հաջողությամբ գրանցվել եք, խնդրում ենք ստուգել ձեր փոստարկղը
 security-reset-message:
   ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста,
     перейдите по ссылке в письме!
   en: The recovery request has been successfully sent to your email, please follow
     the link in the email!
+  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեր էլ.փոստին, խնդրում ենք
+    հետևել էլփոստի հղումին:"
 security-messages-datasaved:
   ru: Данные успешно сохранены
   en: Data saved successfuly
+  hy: Տվյալները հաջողությամբ պահպանվեցին
 security-messages-dataremoved:
   ru: Данные успешно удалены
   en: Data removed successfuly
+  hy: Տվյալները հաջողությամբ հեռացվեցին
 security-userprofile:
   ru: Личный кабинет
   en: Your profile
+  hy: Քո պրոֆիլը
 security-menu-userprofile:
   ru: Личный кабинет
   en: User profile
+  hy: Օգտվողի պրոֆիլը
 security-menu-admin:
   ru: Администрирование
   en: Administration
+  hy: Վարչություն

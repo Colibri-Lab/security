@@ -57,9 +57,11 @@ users:
       desc:  
         ru: Логин пользователя
         en: User login
+        hy: Օգտագործողի մուտք
       note:  
         ru: Введите имя пользователя. Только латинские буквы, без пробелов
         en: Enter a username. Latin letters only, no spaces
+        hy: "Մուտքագրեք օգտվողի անուն: Միայն լատինատառ, առանց բացատների"
       attrs:
         width: 100%
       params:
@@ -72,9 +74,11 @@ users:
       desc:  
         ru: Пароль
         en: Password
+        hy: Գաղտնաբառ
       note:  
         ru: Пароль. Только латинские буквы, цифры и спец. символы. Обязательно должна быть одна цифра и один символ в верхнем регистре
         en: Password. Only Latin letters, numbers and specials. symbols. Must be one number and one uppercase character
+        hy: "Գաղտնաբառ։ Միայն լատինական տառեր, թվեր և հատուկ նշաններ: խորհրդանիշներ. Պետք է լինի մեկ թիվ և մեկ մեծատառ"
       component: Colibri.UI.Forms.Password
       attrs:
         width: 100%
@@ -89,9 +93,11 @@ users:
       desc:  
         ru: ФИО пользователя
         en: User full name
+        hy: Օգտագործողի լրիվ անվանումը 
       note:  
         ru: Введите имя, фамилию и отчество
         en: Enter first name, last name and patronymic
+        hy: Մուտքագրեք անունը, ազգանունը և հայրանունը
       component: Colibri.UI.Forms.Object
       default: json_object()
       attrs:
@@ -104,6 +110,7 @@ users:
           desc:  
             ru: Имя
             en: First name
+            hy: Անուն
           class: string
           params:
             readonly: false
@@ -114,6 +121,7 @@ users:
           desc:  
             ru: Фамилия
             en: Last name
+            hy: Ազգանուն
           component: Colibri.UI.Forms.Text
           class: string
           params:
@@ -125,6 +133,7 @@ users:
           desc:  
             ru: Отчество
             en: Patronymic
+            hy: Հայրանուն
           component: Colibri.UI.Forms.Text
           class: string
           params:
@@ -137,6 +146,7 @@ users:
         - message: 
             ru: Пожалуйста, введите ваше имя и фамилию
             en: Please enter your first and last name
+            hy: Խնդրում ենք մուտքագրել ձեր անունը և ազգանունը
           method: (field, validator) => !!field.value.firstName && !!field.value.lastName
     phone:
       type: varchar
@@ -146,9 +156,11 @@ users:
       desc:  
         ru: Телефон
         en: Phone
+        hy: Հեռախոս
       note:  
         ru: Введите телефон в формате 7999999999 или 3749998877
         en: Enter your phone in the format 7999999999 or 3749998877
+        hy: Մուտքագրեք ձեր հեռախոսը 7999999999 կամ 3749998877 ձևաչափով
       attrs:
         width: 100%
       params:
@@ -158,6 +170,7 @@ users:
         - message:    
             ru: 'Пожалуйста, введите ваш телефон, формат: 7999999999 или 3749998877'
             en: 'Please enter your phone number, format: 7999999999 or 3749998877'
+            hy: 'Խնդրում ենք մուտքագրել ձեր հեռախոսահամարը, ձևաչափը՝ 7999999999 կամ 3749998877'
           method: (field, validator) => !!field.value && field.value.isNumeric()
     avatar:
       type: json
@@ -167,18 +180,22 @@ users:
       desc:  
         ru: Аватар пользователя
         en: User avatar
+        hy: Օգտագործողի ավատար
       note:  
         ru: Загрузите аватарку
         en: Upload avatar
+        hy: Վերբեռնեք ավատար
     role:
       type: bigint unsigned
       class: App\Modules\Security\Models\UserRole
       desc:  
         ru: Роль
         en: Role
+        hy: Դեր
       note:  
         ru: Выберите роль пользователя
         en: Choose the user role
+        hy: Ընտրեք օգտագործողի դերը
       attrs:
         width: 100%
       lookup:
@@ -202,6 +219,7 @@ users:
       desc:  
         ru: Права доступа
         en: User permissions
+        hy: Օգտագործողի թույլտվություններ
       params:
         readonly: false
         required: false
@@ -222,9 +240,13 @@ users:
           - value: deny
             title:  
               ru: Нет доступа
+              en: No access
+              hy: Մուտք չկա
           - value: allow
             title:  
               ru: Есть доступ
+              en: Access granted
+              hy: Մուտքը տրված է
     settings:
       type: json
       class: ObjectField
@@ -253,6 +275,7 @@ roles:
   desc:  
     ru: Роль пользователя
     en: User roles
+    hy: Օգտագործողի դերերը
   params:
     visible: false
     maybepublished: false
@@ -265,6 +288,7 @@ roles:
       desc:  
         ru: Наименование роли
         en: Role name
+        hy: Դերի անվանումը
       params:
         readonly: false
         required: true
@@ -276,6 +300,7 @@ roles:
       desc:  
         ru: Права доступа
         en: Permissions
+        hy: Թույլտվություններ
       params:
         readonly: false
         required: false
@@ -296,9 +321,13 @@ roles:
           - value: deny
             title:  
               ru: Нет доступа
+              en: Access denied
+              hy: Մուտքն արգելված է
           - value: allow
             title:  
               ru: Есть доступ
+              en: Access granted
+              hy: Մուտքը տրված է
   indices:
     roles_name_idx:
       fields: ['name']

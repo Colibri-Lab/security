@@ -142,45 +142,60 @@ security-loginform-password-validation1:
 security-permissions:
   ru: Использовать систему безопасности
   en: Using security
+  hy: Օգտագործեք անվտանգության համակարգ
 security-login-permissions:
   ru: Выполнять вход в административную консоль
   en: Log in to the administrative console
+  hy: Մուտք գործեք վարչական վահանակ
 security-profile-permissions:
   ru: Редактировать свой профиль
   en: Edit your profile
+  hy: Խմբագրել ձեր պրոֆիլը
 security-profile-passwordchange-permissions:
   ru: Изменять свой пароль
   en: Change your password
+  hy: Փոխեք ձեր գաղտնաբառը
 security-profile-rolechange-permissions:
   ru: Изменять свою роль
   en: Change your role
+  hy: Փոխեք ձեր դերը
 security-profile-loginchange-permissions:
   ru: Изменять свой логин
   en: Change your login
+  hy: Փոխեք ձեր մուտքը
 security-administrate-permissions:
   ru: Доступ к администрированию
   en: Access to administration
+  hy: Ադմինիստրացիայի մուտք
 security-administrate-roles-permissions:
   ru: Список ролей
   en: List of roles
+  hy: Դերերի ցուցակ
 security-administrate-roles-add-permissions:
   ru: Создать роль
   en: Create role
+  hy: Ստեղծեք դեր
 security-administrate-roles-save-permissions:
   ru: Сохранить роль
   en: Save Role
+  hy: Պահպանել դերը
 security-administrate-roles-remove-permissions:
   ru: Удалить роль
   en: Delete role
+  hy: Ջնջել դերը
 security-administrate-users-permissions:
   ru: Список пользователей
   en: List of users
+  hy: Օգտատերերի ցուցակ
 security-administrate-users-add-permissions:
   ru: Создать пользователя
   en: Create user
+  hy: Ստեղծեք օգտվող
 security-administrate-users-save-permissions:
   ru: Сохранить пользователя
   en: Save User
+  hy: Պահպանել օգտատերի տվյալները
 security-administrate-users-remove-permissions:
   ru: Удалить пользователя
   en: Delete user
+  hy: Ջնջել օգտատերին

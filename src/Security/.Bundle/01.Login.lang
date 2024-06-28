@@ -1,9 +1,12 @@
 security-login-button:
   ru: Вход в программу
   en: Login to backend
+  hy: Մուտք գործեք ծրագիր
 security-loginform-login-validation1:
   ru: Пожалуйста, введите эл. адрес
   en: Please enter the email address
+  hy: Խնդրում ենք մուտքագրել էլ. հասցեն
 security-loginform-password-validation1:
   ru: Пожалуйста, введите пароль
   en: Please enter the password
+  hy: Խնդրում ենք մուտքագրել ձեր գաղտնաբառը

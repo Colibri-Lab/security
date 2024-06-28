@@ -1,74 +1,98 @@
 security-administration-userroles-title:
   ru: Пользователи и роли
   en: Users and roles
+  hy: Օգտագործողներ և դերեր
 security-administration-permission-title:
   ru: Права доступа
   en: Permissions
+  hy: Մուտքի իրավունքներ
 security-permissions-cleareverywere:
   ru: Очистить везде
   en: Clear all
+  hy: Ամենուր պարզ է
 security-permissions-denyeveryware:
   ru: Запретить везде
   en: Disallow everyware
+  hy: Արգելեք ամենուր
 security-permissions-alloweveryware:
   ru: Разрешить везде
   en: Allow everyware
+  hy: Թույլ տվեք ամենուր
 security-permissions-clear:
   ru: Очистить
   en: Clear
+  hy: Մաքևել
 security-permissions-clearall:
   ru: Очистить все
   en: Clear all
+  hy: Մաքևել ամբողջը
 security-permissions-allow:
   ru: Разрешить
   en: Allow
+  hy: Թույլատրել
 security-permissions-deny:
   ru: Запретить
   en: Disallow
+  hy: Արգելել
 security-permissions-allowall:
   ru: Разрешить все
   en: Allow all
+  hy: Թույլ տալ ամբողջը
 security-permissions-denyall:
   ru: Запретить все
   en: Disallow all
+  hy: Արգելել ամբողջը
 security-contextmenu-addrole:
   ru: Добавить роль
   en: Add role
+  hy: Ավելացրեք դեր
 security-contextmenu-adduser:
   ru: Добавить пользователя
   en: Add user
+  hy: Ավելացնել օգտվող
 security-windowtitle-adduser:
   ru: Добавить пользователя
   en: Add user
+  hy: Ավելացնել օգտվող
 security-windowtitle-addrole:
   ru: Добавить роль
   en: Add role
+  hy: Ավելացրեք դեր
 security-windowtitle-editrole:
   ru: Редактировать роль
   en: Edit role
+  hy: Խմբագրել դերը
 security-windowtitle-removerole:
   ru: Удаление роли
   en: Delete role
+  hy: Ջնջել դերը
 security-messages-removerolemessage:
   ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль
     Readonly
   en: Are you sure you want to delete the role? Users will be moved to the
     Readonly role
+  hy: "Իսկապե՞ս ուզում եք ջնջել դերը: Օգտատերերը կտեղափոխվեն միայն կարդալու դեր"
 security-windowtitle-edituser:
   ru: Редактировать пользователя
   en: Edit user
+  hy: Խմբագրել օգտվողին
 security-messages-removeselfmessage:
   ru: Вы не можете удалить самого себя!
   en: You cannot delete yourself!
+  hy: Դուք չեք կարող ջնջել ձզեզ
 security-windowtitle-removeuser:
   ru: Удаление пользователя
   en: User delete
+  hy: Օգտագործողի ջնջում
 security-messages-removeusermessage:
   ru: Вы уверены, что хотите удалить пользователя?
   en: Are you sure you want to delete the user?
+  hy: "Իսկապե՞ս ուզում եք ջնջել օգտատիրոջը:"
 security-contextmenu-edit:
   ru: Редактировать
   en: Edit
+  hy: Խմբագրել
 security-contextmenu-remove:
   ru: Удалить
   en: Delete
+  hy: Ջնջել
