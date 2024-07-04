@@ -13,8 +13,7 @@
     "require": {
         "php": ">=8.0.0",
         "colibri/core": "dev-master",
-        "colibri/ui": "dev-master",
-        "aktion/id2apiclient": "dev-master"
+        "colibri/ui": "dev-master"
     },
     "repositories": {
         "gitlab.colibrilab.pro/22": {
