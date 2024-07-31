@@ -187,7 +187,7 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
             contextmenu.push({name: 'add-role', title: '#{security-contextmenu-addrole}', icon: Colibri.UI.ContextMenuAddIcon});
             contextmenu.push({name: 'add-user', title: '#{security-contextmenu-adduser}', icon: Colibri.UI.ContextMenuAddIcon});
             this._userAndRolesTree.contextmenu = contextmenu;
-            this._userAndRolesTree.ShowContextMenu(args.isContextMenuEvent ? [Colibri.UI.ContextMenu.RB, Colibri.UI.ContextMenu.RB] : [Colibri.UI.ContextMenu.RB, Colibri.UI.ContextMenu.LB], '', args.isContextMenuEvent ? {left: args.domEvent.clientX, top: args.domEvent.clientY} : null);
+            this._userAndRolesTree.ShowContextMenu(args.isContextMenuEvent ? [Colibri.UI.ContextMenu.RB, Colibri.UI.ContextMenu.RB] : [Colibri.UI.ContextMenu.RT, Colibri.UI.ContextMenu.LT], '', args.isContextMenuEvent ? {left: args.domEvent.clientX, top: args.domEvent.clientY} : null);
         }
         else {
             if(itemData.role === undefined) {
