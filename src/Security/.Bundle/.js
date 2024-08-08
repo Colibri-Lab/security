@@ -43,6 +43,10 @@ App.Modules.Security = class extends Colibri.Modules.Module {
             App.Router.Navigate('', {});
         });
 
+        Colibri.Common.StartTimer('security-ping', 10 * 60 * 1000, () => {
+            this.Ping();
+        });
+
 
     }
 
@@ -154,6 +158,10 @@ App.Modules.Security = class extends Colibri.Modules.Module {
         });
     }
 
+
+    Ping() {
+        this.Call('Client', 'Ping', {});
+    }
 
     Login(login, password) {
         this.Call('Client', 'Login', {login: login, password: password})
