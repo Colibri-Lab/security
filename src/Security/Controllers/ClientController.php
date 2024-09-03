@@ -101,7 +101,7 @@ class ClientController extends RpcController
                 $user->password = $password;
             }
 
-            $user->role = UserRoles::LoadById($role);
+            $user->role = UserRoles::LoadById($role['id'] ?? $role);
             $user->fio = $fio;
             $user->phone = $phone;
             $user->permissions = $post->{'permissions'} ?: '[]';
