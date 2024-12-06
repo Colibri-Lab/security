@@ -58,9 +58,32 @@ class Users extends BaseModelDataTable
         array $params = [],
         bool $calculateAffected = true
     ): ?Users {
-        $storage = Storages::Create()->Load('users');
+        $storage = Storages::Create()->Load('users', 'security');
         return parent::_loadByFilter($storage, $page, $pagesize, $filter, $order, $params, $calculateAffected);
 
+    }
+
+    /**
+     * Create table by any filters
+     * @param int $page page
+     * @param int $pagesize page size
+     * @param ?array $filtersArray filters array|object
+     * @param string $sortField sort field
+     * @param string $sortOrder sort order, default asc
+     * @return ?Users
+     */
+    public static function LoadBy(
+        int $page = -1, 
+        int $pagesize = 20, 
+        ?string $searchTerm = null,
+        ?array $filtersArray = null,
+        ?string $sortField = null,
+        string $sortOrder = 'asc'
+    ) : ?Users
+    {
+        $storage = Storages::Create()->Load('users', 'security');
+        [$filter, $order, $params] = $storage->accessPoint->ProcessFilters($storage, $searchTerm, $filtersArray, $sortField, $sortOrder);
+        return parent::_loadByFilter($storage, $page, $pagesize, $filter, $order, $params);
     }
 
     /**
