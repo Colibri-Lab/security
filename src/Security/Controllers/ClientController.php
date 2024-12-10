@@ -7,7 +7,7 @@ use Colibri\Exceptions\ApplicationErrorException;
 use Colibri\Exceptions\BadRequestException;
 use Colibri\Exceptions\PermissionDeniedException;
 use Colibri\Exceptions\ValidationException;
-use Colibri\Rpc\Controller as RpcController;
+use Colibri\Web\Controller as WebController;
 use App\Modules\Security\Module;
 use Colibri\Web\RequestCollection;
 use Colibri\Web\PayloadCopy;
@@ -18,7 +18,7 @@ use App\Modules\Security\Models\UserRoles;
 use Colibri\App;
 use InvalidArgumentException;
 
-class ClientController extends RpcController
+class ClientController extends WebController
 {
 
     public function Settings(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
