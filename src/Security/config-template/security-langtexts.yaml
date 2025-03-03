@@ -2,200 +2,293 @@ security-user-profile:
   ru: Пользователь
   en: User
   hy: Օգտվող
+  it: Utente
+  es: Usuario
 security-login-button:
   ru: Вход в программу
   en: Login to the program
   hy: Ծրագրի մուտքը
+  it: Accedi al programma
+  es: Iniciar sesión en el programa
 security-administration-userroles-title:
   ru: Пользователи и роли
   en: Users and roles
   hy: Օգտագործողները եւ դերերը
+  it: Utenti e ruoli
+  es: Usuarios y roles
 security-administration-permission-title:
   ru: Права доступа
   en: Access rights
   hy: Մուտքի իրավունքները
+  it: Diritti di accesso
+  es: Derechos de acceso
 security-permissions-cleareverywere:
   ru: Очистить везде
   en: Clear everywhere
   hy: Մաքրել ամենուր
+  it: Pulisci ovunque
+  es: Limpiar en todas partes
 security-permissions-all:
   ru: Права на все
   en: Rights to everything
   hy: Բոլոր իրավունքները
+  it: Diritti su tutto
+  es: Derechos a todo
 security-permissions-denyeveryware:
   ru: Запретить везде
   en: Ban everywhere
   hy: Արգելել ամենուր
+  it: Vietare ovunque
+  es: Prohibir en todas partes
 security-permissions-alloweveryware:
   ru: Разрешить везде
   en: Allow everywhere
   hy: Թույլ տալ ամենուր
+  it: Permetti ovunque
+  es: Permitir en todas partes
 security-permissions-clear:
   ru: Очистить
   en: Clear
   hy: Մաքրել
+  it: Pulisci
+  es: Limpiar
 security-permissions-clearall:
   ru: Очистить все
   en: Clear all
   hy: Մաքրել ամեն ինչ
+  it: Pulisci tutto
+  es: Limpiar todo
 security-permissions-allow:
   ru: Разрешить
   en: Allow
   hy: Թույլատրել
+  it: Permetti
+  es: Permitir
 security-permissions-deny:
   ru: Запретить
   en: Prohibit
   hy: Արգելել
+  it: Proibisci
+  es: Prohibir
 security-permissions-allowall:
   ru: Разрешить все
   en: Allow all
   hy: Թույլատրել բոլոր
+  it: Permetti tutto
+  es: Permitir todo
 security-permissions-denyall:
   ru: Запретить все
   en: Ban everything
   hy: Արգելել բոլոր
+  it: Vietare tutto
+  es: Prohibir todo
 security-contextmenu-addrole:
   ru: Добавить роль
   en: Add a role
   hy: Ավելացնել դեր
+  it: Aggiungi un ruolo
+  es: Añadir un rol
 security-contextmenu-adduser:
   ru: Добавить пользователя
   en: Add a user
   hy: Ավելացնել օգտվողին
+  it: Aggiungi un utente
+  es: Añadir un usuario
 security-windowtitle-adduser:
   ru: Добавить пользователя
   en: Add a user
   hy: Ավելացնել օգտվողին
+  it: Aggiungi un utente
+  es: Añadir un usuario
 security-windowtitle-addrole:
   ru: Добавить роль
   en: Add a role
   hy: Ավելացնել դեր
+  it: Aggiungi un ruolo
+  es: Añadir un rol
 security-windowtitle-editrole:
   ru: Редактировать роль
   en: Edit a role
   hy: Խմբագրել դերը
+  it: Modifica un ruolo
+  es: Editar un rol
 security-windowtitle-removerole:
   ru: Удаление роли
   en: Deleting a role
   hy: Հեռացնելով դերը
+  it: Eliminazione di un ruolo
+  es: Eliminando un rol
 security-windowtitle-edituser:
   ru: Редактировать пользователя
   en: Edit a user
   hy: Խմբագրել օգտվողին
+  it: Modifica un utente
+  es: Editar un usuario
 security-messages-removeselfmessage:
   ru: Вы не можете удалить самого себя!
   en: You can't delete yourself!
   hy: Դուք չեք կարող հեռացնել ինքներդ!
+  it: Non puoi eliminare te stesso!
+  es: ¡No puedes eliminarte a ti mismo!
 security-windowtitle-removeuser:
   ru: Удаление пользователя
   en: Deleting a user
   hy: Օգտագործողի հեռացում
+  it: Eliminazione di un utente
+  es: Eliminando un usuario
 security-messages-removeusermessage:
   ru: Вы уверены, что хотите удалить пользователя?
   en: Are you sure you want to delete the user?
   hy: "Վստահ եք, որ ցանկանում եք ջնջել օգտվողին:"
+  it: Sei sicuro di voler eliminare l'utente?
+  es: ¿Estás seguro de que quieres eliminar al usuario?
 security-messages-removerolemessage:
-  ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль
-    Readonly
-  en: Are you sure you want to delete the role? Users will be moved to the
-    Readonly role
+  ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль Readonly
+  en: Are you sure you want to delete the role? Users will be moved to the Readonly role
   hy: Վստահ եք, որ ցանկանում եք հեռացնել դերը? Users կտեղափոխվի դերի Readonly
+  it: Sei sicuro di voler eliminare il ruolo? Gli utenti saranno spostati nel ruolo Readonly
+  es: ¿Estás seguro de que quieres eliminar el rol? Los usuarios serán movidos al rol de solo lectura
 security-global-notallowed:
   ru: Действие запрещено
   en: The action is prohibited
   hy: Ակցիան արգելված է
+  it: L'azione è vietata
+  es: La acción está prohibida
 security-login-success-message:
   ru: Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!
   en: You have successfully logged in, please wait until we launch!
   hy: "Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչեւ մենք սկսենք:"
+  it: Hai effettuato l'accesso con successo, attendi fino al lancio!
+  es: Has iniciado sesión con éxito, por favor espera hasta que lancemos
 security-logout-success-message:
   ru: До свидания!
   en: Goodbye!
   hy: Ցտեսություն!
+  it: Arrivederci!
+  es: ¡Adiós!
 security-register-success-message:
   ru: Вы успешно зарегистрировались, пожалуйста, проверьте почтовый ящик
   en: You have successfully registered, please check your mailbox
   hy: Դուք հաջողությամբ գրանցվել, խնդրում ենք ստուգել փոստարկղը
+  it: Ti sei registrato con successo, controlla la tua casella di posta
+  es: Te has registrado con éxito, por favor revisa tu buzón
 security-reset-message:
-  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста,
-    перейдите по ссылке в письме!
-  en: The recovery request has been successfully sent to your email, please follow
-    the link in the email!
-  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեզ փոստով, խնդրում ենք
-    հետեւել հղմանը նամակում:"
+  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите по ссылке в письме!
+  en: The recovery request has been successfully sent to your email, please follow the link in the email!
+  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեզ փոստով, խնդրում ենք հետեւել հղմանը նամակում:"
+  it: La richiesta di recupero è stata inviata con successo alla tua email, segui il link nell'email!
+  es: La solicitud de recuperación se ha enviado con éxito a tu correo electrónico, por favor sigue el enlace en el correo
 security-menu-usersandroles:
   ru: Пользователи и роли
   en: Users and roles
   hy: Օգտագործողները եւ դերերը
+  it: Utenti e ruoli
+  es: Usuarios y roles
 security-menu-usersandroles-desc:
   ru: Административная панель, пользователи и роли
   en: Administrative panel, users and roles
   hy: Վարչական վահանակ, օգտվողները եւ դերերը
+  it: Pannello amministrativo, utenti e ruoli
+  es: Panel administrativo, usuarios y roles
 security-loginform-login-validation1:
   ru: Пожалуйста, введите эл. адрес
   en: Please enter your email address
   hy: Խնդրում ենք մուտքագրել էլ. հասցե
+  it: Inserisci il tuo indirizzo email
+  es: Por favor, introduce tu dirección de correo electrónico
 security-loginform-password-validation1:
   ru: Пожалуйста, введите пароль
   en: Please enter your password
   hy: Խնդրում ենք մուտքագրել գաղտնաբառը
+  it: Inserisci la tua password
+  es: Por favor, introduce tu contraseña
 security-permissions:
   ru: Использовать систему безопасности
   en: Using security
   hy: Օգտագործեք անվտանգության համակարգ
+  it: Utilizzare la sicurezza
+  es: Usar seguridad
 security-login-permissions:
   ru: Выполнять вход в административную консоль
   en: Log in to the administrative console
   hy: Մուտք գործեք վարչական վահանակ
+  it: Accedi alla console amministrativa
+  es: Iniciar sesión en la consola administrativa
 security-profile-permissions:
   ru: Редактировать свой профиль
   en: Edit your profile
   hy: Խմբագրել ձեր պրոֆիլը
+  it: Modifica il tuo profilo
+  es: Editar tu perfil
 security-profile-passwordchange-permissions:
   ru: Изменять свой пароль
   en: Change your password
   hy: Փոխեք ձեր գաղտնաբառը
+  it: Cambia la tua password
+  es: Cambiar tu contraseña
 security-profile-rolechange-permissions:
   ru: Изменять свою роль
   en: Change your role
   hy: Փոխեք ձեր դերը
+  it: Cambia il tuo ruolo
+  es: Cambiar tu rol
 security-profile-loginchange-permissions:
   ru: Изменять свой логин
   en: Change your login
   hy: Փոխեք ձեր մուտքը
+  it: Cambia il tuo login
+  es: Cambiar tu inicio de sesión
 security-administrate-permissions:
   ru: Доступ к администрированию
   en: Access to administration
   hy: Ադմինիստրացիայի մուտք
+  it: Accesso all'amministrazione
+  es: Acceso a la administración
 security-administrate-roles-permissions:
   ru: Список ролей
   en: List of roles
   hy: Դերերի ցուցակ
+  it: Elenco dei ruoli
+  es: Lista de roles
 security-administrate-roles-add-permissions:
   ru: Создать роль
   en: Create role
   hy: Ստեղծեք դեր
+  it: Crea ruolo
+  es: Crear rol
 security-administrate-roles-save-permissions:
   ru: Сохранить роль
   en: Save Role
   hy: Պահպանել դերը
+  it: Salva ruolo
+  es: Guardar rol
 security-administrate-roles-remove-permissions:
   ru: Удалить роль
   en: Delete role
   hy: Ջնջել դերը
+  it: Elimina ruolo
+  es: Eliminar rol
 security-administrate-users-permissions:
   ru: Список пользователей
   en: List of users
   hy: Օգտատերերի ցուցակ
+  it: Elenco degli utenti
+  es: Lista de usuarios
 security-administrate-users-add-permissions:
   ru: Создать пользователя
   en: Create user
   hy: Ստեղծեք օգտվող
+  it: Crea utente
+  es: Crear usuario
 security-administrate-users-save-permissions:
   ru: Сохранить пользователя
   en: Save User
   hy: Պահպանել օգտատերի տվյալները
+  it: Salva utente
+  es: Guardar usuario
 security-administrate-users-remove-permissions:
   ru: Удалить пользователя
   en: Delete user
   hy: Ջնջել օգտատերին
+  it: Elimina utente
+  es: Eliminar usuario

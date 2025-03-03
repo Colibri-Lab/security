@@ -46,6 +46,9 @@ users:
   desc: 
     ru: Пользователи системы безопасности
     en: Security users
+    it: Utenti di sicurezza
+    hy: Անվտանգության օգտագործողներ
+    es: Usuarios de seguridad
   params:
     visible: false
     maybepublished: false
@@ -58,10 +61,14 @@ users:
         ru: Логин пользователя
         en: User login
         hy: Օգտագործողի մուտք
+        it: Accesso utente
+        es: Inicio de sesión de usuario
       note:  
         ru: Введите имя пользователя. Только латинские буквы, без пробелов
         en: Enter a username. Latin letters only, no spaces
         hy: "Մուտքագրեք օգտվողի անուն: Միայն լատինատառ, առանց բացատների"
+        it: Inserisci il nome utente. Solo lettere latine, senza spazi
+        es: Ingrese el nombre de usuario. Solo letras latinas, sin espacios
       attrs:
         width: 100%
       params:
@@ -75,10 +82,14 @@ users:
         ru: Пароль
         en: Password
         hy: Գաղտնաբառ
+        it: Password
+        es: Contraseña
       note:  
         ru: Пароль. Только латинские буквы, цифры и спец. символы. Обязательно должна быть одна цифра и один символ в верхнем регистре
         en: Password. Only Latin letters, numbers and specials. symbols. Must be one number and one uppercase character
         hy: "Գաղտնաբառ։ Միայն լատինական տառեր, թվեր և հատուկ նշաններ: խորհրդանիշներ. Պետք է լինի մեկ թիվ և մեկ մեծատառ"
+        it: Password. Solo lettere latine, numeri e simboli speciali. Deve esserci un numero e un carattere maiuscolo
+        es: Contraseña. Solo letras latinas, números y símbolos especiales. Debe haber un número y un carácter en mayúscula
       component: Colibri.UI.Forms.Password
       attrs:
         width: 100%
@@ -94,10 +105,14 @@ users:
         ru: ФИО пользователя
         en: User full name
         hy: Օգտագործողի լրիվ անվանումը 
+        it: Nome completo dell'utente
+        es: Nombre completo del usuario
       note:  
         ru: Введите имя, фамилию и отчество
         en: Enter first name, last name and patronymic
         hy: Մուտքագրեք անունը, ազգանունը և հայրանունը
+        it: Inserisci nome, cognome e patronimico
+        es: Ingrese el nombre, apellido y patronímico
       component: Colibri.UI.Forms.Object
       default: json_object()
       attrs:
@@ -111,6 +126,8 @@ users:
             ru: Имя
             en: First name
             hy: Անուն
+            it: Nome
+            es: Nombre
           class: string
           params:
             readonly: false
@@ -122,6 +139,8 @@ users:
             ru: Фамилия
             en: Last name
             hy: Ազգանուն
+            it: Cognome
+            es: Apellido
           component: Colibri.UI.Forms.Text
           class: string
           params:
@@ -134,6 +153,8 @@ users:
             ru: Отчество
             en: Patronymic
             hy: Հայրանուն
+            it: Patronimico
+            es: Patronímico
           component: Colibri.UI.Forms.Text
           class: string
           params:
@@ -147,6 +168,8 @@ users:
             ru: Пожалуйста, введите ваше имя и фамилию
             en: Please enter your first and last name
             hy: Խնդրում ենք մուտքագրել ձեր անունը և ազգանունը
+            it: Inserisci il tuo nome e cognome
+            es: Por favor, ingrese su nombre y apellido
           method: (field, validator) => !!field.value.firstName && !!field.value.lastName
     phone:
       type: varchar
@@ -157,10 +180,14 @@ users:
         ru: Телефон
         en: Phone
         hy: Հեռախոս
+        it: Telefono
+        es: Teléfono
       note:  
         ru: Введите телефон в формате 7999999999 или 3749998877
         en: Enter your phone in the format 7999999999 or 3749998877
         hy: Մուտքագրեք ձեր հեռախոսը 7999999999 կամ 3749998877 ձևաչափով
+        it: Inserisci il tuo telefono nel formato 7999999999 o 3749998877
+        es: Ingrese su teléfono en el formato 7999999999 o 3749998877
       attrs:
         width: 100%
       params:
@@ -171,6 +198,8 @@ users:
             ru: 'Пожалуйста, введите ваш телефон, формат: 7999999999 или 3749998877'
             en: 'Please enter your phone number, format: 7999999999 or 3749998877'
             hy: 'Խնդրում ենք մուտքագրել ձեր հեռախոսահամարը, ձևաչափը՝ 7999999999 կամ 3749998877'
+            it: 'Inserisci il tuo numero di telefono, formato: 7999999999 o 3749998877'
+            es: 'Ingrese su número de teléfono, formato: 7999999999 o 3749998877'
           method: (field, validator) => !!field.value && field.value.isNumeric()
     avatar:
       type: json
@@ -181,10 +210,14 @@ users:
         ru: Аватар пользователя
         en: User avatar
         hy: Օգտագործողի ավատար
+        it: Avatar dell'utente
+        es: Avatar del usuario
       note:  
         ru: Загрузите аватарку
         en: Upload avatar
         hy: Վերբեռնեք ավատար
+        it: Carica avatar
+        es: Cargar avatar
     role:
       type: bigint unsigned
       class: App\Modules\Security\Models\UserRole
@@ -192,10 +225,14 @@ users:
         ru: Роль
         en: Role
         hy: Դեր
+        it: Ruolo
+        es: Rol
       note:  
         ru: Выберите роль пользователя
         en: Choose the user role
         hy: Ընտրեք օգտագործողի դերը
+        it: Scegli il ruolo dell'utente
+        es: Elija el rol del usuario
       attrs:
         width: 100%
       lookup:
@@ -220,6 +257,8 @@ users:
         ru: Права доступа
         en: User permissions
         hy: Օգտագործողի թույլտվություններ
+        it: Permessi utente
+        es: Permisos de usuario
       params:
         readonly: false
         required: false
@@ -242,11 +281,15 @@ users:
               ru: Нет доступа
               en: No access
               hy: Մուտք չկա
+              it: Nessun accesso
+              es: Sin acceso
           - value: allow
             title:  
               ru: Есть доступ
               en: Access granted
               hy: Մուտքը տրված է
+              it: Accesso concesso
+              es: Acceso concedido
     settings:
       type: json
       class: ObjectField
@@ -276,6 +319,8 @@ roles:
     ru: Роль пользователя
     en: User roles
     hy: Օգտագործողի դերերը
+    it: Ruoli utente
+    es: Roles de usuario
   params:
     visible: false
     maybepublished: false
@@ -289,6 +334,8 @@ roles:
         ru: Наименование роли
         en: Role name
         hy: Դերի անվանումը
+        it: Nome del ruolo
+        es: Nombre del rol
       params:
         readonly: false
         required: true
@@ -301,6 +348,8 @@ roles:
         ru: Права доступа
         en: Permissions
         hy: Թույլտվություններ
+        it: Permessi
+        es: Permisos
       params:
         readonly: false
         required: false
@@ -323,11 +372,15 @@ roles:
               ru: Нет доступа
               en: Access denied
               hy: Մուտքն արգելված է
+              it: Accesso negato
+              es: Acceso denegado
           - value: allow
             title:  
               ru: Есть доступ
               en: Access granted
               hy: Մուտքը տրված է
+              it: Accesso concesso
+              es: Acceso concedido
   indices:
     roles_name_idx:
       fields: ['name']

@@ -2,43 +2,59 @@ security-global-notallowed:
   ru: Действие запрещено
   en: Operation not permitted
   hy: Գործողությունը չի թույլատրվում
+  it: Operazione non consentita
+  es: Operación no permitida
 security-login-success-message:
   ru: Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!
   en: You have successfully logged in, please wait while we launch!
-  hy: "Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչև մենք
-    գործարկենք:"
+  hy: "Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչև մենք գործարկենք:"
+  it: Hai effettuato l'accesso con successo, attendi mentre avviamo!
+  es: Has iniciado sesión con éxito, por favor espera mientras lanzamos!
 security-logout-success-message:
   ru: До свидания!
   en: Goodbye!
   hy: Ցտեսություն!
+  it: Arrivederci!
+  es: ¡Adiós!
 security-register-success-message:
   ru: Вы успешно зарегистрировались, пожалуйста, проверьте почтовый ящик
   en: You have successfully registered, please check your mailbox
   hy: Դուք հաջողությամբ գրանցվել եք, խնդրում ենք ստուգել ձեր փոստարկղը
+  it: Ti sei registrato con successo, controlla la tua casella di posta
+  es: Te has registrado con éxito, por favor revisa tu buzón
 security-reset-message:
-  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста,
-    перейдите по ссылке в письме!
-  en: The recovery request has been successfully sent to your email, please follow
-    the link in the email!
-  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեր էլ.փոստին, խնդրում ենք
-    հետևել էլփոստի հղումին:"
+  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите по ссылке в письме!
+  en: The recovery request has been successfully sent to your email, please follow the link in the email!
+  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեր էլ.փոստին, խնդրում ենք հետևել էլփոստի հղումին:"
+  it: La richiesta di recupero è stata inviata con successo alla tua email, segui il link nell'email!
+  es: La solicitud de recuperación se ha enviado con éxito a tu correo electrónico, por favor sigue el enlace en el correo electrónico!
 security-messages-datasaved:
   ru: Данные успешно сохранены
-  en: Data saved successfuly
+  en: Data saved successfully
   hy: Տվյալները հաջողությամբ պահպանվեցին
+  it: Dati salvati con successo
+  es: Datos guardados con éxito
 security-messages-dataremoved:
   ru: Данные успешно удалены
-  en: Data removed successfuly
+  en: Data removed successfully
   hy: Տվյալները հաջողությամբ հեռացվեցին
+  it: Dati rimossi con successo
+  es: Datos eliminados con éxito
 security-userprofile:
   ru: Личный кабинет
   en: Your profile
   hy: Քո պրոֆիլը
+  it: Il tuo profilo
+  es: Tu perfil
 security-menu-userprofile:
   ru: Личный кабинет
   en: User profile
   hy: Օգտվողի պրոֆիլը
+  it: Profilo utente
+  es: Perfil de usuario
 security-menu-admin:
   ru: Администрирование
   en: Administration
   hy: Վարչություն
+  it: Amministrazione
+  es: Administración
