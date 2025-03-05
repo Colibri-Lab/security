@@ -49,6 +49,8 @@ users:
     it: Utenti di sicurezza
     hy: Անվտանգության օգտագործողներ
     es: Usuarios de seguridad
+    kk: Қауіпсіздік пайдаланушылары
+    uz: Xavfsizlik foydalanuvchilari
   params:
     visible: false
     maybepublished: false
@@ -63,12 +65,16 @@ users:
         hy: Օգտագործողի մուտք
         it: Accesso utente
         es: Inicio de sesión de usuario
+        kk: Пайдаланушының логині
+        uz: Foydalanuvchi login
       note:  
         ru: Введите имя пользователя. Только латинские буквы, без пробелов
         en: Enter a username. Latin letters only, no spaces
         hy: "Մուտքագրեք օգտվողի անուն: Միայն լատինատառ, առանց բացատների"
         it: Inserisci il nome utente. Solo lettere latine, senza spazi
         es: Ingrese el nombre de usuario. Solo letras latinas, sin espacios
+        kk: Пайдаланушы атын енгізіңіз. Тек латын әріптері, бос орындарсыз
+        uz: Foydalanuvchi nomini kiriting. Faqat lotin harflari, bo'shliqsiz    
       attrs:
         width: 100%
       params:
@@ -84,12 +90,16 @@ users:
         hy: Գաղտնաբառ
         it: Password
         es: Contraseña
+        kk: Құпия сөз
+        uz: Parol
       note:  
         ru: Пароль. Только латинские буквы, цифры и спец. символы. Обязательно должна быть одна цифра и один символ в верхнем регистре
         en: Password. Only Latin letters, numbers and specials. symbols. Must be one number and one uppercase character
         hy: "Գաղտնաբառ։ Միայն լատինական տառեր, թվեր և հատուկ նշաններ: խորհրդանիշներ. Պետք է լինի մեկ թիվ և մեկ մեծատառ"
         it: Password. Solo lettere latine, numeri e simboli speciali. Deve esserci un numero e un carattere maiuscolo
         es: Contraseña. Solo letras latinas, números y símbolos especiales. Debe haber un número y un carácter en mayúscula
+        kk: Құпия сөз. Тек латын әріптері, сандар және арнайы таңбалар. Бір сан және бір бас әріп болуы керек
+        uz: Parol. Faqat lotin harflari, raqamlar va maxsus belgilar. Bitta raqam va bitta katta harf bo'lishi kerak    
       component: Colibri.UI.Forms.Password
       attrs:
         width: 100%
@@ -107,12 +117,16 @@ users:
         hy: Օգտագործողի լրիվ անվանումը 
         it: Nome completo dell'utente
         es: Nombre completo del usuario
+        kk: Пайдаланушының толық аты-жөні
+        uz: Foydalanuvchining to'liq ismi
       note:  
         ru: Введите имя, фамилию и отчество
         en: Enter first name, last name and patronymic
         hy: Մուտքագրեք անունը, ազգանունը և հայրանունը
         it: Inserisci nome, cognome e patronimico
         es: Ingrese el nombre, apellido y patronímico
+        kk: Атын, тегін және әкесінің атын енгізіңіз
+        uz: Ism, familiya va otasining ismini kiriting    
       component: Colibri.UI.Forms.Object
       default: json_object()
       attrs:
@@ -128,6 +142,8 @@ users:
             hy: Անուն
             it: Nome
             es: Nombre
+            kk: Аты
+            uz: Ism    
           class: string
           params:
             readonly: false
@@ -141,6 +157,8 @@ users:
             hy: Ազգանուն
             it: Cognome
             es: Apellido
+            kk: Тегі
+            uz: Familiya    
           component: Colibri.UI.Forms.Text
           class: string
           params:
@@ -155,6 +173,8 @@ users:
             hy: Հայրանուն
             it: Patronimico
             es: Patronímico
+            kk: Әкесінің аты
+            uz: Otasining ismi    
           component: Colibri.UI.Forms.Text
           class: string
           params:
@@ -170,6 +190,8 @@ users:
             hy: Խնդրում ենք մուտքագրել ձեր անունը և ազգանունը
             it: Inserisci il tuo nome e cognome
             es: Por favor, ingrese su nombre y apellido
+            kk: Атыңызды және тегіңізді енгізіңіз
+            uz: Iltimos, ismingiz va familiyangizni kiriting
           method: (field, validator) => !!field.value.firstName && !!field.value.lastName
     phone:
       type: varchar
@@ -182,12 +204,16 @@ users:
         hy: Հեռախոս
         it: Telefono
         es: Teléfono
+        kk: Телефон
+        uz: Telefon
       note:  
         ru: Введите телефон в формате 7999999999 или 3749998877
         en: Enter your phone in the format 7999999999 or 3749998877
         hy: Մուտքագրեք ձեր հեռախոսը 7999999999 կամ 3749998877 ձևաչափով
         it: Inserisci il tuo telefono nel formato 7999999999 o 3749998877
         es: Ingrese su teléfono en el formato 7999999999 o 3749998877
+        kk: Телефон нөміріңізді 7999999999 немесе 3749998877 форматында енгізіңіз
+        uz: Telefon raqamingizni 7999999999 yoki 3749998877 formatida kiriting    
       attrs:
         width: 100%
       params:
@@ -200,6 +226,8 @@ users:
             hy: 'Խնդրում ենք մուտքագրել ձեր հեռախոսահամարը, ձևաչափը՝ 7999999999 կամ 3749998877'
             it: 'Inserisci il tuo numero di telefono, formato: 7999999999 o 3749998877'
             es: 'Ingrese su número de teléfono, formato: 7999999999 o 3749998877'
+            kk: 'Телефон нөміріңізді енгізіңіз, формат: 7999999999 немесе 3749998877'
+            uz: 'Telefon raqamingizni kiriting, format: 7999999999 yoki 3749998877'
           method: (field, validator) => !!field.value && field.value.isNumeric()
     avatar:
       type: json
@@ -212,12 +240,16 @@ users:
         hy: Օգտագործողի ավատար
         it: Avatar dell'utente
         es: Avatar del usuario
+        kk: Пайдаланушының аватары
+        uz: Foydalanuvchi avatori
       note:  
         ru: Загрузите аватарку
         en: Upload avatar
         hy: Վերբեռնեք ավատար
         it: Carica avatar
         es: Cargar avatar
+        kk: Аватарды жүктеңіз
+        uz: Avaturni yuklang    
     role:
       type: bigint unsigned
       class: App\Modules\Security\Models\UserRole
@@ -227,12 +259,16 @@ users:
         hy: Դեր
         it: Ruolo
         es: Rol
+        kk: Рөл
+        uz: Roli
       note:  
         ru: Выберите роль пользователя
         en: Choose the user role
         hy: Ընտրեք օգտագործողի դերը
         it: Scegli il ruolo dell'utente
         es: Elija el rol del usuario
+        kk: Пайдаланушының рөлін таңдаңыз
+        uz: Foydalanuvchi rolini tanlang    
       attrs:
         width: 100%
       lookup:
@@ -259,6 +295,8 @@ users:
         hy: Օգտագործողի թույլտվություններ
         it: Permessi utente
         es: Permisos de usuario
+        kk: Пайдаланушының рұқсаттары
+        uz: Foydalanuvchi ruxsatlari    
       params:
         readonly: false
         required: false
@@ -283,6 +321,8 @@ users:
               hy: Մուտք չկա
               it: Nessun accesso
               es: Sin acceso
+              kk: Қол жетімсіз
+              uz: Kirish yo'q
           - value: allow
             title:  
               ru: Есть доступ
@@ -290,6 +330,8 @@ users:
               hy: Մուտքը տրված է
               it: Accesso concesso
               es: Acceso concedido
+              kk: Қолжетімді
+              uz: Kirish mumkin    
     settings:
       type: json
       class: ObjectField
@@ -321,6 +363,8 @@ roles:
     hy: Օգտագործողի դերերը
     it: Ruoli utente
     es: Roles de usuario
+    kk: Пайдаланушының рөлі
+    uz: Foydalanuvchi roli
   params:
     visible: false
     maybepublished: false
@@ -336,6 +380,8 @@ roles:
         hy: Դերի անվանումը
         it: Nome del ruolo
         es: Nombre del rol
+        kk: Рөл атауы
+        uz: Rol nomi    
       params:
         readonly: false
         required: true
@@ -350,6 +396,8 @@ roles:
         hy: Թույլտվություններ
         it: Permessi
         es: Permisos
+        kk: Рұқсаттар
+        uz: Ruxsatlar    
       params:
         readonly: false
         required: false
@@ -374,6 +422,8 @@ roles:
               hy: Մուտքն արգելված է
               it: Accesso negato
               es: Acceso denegado
+              kk: Қол жетімсіз
+              uz: Kirish yo'q    
           - value: allow
             title:  
               ru: Есть доступ
@@ -381,6 +431,8 @@ roles:
               hy: Մուտքը տրված է
               it: Accesso concesso
               es: Acceso concedido
+              kk: Қолжетімді
+              uz: Kirish mumkin    
   indices:
     roles_name_idx:
       fields: ['name']

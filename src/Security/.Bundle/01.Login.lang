@@ -4,15 +4,21 @@ security-login-button:
   hy: Մուտք գործեք ծրագիր
   it: Accedi al backend
   es: Iniciar sesión en el backend
+  kk: Бағдарламаға кіру
+  uz: Dasturga kirish
 security-loginform-login-validation1:
   ru: Пожалуйста, введите эл. адрес
   en: Please enter the email address
   hy: Խնդրում ենք մուտքագրել էլ. հասցեն
   it: Inserisci l'indirizzo email
   es: Por favor, introduzca la dirección de correo electrónico
+  kk: Электрондық поштаны енгізіңіз
+  uz: Elektron pochta manzilini kiriting
 security-loginform-password-validation1:
   ru: Пожалуйста, введите пароль
   en: Please enter the password
   hy: Խնդրում ենք մուտքագրել ձեր գաղտնաբառը
   it: Inserisci la password
   es: Por favor, introduzca la contraseña
+  kk: Құпия сөзді енгізіңіз
+  uz: Parolni kiriting

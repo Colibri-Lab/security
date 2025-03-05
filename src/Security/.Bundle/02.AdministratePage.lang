@@ -4,141 +4,189 @@ security-administration-userroles-title:
   hy: Օգտագործողներ և դերեր
   it: Utenti e ruoli
   es: Usuarios y roles
+  kk: Пайдаланушылар мен рөлдер
+  uz: Foydalanuvchilar va rollar
 security-administration-permission-title:
   ru: Права доступа
   en: Permissions
   hy: Մուտքի իրավունքներ
   it: Permessi
   es: Permisos
+  kk: Рұқсаттар
+  uz: Ruxsatlar
 security-permissions-cleareverywere:
   ru: Очистить везде
   en: Clear all
   hy: Ամենուր պարզ է
   it: Pulisci tutto
   es: Limpiar todo
+  kk: Барлығын тазалау
+  uz: Hamma joyni tozalash
 security-permissions-denyeveryware:
   ru: Запретить везде
   en: Disallow everywhere
   hy: Արգելեք ամենուր
   it: Nega ovunque
   es: Denegar en todas partes
+  kk: Барлығына тыйым салу
+  uz: Hamma joyda taqiqlash
 security-permissions-alloweveryware:
   ru: Разрешить везде
   en: Allow everywhere
   hy: Թույլ տվեք ամենուր
   it: Consenti ovunque
   es: Permitir en todas partes
+  kk: Барлығына рұқсат беру
+  uz: Hamma joyda ruxsat berish
 security-permissions-clear:
   ru: Очистить
   en: Clear
   hy: Մաքևել
   it: Pulisci
   es: Limpiar
+  kk: Тазалау
+  uz: Tozalash
 security-permissions-clearall:
   ru: Очистить все
   en: Clear all
   hy: Մաքևել ամբողջը
   it: Pulisci tutto
   es: Limpiar todo
+  kk: Барлығын тазалау
+  uz: Hamma joyni tozalash
 security-permissions-allow:
   ru: Разрешить
   en: Allow
   hy: Թույլատրել
   it: Consenti
   es: Permitir
+  kk: Рұқсат беру
+  uz: Ruxsat berish
 security-permissions-deny:
   ru: Запретить
   en: Disallow
   hy: Արգելել
   it: Nega
   es: Denegar
+  kk: Тыйым салу
+  uz: Taqiqlash
 security-permissions-allowall:
   ru: Разрешить все
   en: Allow all
   hy: Թույլ տալ ամբողջը
   it: Consenti tutto
   es: Permitir todo
+  kk: Барлығына рұқсат беру
+  uz: Hamma joyda ruxsat berish
 security-permissions-denyall:
   ru: Запретить все
   en: Disallow all
   hy: Արգելել ամբողջը
   it: Nega tutto
   es: Denegar todo
+  kk: Барлығына тыйым салу
+  uz: Hamma joyda taqiqlash
 security-contextmenu-addrole:
   ru: Добавить роль
   en: Add role
   hy: Ավելացրեք դեր
   it: Aggiungi ruolo
   es: Agregar rol
+  kk: Рөл қосу
+  uz: Rol qo'shish
 security-contextmenu-adduser:
   ru: Добавить пользователя
   en: Add user
   hy: Ավելացնել օգտվող
   it: Aggiungi utente
   es: Agregar usuario
+  kk: Пайдаланушы қосу
+  uz: Foydalanuvchi qo'shish
 security-windowtitle-adduser:
   ru: Добавить пользователя
   en: Add user
   hy: Ավելացնել օգտվող
   it: Aggiungi utente
   es: Agregar usuario
+  kk: Пайдаланушы қосу
+  uz: Foydalanuvchi qo'shish
 security-windowtitle-addrole:
   ru: Добавить роль
   en: Add role
   hy: Ավելացրեք դեր
   it: Aggiungi ruolo
   es: Agregar rol
+  kk: Рөл қосу
+  uz: Rol qo'shish
 security-windowtitle-editrole:
   ru: Редактировать роль
   en: Edit role
   hy: Խմբագրել դերը
   it: Modifica ruolo
   es: Editar rol
+  kk: Рөлді өңдеу
+  uz: Rolni tahrirlash
 security-windowtitle-removerole:
   ru: Удаление роли
   en: Delete role
   hy: Ջնջել դերը
   it: Elimina ruolo
   es: Eliminar rol
+  kk: Рөлді жою
+  uz: Rolni o'chirish
 security-messages-removerolemessage:
   ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль Readonly
   en: Are you sure you want to delete the role? Users will be moved to the Readonly role
   hy: "Իսկապե՞ս ուզում եք ջնջել դերը: Օգտատերերը կտեղափոխվեն միայն կարդալու դեր"
   it: Sei sicuro di voler eliminare il ruolo? Gli utenti saranno spostati nel ruolo di sola lettura
   es: ¿Estás seguro de que quieres eliminar el rol? Los usuarios serán movidos al rol de solo lectura
+  kk: Рөлді жойғыңыз келетініне сенімдісіз бе? Пайдаланушылар тек оқуға арналған рөлге ауыстырылады
+  uz: Rolni o'chirmoqchimisiz? Foydalanuvchilar faqat o'qish roliga o'tkaziladi
 security-windowtitle-edituser:
   ru: Редактировать пользователя
   en: Edit user
   hy: Խմբագրել օգտվողին
   it: Modifica utente
   es: Editar usuario
+  kk: Пайдаланушыны өңдеу
+  uz: Foydalanuvchini tahrirlash
 security-messages-removeselfmessage:
   ru: Вы не можете удалить самого себя!
   en: You cannot delete yourself!
   hy: Դուք չեք կարող ջնջել ձզեզ
   it: Non puoi eliminare te stesso!
   es: ¡No puedes eliminarte a ti mismo!
+  kk: Сіз өзіңізді жоя алмайсыз!
+  uz: O'zingizni o'chira olmaysiz!
 security-windowtitle-removeuser:
   ru: Удаление пользователя
   en: User delete
   hy: Օգտագործողի ջնջում
   it: Elimina utente
   es: Eliminar usuario
+  kk: Пайдаланушыны жою
+  uz: Foydalanuvchini o'chirish
 security-messages-removeusermessage:
   ru: Вы уверены, что хотите удалить пользователя?
   en: Are you sure you want to delete the user?
   hy: "Իսկապե՞ս ուզում եք ջնջել օգտատիրոջը:"
   it: Sei sicuro di voler eliminare l'utente?
   es: ¿Estás seguro de que quieres eliminar al usuario?
+  kk: Пайдаланушыны жойғыңыз келетініне сенімдісіз бе?
+  uz: Foydalanuvchini o'chirmoqchimisiz?
 security-contextmenu-edit:
   ru: Редактировать
   en: Edit
   hy: Խմբագրել
   it: Modifica
   es: Editar
+  kk: Өңдеу
+  uz: Tahrirlash
 security-contextmenu-remove:
   ru: Удалить
   en: Delete
   hy: Ջնջել
   it: Elimina
   es: Eliminar
+  kk: Жою
+  uz: O'chirish
