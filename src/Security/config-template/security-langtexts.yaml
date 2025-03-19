@@ -173,3 +173,139 @@ security-messages-removeselfmessage:
   it: Non puoi eliminare te stesso!
   es: ¡No puedes eliminarte a ti mismo!
   kk: Сіз өзіңізді жоя
+security-menu-usersandroles:
+  ru: Пользователи и роли
+  en: Users and roles
+  hy: Օգտագործողները եւ դերերը
+  it: Utenti e ruoli
+  es: Usuarios y roles
+  kk: Пайдаланушылар мен рөлдер
+  uz: Foydalanuvchilar va rollar
+security-menu-usersandroles-desc:
+  ru: Управление пользователями и ролями
+  en: Manage users and roles
+  hy: Օգտագործողների եւ դերերի կառավարում
+  it: Gestisci utenti e ruoli
+  es: Administrar usuarios y roles
+  kk: Пайдаланушылар мен рөлдерді басқару
+  uz: Foydalanuvchilar va rollarni boshqarish
+security-permissions: 
+  ru: Права доступа
+  en: Access rights
+  hy: Մուտքի իրավունքներ
+  it: Diritti di accesso
+  es: Derechos de acceso
+  kk: Қол жеткізу құқықтары
+  uz: Kirish huquqlari
+security-login-permissions:
+  ru: Право на вход
+  en: Right to enter
+  hy: Մուտքի իրավունք
+  it: Diritto di accesso
+  es: Derecho de acceso
+  kk: Кіру құқығы
+  uz: Kirish huquqi
+security-profile-permissions:
+  ru: Права на профиль
+  en: Profile rights
+  hy: Պրոֆիլի իրավունքներ
+  it: Diritti del profilo
+  es: Derechos de perfil
+  kk: Профиль құқықтары
+  uz: Profil huquqlari
+security-profile-passwordchange-permissions:
+  ru: Право на изменение пароля
+  en: Right to change password
+  hy: Գաղտնաբառի փոփոխումի իրավունք
+  it: Diritto di cambiare la password
+  es: Derecho a cambiar la contraseña
+  kk: Парольді өзгерту құқығы
+  uz: Parolni o'zgartirish huquqi
+security-profile-rolechange-permissions: 
+  ru: Право на изменение роли
+  en: Right to change role
+  hy: Դերի փոփոխումի իրավունք
+  it: Diritto di cambiare il ruolo
+  es: Derecho a cambiar el rol
+  kk: Рөлді өзгерту құқығы
+  uz: Rolni o'zgartirish huquqi
+security-profile-loginchange-permissions:
+  ru: Право на изменение логина
+  en: Right to change login
+  hy: Մուտքանունի փոփոխումի իրավունք
+  it: Diritto di cambiare il login
+  es: Derecho a cambiar el login
+  kk: Логинді өзгерту құқығы
+  uz: Loginni o'zgartirish huquqi
+security-administrate-permissions:
+  ru: Права на администрирование
+  en: Administrative rights
+  hy: Ադմինիստրատիվ իրավունքներ
+  it: Diritti amministrativi
+  es: Derechos administrativos
+  kk: Административті құқықтар
+  uz: Administratorlik huquqlari
+security-administrate-roles-permissions:
+  ru: Права на администрирование ролей
+  en: Administrative rights to roles
+  hy: Դերերի ադմինիստրատիվ իրավունքներ
+  it: Diritti amministrativi ai ruoli
+  es: Derechos administrativos a los roles
+  kk: Рөлдерді административті құқықтар
+  uz: Rollarga administratorlik huquqlari
+security-administrate-roles-add-permissions:
+  ru: Право на добавление ролей
+  en: Right to add roles
+  hy: Դերերի ավելացման իրավունք
+  it: Diritto di aggiungere ruoli
+  es: Derecho a añadir roles
+  kk: Рөлдерді қосу құқығы
+  uz: Rollarni qo'shish huquqi
+security-administrate-roles-save-permissions:
+  ru: Право на сохранение ролей
+  en: Right to save roles
+  hy: Դերերի պահպանման իրավունք
+  it: Diritto di salvare i ruoli
+  es: Derecho a guardar roles
+  kk: Рөлдерді сақтау құқығы
+  uz: Rollarni saqlash huquqi
+security-administrate-roles-remove-permissions:
+  ru: Право на удаление ролей
+  en: Right to delete roles
+  hy: Դերերի հեռացման իրավունք
+  it: Diritto di eliminare ruoli
+  es: Derecho a eliminar roles
+  kk: Рөлдерді жою құқығы
+  uz: Rollarni o'chirish huquqi
+security-administrate-users-permissions:
+  ru: Права на администрирование пользователей
+  en: Administrative rights to users
+  hy: Օգտագործողների ադմինիստրատիվ իրավունքներ
+  it: Diritti amministrativi agli utenti
+  es: Derechos administrativos a los usuarios
+  kk: Пайдаланушыларды административті құқықтар
+  uz: Foydalanuvchilarga administratorlik huquqlari
+security-administrate-users-add-permissions: 
+  ru: Право на добавление пользователей
+  en: Right to add users
+  hy: Օգտագործողների ավելացման իրավունք
+  it: Diritto di aggiungere utenti
+  es: Derecho a añadir usuarios
+  kk: Пайдаланушыларды қосу құқығы
+  uz: Foydalanuvchilarni qo'shish huquqi
+security-administrate-users-save-permissions:
+  ru: Право на сохранение пользователей
+  en: Right to save users
+  hy: Օգտագործողների պահպանման իրավունք
+  it: Diritto di salvare utenti
+  es: Derecho a guardar usuarios
+  kk: Пайдаланушыларды сақтау құқығы
+  uz: Foydalanuvchilarni saqlash huquqi
+security-administrate-users-remove-permissions:
+  ru: Право на удаление пользователей
+  en: Right to delete users
+  hy: Օգտագործողների հեռացման իրավունք
+  it: Diritto di eliminare utenti
+  es: Derecho a eliminar usuarios
+  kk: Пайдаланушыларды жою құқығы
+  uz: Foydalanuvchilarni o'chirish huquqi
