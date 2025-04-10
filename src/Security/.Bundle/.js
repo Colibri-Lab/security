@@ -172,7 +172,7 @@ App.Modules.Security = class extends Colibri.Modules.Module {
                 });
             })
             .catch(error => {
-                App.Notices.Add(new Colibri.UI.Notice(error.result));
+                App.Notices.Add(new Colibri.UI.Notice('#{security-login-error-message}'));
                 console.error(error);
             });
 

@@ -9,7 +9,8 @@ security-global-notallowed:
 security-login-success-message:
   ru: Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!
   en: You have successfully logged in, please wait while we launch!
-  hy: "Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչև մենք գործարկենք:"
+  hy: "Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչև մենք
+    գործարկենք:"
   it: Hai effettuato l'accesso con successo, attendi mentre avviamo!
   es: Has iniciado sesión con éxito, por favor espera mientras lanzamos!
   kk: Сіз жүйеге сәтті кірдіңіз, іске қосуымызды күтіңіз!
@@ -29,15 +30,23 @@ security-register-success-message:
   it: Ti sei registrato con successo, controlla la tua casella di posta
   es: Te has registrado con éxito, por favor revisa tu buzón
   kk: Сіз сәтті тіркелдіңіз, поштаңызды тексеріңіз
-  uz: Siz muvaffaqiyatli ro'yxatdan o'tdingiz, iltimos, pochta qutingizni tekshiring
+  uz: Siz muvaffaqiyatli ro'yxatdan o'tdingiz, iltimos, pochta qutingizni
+    tekshiring
 security-reset-message:
-  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите по ссылке в письме!
-  en: The recovery request has been successfully sent to your email, please follow the link in the email!
-  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեր էլ.փոստին, խնդրում ենք հետևել էլփոստի հղումին:"
-  it: La richiesta di recupero è stata inviata con successo alla tua email, segui il link nell'email!
-  es: La solicitud de recuperación se ha enviado con éxito a tu correo electrónico, por favor sigue el enlace en el correo electrónico!
-  kk: Қалпына келтіру сұранысыңыз поштаңызға сәтті жіберілді, хаттағы сілтемеге өтіңіз!
-  uz: Tiklash so'rovi muvaffaqiyatli tarzda elektron pochtangizga yuborildi, iltimos, elektron pochtadagi havolaga o'ting!
+  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста,
+    перейдите по ссылке в письме!
+  en: The recovery request has been successfully sent to your email, please follow
+    the link in the email!
+  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեր էլ.փոստին, խնդրում ենք
+    հետևել էլփոստի հղումին:"
+  it: La richiesta di recupero è stata inviata con successo alla tua email, segui
+    il link nell'email!
+  es: La solicitud de recuperación se ha enviado con éxito a tu correo
+    electrónico, por favor sigue el enlace en el correo electrónico!
+  kk: Қалпына келтіру сұранысыңыз поштаңызға сәтті жіберілді, хаттағы сілтемеге
+    өтіңіз!
+  uz: Tiklash so'rovi muvaffaqiyatli tarzda elektron pochtangizga yuborildi,
+    iltimos, elektron pochtadagi havolaga o'ting!
 security-messages-datasaved:
   ru: Данные успешно сохранены
   en: Data saved successfully
@@ -78,3 +87,11 @@ security-menu-admin:
   es: Administración
   kk: Әкімшілік
   uz: Ma'muriyat
+security-login-error-message:
+  ru: Неправильные логин или пароль
+  en: Incorrect login or password
+  hy: "Սխալ մուտք կամ գաղտնաբառ, խնդրում ենք կրկին փորձել:"
+  it: Nome utente o password errati
+  es: Nombre de usuario o contraseña incorrectos
+  kk: Логин немесе құпия сөз қате 
+  uz: Login yoki parol noto'g'ri

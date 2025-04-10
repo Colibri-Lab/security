@@ -189,7 +189,7 @@ security-menu-usersandroles-desc:
   es: Administrar usuarios y roles
   kk: Пайдаланушылар мен рөлдерді басқару
   uz: Foydalanuvchilar va rollarni boshqarish
-security-permissions: 
+security-permissions:
   ru: Права доступа
   en: Access rights
   hy: Մուտքի իրավունքներ
@@ -221,7 +221,7 @@ security-profile-passwordchange-permissions:
   es: Derecho a cambiar la contraseña
   kk: Парольді өзгерту құқығы
   uz: Parolni o'zgartirish huquqi
-security-profile-rolechange-permissions: 
+security-profile-rolechange-permissions:
   ru: Право на изменение роли
   en: Right to change role
   hy: Դերի փոփոխումի իրավունք
@@ -285,7 +285,7 @@ security-administrate-users-permissions:
   es: Derechos administrativos a los usuarios
   kk: Пайдаланушыларды административті құқықтар
   uz: Foydalanuvchilarga administratorlik huquqlari
-security-administrate-users-add-permissions: 
+security-administrate-users-add-permissions:
   ru: Право на добавление пользователей
   en: Right to add users
   hy: Օգտագործողների ավելացման իրավունք
