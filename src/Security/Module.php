@@ -26,8 +26,6 @@ use Colibri\Common\XmlHelper;
 class Module extends BaseModule
 {
 
-    /** @var Module */
-    public static $instance = null;
 
     private $_id;
     private $_hash;
@@ -37,8 +35,6 @@ class Module extends BaseModule
 
     public function InitializeModule(): void
     {
-
-        self::$instance = $this;
 
         try {
             ini_set('session.gc_maxlifetime', 86400);

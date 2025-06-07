@@ -23,10 +23,10 @@ class ClientController extends WebController
 
     public function Settings(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
-        $isLogged = Module::$instance->IsLogged();
+        $isLogged = Module::Instance()->IsLogged();
         $member = null;
         if ($isLogged) {
-            $member = Module::$instance->current->ToArray(true);
+            $member = Module::Instance()->current->ToArray(true);
         }
         $permissions = App::$moduleManager->GetPermissions();
         return $this->Finish(200, 'ok', ['settings' => ['logged' => $isLogged, 'permissions' => $permissions], 'user' => $member]);
@@ -35,11 +35,11 @@ class ClientController extends WebController
     public function Roles(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
 
-        if (!Module::$instance->current) {
+        if (!Module::Instance()->current) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
 
-        if (!Module::$instance->current->IsCommandAllowed('security.administrate.roles')) {
+        if (!Module::Instance()->current->IsCommandAllowed('security.administrate.roles')) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
 
@@ -50,11 +50,11 @@ class ClientController extends WebController
 
     public function Users(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
-        if (!Module::$instance->current) {
+        if (!Module::Instance()->current) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
 
-        if (!Module::$instance->current->IsCommandAllowed('security.administrate.users')) {
+        if (!Module::Instance()->current->IsCommandAllowed('security.administrate.users')) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
 
@@ -66,14 +66,14 @@ class ClientController extends WebController
     public function SaveUser(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
 
-        if (!Module::$instance->current) {
+        if (!Module::Instance()->current) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
 
         $id = $post->{'id'};
         if (
-            (!$id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.add')) ||
-            (Module::$instance->current->id != $id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.save'))
+            (!$id && !Module::Instance()->current->IsCommandAllowed('security.administrate.users.add')) ||
+            (Module::Instance()->current->id != $id && !Module::Instance()->current->IsCommandAllowed('security.administrate.users.save'))
         ) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
@@ -131,14 +131,14 @@ class ClientController extends WebController
     public function SaveRole(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
 
-        if (!Module::$instance->current) {
+        if (!Module::Instance()->current) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
 
         $id = $post->{'id'};
-        if (!$id && !Module::$instance->current->IsCommandAllowed('security.administrate.users.add')) {
+        if (!$id && !Module::Instance()->current->IsCommandAllowed('security.administrate.users.add')) {
             throw new PermissionDeniedException('Permission denied', 403);
-        } elseif (!Module::$instance->current->IsCommandAllowed('security.administrate.users.save')) {
+        } elseif (!Module::Instance()->current->IsCommandAllowed('security.administrate.users.save')) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
 
@@ -179,11 +179,11 @@ class ClientController extends WebController
 
     public function RemoveRole(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
-        if (!Module::$instance->current) {
+        if (!Module::Instance()->current) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
 
-        if (!Module::$instance->current->IsCommandAllowed('security.administrate.roles.remove')) {
+        if (!Module::Instance()->current->IsCommandAllowed('security.administrate.roles.remove')) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
 
@@ -206,16 +206,16 @@ class ClientController extends WebController
 
     public function RemoveUser(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
-        if (!Module::$instance->current) {
+        if (!Module::Instance()->current) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
 
-        if (!Module::$instance->current->IsCommandAllowed('security.administrate.roles.remove')) {
+        if (!Module::Instance()->current->IsCommandAllowed('security.administrate.roles.remove')) {
             throw new PermissionDeniedException('Permission denied', 403);
         }
 
         $id = $post->{'id'};
-        if (!$id || Module::$instance->current->id == $id) {
+        if (!$id || Module::Instance()->current->id == $id) {
             throw new BadRequestException('Bad request', 400);
         }
 
@@ -233,7 +233,7 @@ class ClientController extends WebController
             return $this->Finish(400, 'Bad request', []);
         }
 
-        $result = Module::$instance->Login($post->{'login'}, $post->{'password'});
+        $result = Module::Instance()->Login($post->{'login'}, $post->{'password'});
         if ($result) {
             return $this->Finish(200, 'Logged');
         } else {
@@ -244,8 +244,8 @@ class ClientController extends WebController
 
     public function Logout(RequestCollection $get, RequestCollection $post, ? PayloadCopy $payload): object
     {
-        Module::$instance->current->Logout();
-        Module::$instance->ClearSession();
+        Module::Instance()->current->Logout();
+        Module::Instance()->ClearSession();
         return $this->Finish(200, 'Unlogged');
     }
 

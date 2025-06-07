@@ -48,7 +48,7 @@ class UserRoles extends BaseModelDataTable
      */
     static function LoadByFilter(int $page = -1, int $pagesize = 20, string $filter = null, string $order = null, array $params = [], bool $calculateAffected = true): ? UserRoles
     {
-        $storage = Storages::Create()->Load('roles', 'security');
+        $storage = Storages::Instance()->Load('roles', 'security');
         return parent::_loadByFilter($storage, $page, $pagesize, $filter, $order, $params, $calculateAffected);
     }
 
@@ -70,7 +70,7 @@ class UserRoles extends BaseModelDataTable
         string $sortOrder = 'asc'
     ) : ?UserRoles
     {
-        $storage = Storages::Create()->Load('roles', 'security');
+        $storage = Storages::Instance()->Load('roles', 'security');
         [$filter, $order, $params] = $storage->accessPoint->ProcessFilters($storage, $searchTerm, $filtersArray, $sortField, $sortOrder);
         return parent::_loadByFilter($storage, $page, $pagesize, $filter, $order, $params);
     }
