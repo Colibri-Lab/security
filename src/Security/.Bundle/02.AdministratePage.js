@@ -10,13 +10,13 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
         this._permissionsTree = this.Children('split/permissions-pane/permissions');
 
         this._permissionsTree.user = null;
-        this._userAndRolesTree.AddHandler('SelectionChanged', (event, args) => this.__userAndRolesTreeSelectionChanged(event, args));
+        this._userAndRolesTree.AddHandler('SelectionChanged', this.__userAndRolesTreeSelectionChanged, false, this);
 
         this._permissionsTree.AddHandler('ContextMenuIconClicked', (event, args) => this.__renderPermissionsTreeContextMenu(event, args))
-        this._permissionsTree.AddHandler('ContextMenuItemClicked', (event, args) => this.__clickOnPermissionsContextMenu(event, args));  
+        this._permissionsTree.AddHandler('ContextMenuItemClicked', this.__clickOnPermissionsContextMenu, false, this);  
         
         this._userAndRolesTree.AddHandler('ContextMenuIconClicked', (event, args) => this.__renderUserAndRolesTreeContextMenu(event, args))
-        this._userAndRolesTree.AddHandler('ContextMenuItemClicked', (event, args) => this.__clickOnUserAndRolesContextMenu(event, args));  
+        this._userAndRolesTree.AddHandler('ContextMenuItemClicked', this.__clickOnUserAndRolesContextMenu, false, this);  
 
     }
 

@@ -135,12 +135,17 @@ security-windowtitle-removerole:
   kk: Рөлді жою
   uz: Rolni o'chirish
 security-messages-removerolemessage:
-  ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль Readonly
-  en: Are you sure you want to delete the role? Users will be moved to the Readonly role
+  ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль
+    Readonly
+  en: Are you sure you want to delete the role? Users will be moved to the
+    Readonly role
   hy: "Իսկապե՞ս ուզում եք ջնջել դերը: Օգտատերերը կտեղափոխվեն միայն կարդալու դեր"
-  it: Sei sicuro di voler eliminare il ruolo? Gli utenti saranno spostati nel ruolo di sola lettura
-  es: ¿Estás seguro de que quieres eliminar el rol? Los usuarios serán movidos al rol de solo lectura
-  kk: Рөлді жойғыңыз келетініне сенімдісіз бе? Пайдаланушылар тек оқуға арналған рөлге ауыстырылады
+  it: Sei sicuro di voler eliminare il ruolo? Gli utenti saranno spostati nel
+    ruolo di sola lettura
+  es: ¿Estás seguro de que quieres eliminar el rol? Los usuarios serán movidos al
+    rol de solo lectura
+  kk: Рөлді жойғыңыз келетініне сенімдісіз бе? Пайдаланушылар тек оқуға арналған
+    рөлге ауыстырылады
   uz: Rolni o'chirmoqchimisiz? Foydalanuvchilar faqat o'qish roliga o'tkaziladi
 security-windowtitle-edituser:
   ru: Редактировать пользователя
