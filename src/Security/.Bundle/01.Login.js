@@ -39,12 +39,17 @@ App.Modules.Security.Login = class extends Colibri.UI.Component {
             }
         };
 
-        this._validator.AddHandler('Validated', (event, args) => this._loginButton.enabled = this._validator.Validate());
+        this._validator.AddHandler('Validated', this.__validatorValidated, false, this);
+        this._loginButton.AddHandler('Clicked', this.__loginButtonClicked, false, this);
 
-        this._loginButton.AddHandler('Clicked', (event, args) => {
-            Security.Login(this._form.value.login, this._form.value.password);
-        });
+    }
 
+    __loginButtonClicked(event, args) {
+        Security.Login(this._form.value.login, this._form.value.password);
+    }
+
+    __validatorValidated(event, args) {
+        this._loginButton.enabled = this._validator.Validate();
     }
 
 }
