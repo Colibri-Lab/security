@@ -6,15 +6,16 @@ security-global-notallowed:
   es: Operación no permitida
   kk: Әрекетке рұқсат етілмеген
   uz: Amalga ruxsat berilmagan
+  cz: Operace není povolena
 security-login-success-message:
   ru: Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!
   en: You have successfully logged in, please wait while we launch!
-  hy: "Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչև մենք
-    գործարկենք:"
+  hy: "Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչև մենք գործարկենք:"
   it: Hai effettuato l'accesso con successo, attendi mentre avviamo!
   es: Has iniciado sesión con éxito, por favor espera mientras lanzamos!
   kk: Сіз жүйеге сәтті кірдіңіз, іске қосуымызды күтіңіз!
   uz: Siz tizimga muvaffaqiyatli kirdingiz, iltimos, ishga tushirishimizni kuting!
+  cz: Úspěšně jste se přihlásili, prosím, vyčkejte na spuštění!
 security-logout-success-message:
   ru: До свидания!
   en: Goodbye!
@@ -23,6 +24,7 @@ security-logout-success-message:
   es: ¡Adiós!
   kk: Сау болыңыз!
   uz: Xayr!
+  cz: Nashledanou!
 security-register-success-message:
   ru: Вы успешно зарегистрировались, пожалуйста, проверьте почтовый ящик
   en: You have successfully registered, please check your mailbox
@@ -30,23 +32,17 @@ security-register-success-message:
   it: Ti sei registrato con successo, controlla la tua casella di posta
   es: Te has registrado con éxito, por favor revisa tu buzón
   kk: Сіз сәтті тіркелдіңіз, поштаңызды тексеріңіз
-  uz: Siz muvaffaqiyatli ro'yxatdan o'tdingiz, iltimos, pochta qutingizni
-    tekshiring
+  uz: Siz muvaffaqiyatli ro'yxatdan o'tdingiz, iltimos, pochta qutingizni tekshiring
+  cz: Úspěšně jste se zaregistrovali, zkontrolujte prosím svou e-mailovou schránku
 security-reset-message:
-  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста,
-    перейдите по ссылке в письме!
-  en: The recovery request has been successfully sent to your email, please follow
-    the link in the email!
-  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեր էլ.փոստին, խնդրում ենք
-    հետևել էլփոստի հղումին:"
-  it: La richiesta di recupero è stata inviata con successo alla tua email, segui
-    il link nell'email!
-  es: La solicitud de recuperación se ha enviado con éxito a tu correo
-    electrónico, por favor sigue el enlace en el correo electrónico!
-  kk: Қалпына келтіру сұранысыңыз поштаңызға сәтті жіберілді, хаттағы сілтемеге
-    өтіңіз!
-  uz: Tiklash so'rovi muvaffaqiyatli tarzda elektron pochtangizga yuborildi,
-    iltimos, elektron pochtadagi havolaga o'ting!
+  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите по ссылке в письме!
+  en: The recovery request has been successfully sent to your email, please follow the link in the email!
+  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեր էլ.փոստին, խնդրում ենք հետևել էլփոստի հղումին:"
+  it: La richiesta di recupero è stata inviata con successo alla tua email, segui il link nell'email!
+  es: La solicitud de recuperación se ha enviado con éxito a tu correo electrónico, por favor sigue el enlace en el correo electrónico!
+  kk: Қалпына келтіру сұранысыңыз поштаңызға сәтті жіберілді, хаттағы сілтемеге өтіңіз!
+  uz: Tiklash so'rovi muvaffaqiyatli tarzda elektron pochtangizga yuborildi, iltimos, elektron pochtadagi havolaga o'ting!
+  cz: Žádost o obnovení byla úspěšně odeslána na váš e-mail, postupujte podle odkazu v e-mailu!
 security-messages-datasaved:
   ru: Данные успешно сохранены
   en: Data saved successfully
@@ -55,6 +51,7 @@ security-messages-datasaved:
   es: Datos guardados con éxito
   kk: Деректер сәтті сақталды
   uz: Ma'lumotlar muvaffaqiyatli saqlandi
+  cz: Data byla úspěšně uložena
 security-messages-dataremoved:
   ru: Данные успешно удалены
   en: Data removed successfully
@@ -63,6 +60,7 @@ security-messages-dataremoved:
   es: Datos eliminados con éxito
   kk: Деректер сәтті жойылды
   uz: Ma'lumotlar muvaffaqiyatli o'chirildi
+  cz: Data byla úspěšně odstraněna
 security-userprofile:
   ru: Личный кабинет
   en: Your profile
@@ -71,6 +69,7 @@ security-userprofile:
   es: Tu perfil
   kk: Сіздің профиліңіз
   uz: Sizning profilingiz
+  cz: Váš profil
 security-menu-userprofile:
   ru: Личный кабинет
   en: User profile
@@ -79,6 +78,7 @@ security-menu-userprofile:
   es: Perfil de usuario
   kk: Пайдаланушы профилі
   uz: Foydalanuvchi profili
+  cz: Uživatelský profil
 security-menu-admin:
   ru: Администрирование
   en: Administration
@@ -87,6 +87,7 @@ security-menu-admin:
   es: Administración
   kk: Әкімшілік
   uz: Ma'muriyat
+  cz: Administrace
 security-login-error-message:
   ru: Неправильные логин или пароль
   en: Incorrect login or password
@@ -95,3 +96,4 @@ security-login-error-message:
   es: Nombre de usuario o contraseña incorrectos
   kk: Логин немесе құпия сөз қате
   uz: Login yoki parol noto'g'ri
+  cz: Nesprávné uživatelské jméno nebo heslo

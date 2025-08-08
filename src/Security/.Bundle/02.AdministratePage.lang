@@ -6,6 +6,7 @@ security-administration-userroles-title:
   es: Usuarios y roles
   kk: Пайдаланушылар мен рөлдер
   uz: Foydalanuvchilar va rollar
+  cz: Uživatelé a role
 security-administration-permission-title:
   ru: Права доступа
   en: Permissions
@@ -14,6 +15,7 @@ security-administration-permission-title:
   es: Permisos
   kk: Рұқсаттар
   uz: Ruxsatlar
+  cz: Oprávnění
 security-permissions-cleareverywere:
   ru: Очистить везде
   en: Clear all
@@ -22,6 +24,7 @@ security-permissions-cleareverywere:
   es: Limpiar todo
   kk: Барлығын тазалау
   uz: Hamma joyni tozalash
+  cz: Vymazat vše
 security-permissions-denyeveryware:
   ru: Запретить везде
   en: Disallow everywhere
@@ -30,6 +33,7 @@ security-permissions-denyeveryware:
   es: Denegar en todas partes
   kk: Барлығына тыйым салу
   uz: Hamma joyda taqiqlash
+  cz: Zakázat všude
 security-permissions-alloweveryware:
   ru: Разрешить везде
   en: Allow everywhere
@@ -38,6 +42,7 @@ security-permissions-alloweveryware:
   es: Permitir en todas partes
   kk: Барлығына рұқсат беру
   uz: Hamma joyda ruxsat berish
+  cz: Povolit všude
 security-permissions-clear:
   ru: Очистить
   en: Clear
@@ -46,6 +51,7 @@ security-permissions-clear:
   es: Limpiar
   kk: Тазалау
   uz: Tozalash
+  cz: Vymazat
 security-permissions-clearall:
   ru: Очистить все
   en: Clear all
@@ -54,6 +60,7 @@ security-permissions-clearall:
   es: Limpiar todo
   kk: Барлығын тазалау
   uz: Hamma joyni tozalash
+  cz: Vymazat vše
 security-permissions-allow:
   ru: Разрешить
   en: Allow
@@ -62,6 +69,7 @@ security-permissions-allow:
   es: Permitir
   kk: Рұқсат беру
   uz: Ruxsat berish
+  cz: Povolit
 security-permissions-deny:
   ru: Запретить
   en: Disallow
@@ -70,6 +78,7 @@ security-permissions-deny:
   es: Denegar
   kk: Тыйым салу
   uz: Taqiqlash
+  cz: Zakázat
 security-permissions-allowall:
   ru: Разрешить все
   en: Allow all
@@ -78,6 +87,7 @@ security-permissions-allowall:
   es: Permitir todo
   kk: Барлығына рұқсат беру
   uz: Hamma joyda ruxsat berish
+  cz: Povolit vše
 security-permissions-denyall:
   ru: Запретить все
   en: Disallow all
@@ -86,6 +96,7 @@ security-permissions-denyall:
   es: Denegar todo
   kk: Барлығына тыйым салу
   uz: Hamma joyda taqiqlash
+  cz: Zakázat vše
 security-contextmenu-addrole:
   ru: Добавить роль
   en: Add role
@@ -94,6 +105,7 @@ security-contextmenu-addrole:
   es: Agregar rol
   kk: Рөл қосу
   uz: Rol qo'shish
+  cz: Přidat roli
 security-contextmenu-adduser:
   ru: Добавить пользователя
   en: Add user
@@ -102,6 +114,7 @@ security-contextmenu-adduser:
   es: Agregar usuario
   kk: Пайдаланушы қосу
   uz: Foydalanuvchi qo'shish
+  cz: Přidat uživatele
 security-windowtitle-adduser:
   ru: Добавить пользователя
   en: Add user
@@ -110,6 +123,7 @@ security-windowtitle-adduser:
   es: Agregar usuario
   kk: Пайдаланушы қосу
   uz: Foydalanuvchi qo'shish
+  cz: Přidat uživatele
 security-windowtitle-addrole:
   ru: Добавить роль
   en: Add role
@@ -118,6 +132,7 @@ security-windowtitle-addrole:
   es: Agregar rol
   kk: Рөл қосу
   uz: Rol qo'shish
+  cz: Přidat roli
 security-windowtitle-editrole:
   ru: Редактировать роль
   en: Edit role
@@ -126,6 +141,7 @@ security-windowtitle-editrole:
   es: Editar rol
   kk: Рөлді өңдеу
   uz: Rolni tahrirlash
+  cz: Upravit roli
 security-windowtitle-removerole:
   ru: Удаление роли
   en: Delete role
@@ -134,6 +150,7 @@ security-windowtitle-removerole:
   es: Eliminar rol
   kk: Рөлді жою
   uz: Rolni o'chirish
+  cz: Smazat roli
 security-messages-removerolemessage:
   ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль
     Readonly
@@ -147,6 +164,7 @@ security-messages-removerolemessage:
   kk: Рөлді жойғыңыз келетініне сенімдісіз бе? Пайдаланушылар тек оқуға арналған
     рөлге ауыстырылады
   uz: Rolni o'chirmoqchimisiz? Foydalanuvchilar faqat o'qish roliga o'tkaziladi
+  cz: Opravdu chcete smazat roli? Uživatelé budou přesunuti do role pouze pro čtení
 security-windowtitle-edituser:
   ru: Редактировать пользователя
   en: Edit user
@@ -155,6 +173,7 @@ security-windowtitle-edituser:
   es: Editar usuario
   kk: Пайдаланушыны өңдеу
   uz: Foydalanuvchini tahrirlash
+  cz: Upravit uživatele
 security-messages-removeselfmessage:
   ru: Вы не можете удалить самого себя!
   en: You cannot delete yourself!
@@ -163,6 +182,7 @@ security-messages-removeselfmessage:
   es: ¡No puedes eliminarte a ti mismo!
   kk: Сіз өзіңізді жоя алмайсыз!
   uz: O'zingizni o'chira olmaysiz!
+  cz: Nemůžete smazat sami sebe!
 security-windowtitle-removeuser:
   ru: Удаление пользователя
   en: User delete
@@ -171,6 +191,7 @@ security-windowtitle-removeuser:
   es: Eliminar usuario
   kk: Пайдаланушыны жою
   uz: Foydalanuvchini o'chirish
+  cz: Smazat uživatele
 security-messages-removeusermessage:
   ru: Вы уверены, что хотите удалить пользователя?
   en: Are you sure you want to delete the user?
@@ -179,6 +200,7 @@ security-messages-removeusermessage:
   es: ¿Estás seguro de que quieres eliminar al usuario?
   kk: Пайдаланушыны жойғыңыз келетініне сенімдісіз бе?
   uz: Foydalanuvchini o'chirmoqchimisiz?
+  cz: Opravdu chcete smazat uživatele?
 security-contextmenu-edit:
   ru: Редактировать
   en: Edit
@@ -187,6 +209,7 @@ security-contextmenu-edit:
   es: Editar
   kk: Өңдеу
   uz: Tahrirlash
+  cz: Upravit
 security-contextmenu-remove:
   ru: Удалить
   en: Delete
@@ -195,3 +218,4 @@ security-contextmenu-remove:
   es: Eliminar
   kk: Жою
   uz: O'chirish
+  cz: Smazat

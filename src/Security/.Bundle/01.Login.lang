@@ -6,6 +6,7 @@ security-login-button:
   es: Iniciar sesión en el backend
   kk: Бағдарламаға кіру
   uz: Dasturga kirish
+  cz: Přihlásit se do backendu
 security-loginform-login-validation1:
   ru: Пожалуйста, введите эл. адрес
   en: Please enter the email address
@@ -14,6 +15,7 @@ security-loginform-login-validation1:
   es: Por favor, introduzca la dirección de correo electrónico
   kk: Электрондық поштаны енгізіңіз
   uz: Elektron pochta manzilini kiriting
+  cz: Zadejte e-mailovou adresu
 security-loginform-password-validation1:
   ru: Пожалуйста, введите пароль
   en: Please enter the password
@@ -22,3 +24,4 @@ security-loginform-password-validation1:
   es: Por favor, introduzca la contraseña
   kk: Құпия сөзді енгізіңіз
   uz: Parolni kiriting
+  cz: Zadejte heslo
