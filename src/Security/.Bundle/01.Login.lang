@@ -7,6 +7,10 @@ security-login-button:
   kk: Бағдарламаға кіру
   uz: Dasturga kirish
   cz: Přihlásit se do backendu
+  de: Anmelden beim Backend
+  tr: Backend'e giriş yap
+  zh: 登录到后端
+  fa: ورود به سیستم
 security-loginform-login-validation1:
   ru: Пожалуйста, введите эл. адрес
   en: Please enter the email address
@@ -16,6 +20,10 @@ security-loginform-login-validation1:
   kk: Электрондық поштаны енгізіңіз
   uz: Elektron pochta manzilini kiriting
   cz: Zadejte e-mailovou adresu
+  de: Bitte geben Sie die E-Mail-Adresse ein
+  tr: Lütfen e-posta adresini girin
+  zh: 请输入电子邮件地址
+  fa: لطفاً آدرس ایمیل را وارد کنید
 security-loginform-password-validation1:
   ru: Пожалуйста, введите пароль
   en: Please enter the password
@@ -25,3 +33,7 @@ security-loginform-password-validation1:
   kk: Құпия сөзді енгізіңіз
   uz: Parolni kiriting
   cz: Zadejte heslo
+  de: Bitte geben Sie das Passwort ein
+  tr: Lütfen parolayı girin
+  zh: 请输入密码
+  fa: لطفاً رمز عبور را وارد کنید

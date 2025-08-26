@@ -7,6 +7,8 @@ security-administration-userroles-title:
   kk: Пайдаланушылар мен рөлдер
   uz: Foydalanuvchilar va rollar
   cz: Uživatelé a role
+  de: Uživatelé a role
+  tr: Kullanıcılar ve roller
 security-administration-permission-title:
   ru: Права доступа
   en: Permissions
@@ -16,6 +18,10 @@ security-administration-permission-title:
   kk: Рұқсаттар
   uz: Ruxsatlar
   cz: Oprávnění
+  de: Berechtigungen
+  tr: İzinler
+  zh: 权限
+  fa: مجوزها
 security-permissions-cleareverywere:
   ru: Очистить везде
   en: Clear all
@@ -25,6 +31,10 @@ security-permissions-cleareverywere:
   kk: Барлығын тазалау
   uz: Hamma joyni tozalash
   cz: Vymazat vše
+  de: Alles löschen
+  tr: Hepsini temizle
+  zh: 清除所有
+  fa: پاک کردن همه
 security-permissions-denyeveryware:
   ru: Запретить везде
   en: Disallow everywhere
@@ -34,6 +44,10 @@ security-permissions-denyeveryware:
   kk: Барлығына тыйым салу
   uz: Hamma joyda taqiqlash
   cz: Zakázat všude
+  de: Überall verweigern
+  tr: Her yerde reddet
+  zh: 拒绝所有
+  fa: رد همه
 security-permissions-alloweveryware:
   ru: Разрешить везде
   en: Allow everywhere
@@ -43,6 +57,10 @@ security-permissions-alloweveryware:
   kk: Барлығына рұқсат беру
   uz: Hamma joyda ruxsat berish
   cz: Povolit všude
+  de: Überall erlauben
+  tr: Her yerde izin ver
+  zh: 允许所有
+  fa: اجازه دادن به همه
 security-permissions-clear:
   ru: Очистить
   en: Clear
@@ -52,6 +70,10 @@ security-permissions-clear:
   kk: Тазалау
   uz: Tozalash
   cz: Vymazat
+  de: Löschen
+  tr: Temizle
+  zh: 清除
+  fa: پاک کردن
 security-permissions-clearall:
   ru: Очистить все
   en: Clear all
@@ -61,6 +83,10 @@ security-permissions-clearall:
   kk: Барлығын тазалау
   uz: Hamma joyni tozalash
   cz: Vymazat vše
+  de: Alles löschen
+  tr: Hepsini temizle
+  zh: 清除所有
+  fa: پاک کردن همه
 security-permissions-allow:
   ru: Разрешить
   en: Allow
@@ -70,6 +96,10 @@ security-permissions-allow:
   kk: Рұқсат беру
   uz: Ruxsat berish
   cz: Povolit
+  de: Erlauben
+  tr: İzin ver
+  zh: 允许
+  fa: اجازه دادن
 security-permissions-deny:
   ru: Запретить
   en: Disallow
@@ -79,6 +109,10 @@ security-permissions-deny:
   kk: Тыйым салу
   uz: Taqiqlash
   cz: Zakázat
+  de: Verweigern
+  tr: Reddet
+  zh: 拒绝
+  fa: رد
 security-permissions-allowall:
   ru: Разрешить все
   en: Allow all
@@ -88,6 +122,10 @@ security-permissions-allowall:
   kk: Барлығына рұқсат беру
   uz: Hamma joyda ruxsat berish
   cz: Povolit vše
+  de: Alle erlauben
+  tr: Hepsine izin ver
+  zh: 允许所有
+  fa: اجازه دادن به همه
 security-permissions-denyall:
   ru: Запретить все
   en: Disallow all
@@ -97,6 +135,10 @@ security-permissions-denyall:
   kk: Барлығына тыйым салу
   uz: Hamma joyda taqiqlash
   cz: Zakázat vše
+  de: Alle verweigern
+  tr: Hepsini reddet
+  zh: 拒绝所有
+  fa: رد همه
 security-contextmenu-addrole:
   ru: Добавить роль
   en: Add role
@@ -106,6 +148,10 @@ security-contextmenu-addrole:
   kk: Рөл қосу
   uz: Rol qo'shish
   cz: Přidat roli
+  de: Rolle hinzufügen
+  tr: Rol ekle
+  zh: 添加角色
+  fa: نقش اضافه کنید
 security-contextmenu-adduser:
   ru: Добавить пользователя
   en: Add user
@@ -115,6 +161,10 @@ security-contextmenu-adduser:
   kk: Пайдаланушы қосу
   uz: Foydalanuvchi qo'shish
   cz: Přidat uživatele
+  de: Benutzer hinzufügen
+  tr: Kullanıcı ekle
+  zh: 添加用户
+  fa: کاربر اضافه کنید
 security-windowtitle-adduser:
   ru: Добавить пользователя
   en: Add user
@@ -124,6 +174,10 @@ security-windowtitle-adduser:
   kk: Пайдаланушы қосу
   uz: Foydalanuvchi qo'shish
   cz: Přidat uživatele
+  de: Benutzer hinzufügen
+  tr: Kullanıcı ekle
+  zh: 添加用户
+  fa: کاربر اضافه کنید
 security-windowtitle-addrole:
   ru: Добавить роль
   en: Add role
@@ -133,6 +187,10 @@ security-windowtitle-addrole:
   kk: Рөл қосу
   uz: Rol qo'shish
   cz: Přidat roli
+  de: Rolle hinzufügen
+  tr: Rol ekle
+  zh: 添加角色
+  fa: نقش اضافه کنید
 security-windowtitle-editrole:
   ru: Редактировать роль
   en: Edit role
@@ -142,6 +200,10 @@ security-windowtitle-editrole:
   kk: Рөлді өңдеу
   uz: Rolni tahrirlash
   cz: Upravit roli
+  de: Rolle bearbeiten
+  tr: Rolü düzenle
+  zh: 编辑角色
+  fa: ویرایش نقش
 security-windowtitle-removerole:
   ru: Удаление роли
   en: Delete role
@@ -151,6 +213,10 @@ security-windowtitle-removerole:
   kk: Рөлді жою
   uz: Rolni o'chirish
   cz: Smazat roli
+  de: Rolle löschen
+  tr: Rolü sil
+  zh: 删除角色
+  fa: حذف نقش
 security-messages-removerolemessage:
   ru: Вы уверены, что хотите удалить роль? Пользователи будут перемещены в роль
     Readonly
@@ -165,6 +231,10 @@ security-messages-removerolemessage:
     рөлге ауыстырылады
   uz: Rolni o'chirmoqchimisiz? Foydalanuvchilar faqat o'qish roliga o'tkaziladi
   cz: Opravdu chcete smazat roli? Uživatelé budou přesunuti do role pouze pro čtení
+  de: Sind Sie sicher, dass Sie die Rolle löschen möchten? Die Benutzer werden in die Rolle "Nur lesen" verschoben
+  tr: Rolü silmek istediğinize emin misiniz? Kullanıcılar "Sadece Okuma" rolüne taşınacak
+  zh: 您确定要删除该角色吗？用户将被移至“只读”角色
+  fa: آیا مطمئن هستید که می‌خواهید نقش را حذف کنید؟ کاربران به نقش "فقط خواندنی" منتقل خواهند شد
 security-windowtitle-edituser:
   ru: Редактировать пользователя
   en: Edit user
@@ -174,6 +244,10 @@ security-windowtitle-edituser:
   kk: Пайдаланушыны өңдеу
   uz: Foydalanuvchini tahrirlash
   cz: Upravit uživatele
+  de: Benutzer bearbeiten
+  tr: Kullanıcıyı düzenle
+  zh: 编辑用户
+  fa: ویرایش کاربر
 security-messages-removeselfmessage:
   ru: Вы не можете удалить самого себя!
   en: You cannot delete yourself!
@@ -183,6 +257,10 @@ security-messages-removeselfmessage:
   kk: Сіз өзіңізді жоя алмайсыз!
   uz: O'zingizni o'chira olmaysiz!
   cz: Nemůžete smazat sami sebe!
+  de: Sie können sich nicht selbst löschen!
+  tr: Kendinizi silemezsiniz!
+  zh: 您无法删除自己！
+  fa: شما نمی‌توانید خود را حذف کنید!
 security-windowtitle-removeuser:
   ru: Удаление пользователя
   en: User delete
@@ -192,6 +270,10 @@ security-windowtitle-removeuser:
   kk: Пайдаланушыны жою
   uz: Foydalanuvchini o'chirish
   cz: Smazat uživatele
+  de: Benutzer löschen
+  tr: Kullanıcıyı sil
+  zh: 删除用户
+  fa: حذف کاربر
 security-messages-removeusermessage:
   ru: Вы уверены, что хотите удалить пользователя?
   en: Are you sure you want to delete the user?
@@ -201,6 +283,10 @@ security-messages-removeusermessage:
   kk: Пайдаланушыны жойғыңыз келетініне сенімдісіз бе?
   uz: Foydalanuvchini o'chirmoqchimisiz?
   cz: Opravdu chcete smazat uživatele?
+  de: Sind Sie sicher, dass Sie den Benutzer löschen möchten?
+  tr: Kullanıcıyı silmek istediğinize emin misiniz?
+  zh: 您确定要删除该用户吗？
+  fa: آیا مطمئن هستید که می‌خواهید کاربر را حذف کنید؟
 security-contextmenu-edit:
   ru: Редактировать
   en: Edit
@@ -210,6 +296,10 @@ security-contextmenu-edit:
   kk: Өңдеу
   uz: Tahrirlash
   cz: Upravit
+  de: Bearbeiten
+  tr: Düzenle
+  zh: 编辑
+  fa: ویرایش
 security-contextmenu-remove:
   ru: Удалить
   en: Delete
@@ -219,3 +309,7 @@ security-contextmenu-remove:
   kk: Жою
   uz: O'chirish
   cz: Smazat
+  de: Löschen
+  tr: Sil
+  zh: 删除
+  fa: حذف
