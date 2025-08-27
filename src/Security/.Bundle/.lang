@@ -7,6 +7,10 @@ security-global-notallowed:
   kk: Әрекетке рұқсат етілмеген
   uz: Amalga ruxsat berilmagan
   cz: Operace není povolena
+  fa: عملیات مجاز نیست
+  de: Vorgang nicht erlaubt
+  zh: 操作不允许
+  tr: İşlem izin verilmiyor
 security-login-success-message:
   ru: Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!
   en: You have successfully logged in, please wait while we launch!
@@ -16,6 +20,10 @@ security-login-success-message:
   kk: Сіз жүйеге сәтті кірдіңіз, іске қосуымызды күтіңіз!
   uz: Siz tizimga muvaffaqiyatli kirdingiz, iltimos, ishga tushirishimizni kuting!
   cz: Úspěšně jste se přihlásili, prosím, vyčkejte na spuštění!
+  fa: شما با موفقیت وارد شدید، لطفاً منتظر بمانید تا راه‌اندازی انجام شود!
+  de: Sie haben sich erfolgreich angemeldet, bitte warten Sie während wir starten!
+  zh: 您已成功登录，请稍候，我们正在启动！
+  tr: Başarıyla giriş yaptınız, lütfen başlatmamızı bekleyin!
 security-logout-success-message:
   ru: До свидания!
   en: Goodbye!
@@ -25,6 +33,10 @@ security-logout-success-message:
   kk: Сау болыңыз!
   uz: Xayr!
   cz: Nashledanou!
+  fa: خداحافظ!
+  de: Auf Wiedersehen!
+  zh: 再见！
+  tr: Hoşça kal!
 security-register-success-message:
   ru: Вы успешно зарегистрировались, пожалуйста, проверьте почтовый ящик
   en: You have successfully registered, please check your mailbox
@@ -34,6 +46,10 @@ security-register-success-message:
   kk: Сіз сәтті тіркелдіңіз, поштаңызды тексеріңіз
   uz: Siz muvaffaqiyatli ro'yxatdan o'tdingiz, iltimos, pochta qutingizni tekshiring
   cz: Úspěšně jste se zaregistrovali, zkontrolujte prosím svou e-mailovou schránku
+  fa: شما با موفقیت ثبت‌نام کردید، لطفاً صندوق پستی خود را بررسی کنید
+  de: Sie haben sich erfolgreich registriert, bitte überprüfen Sie Ihr Postfach
+  zh: 您已成功注册，请检查您的邮箱
+  tr: Başarıyla kayıt oldunuz, lütfen e-posta kutunuzu kontrol edin
 security-reset-message:
   ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите по ссылке в письме!
   en: The recovery request has been successfully sent to your email, please follow the link in the email!
@@ -43,6 +59,10 @@ security-reset-message:
   kk: Қалпына келтіру сұранысыңыз поштаңызға сәтті жіберілді, хаттағы сілтемеге өтіңіз!
   uz: Tiklash so'rovi muvaffaqiyatli tarzda elektron pochtangizga yuborildi, iltimos, elektron pochtadagi havolaga o'ting!
   cz: Žádost o obnovení byla úspěšně odeslána na váš e-mail, postupujte podle odkazu v e-mailu!
+  fa: درخواست بازیابی با موفقیت به ایمیل شما ارسال شد، لطفاً لینک موجود در ایمیل را دنبال کنید!
+  de: Die Wiederherstellungsanfrage wurde erfolgreich an Ihre E-Mail gesendet, bitte folgen Sie dem Link in der E-Mail!
+  zh: 恢复请求已成功发送到您的邮箱，请点击邮件中的链接！
+  tr: Kurtarma isteği başarıyla e-posta adresinize gönderildi, lütfen e-postadaki bağlantıya tıklayın!
 security-messages-datasaved:
   ru: Данные успешно сохранены
   en: Data saved successfully
@@ -52,6 +72,10 @@ security-messages-datasaved:
   kk: Деректер сәтті сақталды
   uz: Ma'lumotlar muvaffaqiyatli saqlandi
   cz: Data byla úspěšně uložena
+  fa: داده‌ها با موفقیت ذخیره شدند
+  de: Daten erfolgreich gespeichert
+  zh: 数据保存成功
+  tr: Veriler başarıyla kaydedildi
 security-messages-dataremoved:
   ru: Данные успешно удалены
   en: Data removed successfully
@@ -61,6 +85,10 @@ security-messages-dataremoved:
   kk: Деректер сәтті жойылды
   uz: Ma'lumotlar muvaffaqiyatli o'chirildi
   cz: Data byla úspěšně odstraněna
+  fa: داده‌ها با موفقیت حذف شدند
+  de: Daten erfolgreich entfernt
+  zh: 数据删除成功
+  tr: Veriler başarıyla silindi
 security-userprofile:
   ru: Личный кабинет
   en: Your profile
@@ -70,6 +98,10 @@ security-userprofile:
   kk: Сіздің профиліңіз
   uz: Sizning profilingiz
   cz: Váš profil
+  fa: پروفایل شما
+  de: Ihr Profil
+  zh: 您的个人资料
+  tr: Profiliniz
 security-menu-userprofile:
   ru: Личный кабинет
   en: User profile
@@ -79,6 +111,10 @@ security-menu-userprofile:
   kk: Пайдаланушы профилі
   uz: Foydalanuvchi profili
   cz: Uživatelský profil
+  fa: پروفایل کاربر
+  de: Benutzerprofil
+  zh: 用户资料
+  tr: Kullanıcı profili
 security-menu-admin:
   ru: Администрирование
   en: Administration
@@ -88,6 +124,10 @@ security-menu-admin:
   kk: Әкімшілік
   uz: Ma'muriyat
   cz: Administrace
+  fa: مدیریت
+  de: Verwaltung
+  zh: 管理
+  tr: Yönetim
 security-login-error-message:
   ru: Неправильные логин или пароль
   en: Incorrect login or password
@@ -97,3 +137,7 @@ security-login-error-message:
   kk: Логин немесе құпия сөз қате
   uz: Login yoki parol noto'g'ri
   cz: Nesprávné uživatelské jméno nebo heslo
+  fa: نام کاربری یا رمز عبور اشتباه است
+  de: Falscher Benutzername oder Passwort
+  zh: 用户名或密码错误
+  tr: Hatalı kullanıcı adı veya şifre

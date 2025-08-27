@@ -9,6 +9,8 @@ security-administration-userroles-title:
   cz: Uživatelé a role
   de: Uživatelé a role
   tr: Kullanıcılar ve roller
+  zh: 用户和角色
+  fa: کاربران و نقش‌ها
 security-administration-permission-title:
   ru: Права доступа
   en: Permissions
@@ -313,3 +315,4 @@ security-contextmenu-remove:
   tr: Sil
   zh: 删除
   fa: حذف
+  
