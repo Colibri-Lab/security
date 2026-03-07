@@ -224,25 +224,37 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
             case 'add-user': {
                 Manage.FormWindow.Show('#{security-windowtitle-adduser}', 800, 'app.manage.storages(users)', {})
                     .then((data) => {
-                        Security.SaveUser(data);
+                        Security.SaveUser(data).then(() => {
+                            Manage.FormWindow.Hide();
+                        });
                     })
-                    .catch(() => {});
+                    .catch(() => {
+                        Manage.FormWindow.Hide();
+                    });
                 break;                                
             }
             case 'add-role': {
                 Manage.FormWindow.Show('#{security-windowtitle-addrole}', 800, 'app.manage.storages(roles)', {})
                     .then((data) => {
-                        Security.SaveRole(data);
+                        Security.SaveRole(data).then(() => {
+                            Manage.FormWindow.Hide();
+                        });
                     })
-                    .catch(() => {});
+                    .catch(() => {
+                        Manage.FormWindow.Hide();
+                    });
                 break;                                
             }
             case 'edit-role': {
                 Manage.FormWindow.Show('#{security-windowtitle-editrole}', 800, 'app.manage.storages(roles)', item.tag)
                     .then((data) => {
-                        Security.SaveRole(data);
+                        Security.SaveRole(data).then(() => {
+                            Manage.FormWindow.Hide();
+                        });
                     })
-                    .catch(() => {});
+                    .catch(() => {
+                        Manage.FormWindow.Hide();
+                    });
 
                 break;                                
             }
@@ -255,9 +267,13 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
             case 'edit-user': {
                 Manage.FormWindow.Show('#{security-windowtitle-edituser}', 800, 'app.manage.storages(users)', item.tag)
                     .then((data) => {
-                        Security.SaveUser(data);
+                        Security.SaveUser(data).then(() => {
+                            Manage.FormWindow.Hide();
+                        });
                     })
-                    .catch(() => {});
+                    .catch(() => {
+                        Manage.FormWindow.Hide();
+                    });
                 break;                                
             }
             case 'delete-user': {

@@ -233,10 +233,13 @@ security-messages-removerolemessage:
     рөлге ауыстырылады
   uz: Rolni o'chirmoqchimisiz? Foydalanuvchilar faqat o'qish roliga o'tkaziladi
   cz: Opravdu chcete smazat roli? Uživatelé budou přesunuti do role pouze pro čtení
-  de: Sind Sie sicher, dass Sie die Rolle löschen möchten? Die Benutzer werden in die Rolle "Nur lesen" verschoben
-  tr: Rolü silmek istediğinize emin misiniz? Kullanıcılar "Sadece Okuma" rolüne taşınacak
+  de: Sind Sie sicher, dass Sie die Rolle löschen möchten? Die Benutzer werden in
+    die Rolle "Nur lesen" verschoben
+  tr: Rolü silmek istediğinize emin misiniz? Kullanıcılar "Sadece Okuma" rolüne
+    taşınacak
   zh: 您确定要删除该角色吗？用户将被移至“只读”角色
-  fa: آیا مطمئن هستید که می‌خواهید نقش را حذف کنید؟ کاربران به نقش "فقط خواندنی" منتقل خواهند شد
+  fa: آیا مطمئن هستید که می‌خواهید نقش را حذف کنید؟ کاربران به نقش "فقط خواندنی"
+    منتقل خواهند شد
 security-windowtitle-edituser:
   ru: Редактировать пользователя
   en: Edit user
@@ -315,4 +318,3 @@ security-contextmenu-remove:
   tr: Sil
   zh: 删除
   fa: حذف
-  
