@@ -72,9 +72,13 @@ App.Modules.Security = class extends Colibri.Modules.Module {
         if(this.IsCommandAllowed('security.profile')) {
             Manage.FormWindow.Show('#{security-userprofile}', 800, 'app.manage.storages(users)', this._store.Query('security.user'))
                 .then((data) => {
-                    this.SaveUser(data);
+                    this.SaveUser(data).then(() => {
+                        Manage.FormWindow.Hide();
+                    });
                 })
-                .catch(() => {});
+                .catch(() => {
+                    Manage.FormWindow.Hide();
+                });
         }
         else {
             App.Notices.Add(new Colibri.UI.Notice('#{security-global-notallowed}', Colibri.UI.Notice.Error, 5000));
@@ -208,7 +212,9 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     }
 
     SaveUser(value) {
-        this.Call('Client', 'SaveUser', value)
+        return new Promise((resolve, reject) => {
+
+            this.Call('Client', 'SaveUser', value)
             .then((response) => {
                 const currentUser = this._store.Query('security.user');
                 const savedUser = response.result;
@@ -235,13 +241,16 @@ App.Modules.Security = class extends Colibri.Modules.Module {
                     users.push(savedUser);
                 }
                 this._store.Set('security.users', users);
-
+                
                 App.Notices.Add(new Colibri.UI.Notice('#{security-messages-datasaved}', Colibri.UI.Notice.Success, 3000));
+                resolve(response.result);
             })
             .catch(error => {
                 App.Notices.Add(new Colibri.UI.Notice(error.result));
                 console.error(error);
+                reject(error.result);
             });
+        });
     }
 
     SaveRole(value) {

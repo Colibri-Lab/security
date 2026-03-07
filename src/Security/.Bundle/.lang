@@ -14,7 +14,8 @@ security-global-notallowed:
 security-login-success-message:
   ru: Вы успешно вошли в систему, пожалуйста, подождите пока мы произведем запуск!
   en: You have successfully logged in, please wait while we launch!
-  hy: "Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչև մենք գործարկենք:"
+  hy: "Դուք հաջողությամբ մուտք եք գործել, խնդրում ենք սպասել, մինչև մենք
+    գործարկենք:"
   it: Hai effettuato l'accesso con successo, attendi mentre avviamo!
   es: Has iniciado sesión con éxito, por favor espera mientras lanzamos!
   kk: Сіз жүйеге сәтті кірдіңіз, іске қосуымызды күтіңіз!
@@ -44,25 +45,37 @@ security-register-success-message:
   it: Ti sei registrato con successo, controlla la tua casella di posta
   es: Te has registrado con éxito, por favor revisa tu buzón
   kk: Сіз сәтті тіркелдіңіз, поштаңызды тексеріңіз
-  uz: Siz muvaffaqiyatli ro'yxatdan o'tdingiz, iltimos, pochta qutingizni tekshiring
+  uz: Siz muvaffaqiyatli ro'yxatdan o'tdingiz, iltimos, pochta qutingizni
+    tekshiring
   cz: Úspěšně jste se zaregistrovali, zkontrolujte prosím svou e-mailovou schránku
   fa: شما با موفقیت ثبت‌نام کردید، لطفاً صندوق پستی خود را بررسی کنید
   de: Sie haben sich erfolgreich registriert, bitte überprüfen Sie Ihr Postfach
   zh: 您已成功注册，请检查您的邮箱
   tr: Başarıyla kayıt oldunuz, lütfen e-posta kutunuzu kontrol edin
 security-reset-message:
-  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста, перейдите по ссылке в письме!
-  en: The recovery request has been successfully sent to your email, please follow the link in the email!
-  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեր էլ.փոստին, խնդրում ենք հետևել էլփոստի հղումին:"
-  it: La richiesta di recupero è stata inviata con successo alla tua email, segui il link nell'email!
-  es: La solicitud de recuperación se ha enviado con éxito a tu correo electrónico, por favor sigue el enlace en el correo electrónico!
-  kk: Қалпына келтіру сұранысыңыз поштаңызға сәтті жіберілді, хаттағы сілтемеге өтіңіз!
-  uz: Tiklash so'rovi muvaffaqiyatli tarzda elektron pochtangizga yuborildi, iltimos, elektron pochtadagi havolaga o'ting!
-  cz: Žádost o obnovení byla úspěšně odeslána na váš e-mail, postupujte podle odkazu v e-mailu!
-  fa: درخواست بازیابی با موفقیت به ایمیل شما ارسال شد، لطفاً لینک موجود در ایمیل را دنبال کنید!
-  de: Die Wiederherstellungsanfrage wurde erfolgreich an Ihre E-Mail gesendet, bitte folgen Sie dem Link in der E-Mail!
+  ru: Запрос на восстановление успешно отправлен вам на почту, пожалуйста,
+    перейдите по ссылке в письме!
+  en: The recovery request has been successfully sent to your email, please follow
+    the link in the email!
+  hy: "Վերականգնման հարցումը հաջողությամբ ուղարկվել է ձեր էլ.փոստին, խնդրում ենք
+    հետևել էլփոստի հղումին:"
+  it: La richiesta di recupero è stata inviata con successo alla tua email, segui
+    il link nell'email!
+  es: La solicitud de recuperación se ha enviado con éxito a tu correo
+    electrónico, por favor sigue el enlace en el correo electrónico!
+  kk: Қалпына келтіру сұранысыңыз поштаңызға сәтті жіберілді, хаттағы сілтемеге
+    өтіңіз!
+  uz: Tiklash so'rovi muvaffaqiyatli tarzda elektron pochtangizga yuborildi,
+    iltimos, elektron pochtadagi havolaga o'ting!
+  cz: Žádost o obnovení byla úspěšně odeslána na váš e-mail, postupujte podle
+    odkazu v e-mailu!
+  fa: درخواست بازیابی با موفقیت به ایمیل شما ارسال شد، لطفاً لینک موجود در ایمیل
+    را دنبال کنید!
+  de: Die Wiederherstellungsanfrage wurde erfolgreich an Ihre E-Mail gesendet,
+    bitte folgen Sie dem Link in der E-Mail!
   zh: 恢复请求已成功发送到您的邮箱，请点击邮件中的链接！
-  tr: Kurtarma isteği başarıyla e-posta adresinize gönderildi, lütfen e-postadaki bağlantıya tıklayın!
+  tr: Kurtarma isteği başarıyla e-posta adresinize gönderildi, lütfen e-postadaki
+    bağlantıya tıklayın!
 security-messages-datasaved:
   ru: Данные успешно сохранены
   en: Data saved successfully
