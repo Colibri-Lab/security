@@ -222,7 +222,7 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
 
         switch(menuData.name) {
             case 'add-user': {
-                Manage.FormWindow.Show('#{security-windowtitle-adduser}', 800, 'app.manage.storages(users)', {})
+                Manage.FormWindow.Show('#{security-windowtitle-adduser}', 800, 'app.manage.storages(name=users,module=security)', {})
                     .then((data) => {
                         Security.SaveUser(data).then(() => {
                             Manage.FormWindow.Hide();
@@ -234,7 +234,7 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
                 break;                                
             }
             case 'add-role': {
-                Manage.FormWindow.Show('#{security-windowtitle-addrole}', 800, 'app.manage.storages(roles)', {})
+                Manage.FormWindow.Show('#{security-windowtitle-addrole}', 800, 'app.manage.storages(name=roles,module=security)', {})
                     .then((data) => {
                         Security.SaveRole(data).then(() => {
                             Manage.FormWindow.Hide();
@@ -246,7 +246,7 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
                 break;                                
             }
             case 'edit-role': {
-                Manage.FormWindow.Show('#{security-windowtitle-editrole}', 800, 'app.manage.storages(roles)', item.tag)
+                Manage.FormWindow.Show('#{security-windowtitle-editrole}', 800, 'app.manage.storages(name=roles,module=security)', item.tag)
                     .then((data) => {
                         Security.SaveRole(data).then(() => {
                             Manage.FormWindow.Hide();
@@ -265,7 +265,7 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
                 break;                                
             }
             case 'edit-user': {
-                Manage.FormWindow.Show('#{security-windowtitle-edituser}', 800, 'app.manage.storages(users)', item.tag)
+                Manage.FormWindow.Show('#{security-windowtitle-edituser}', 800, 'app.manage.storages(name=users,module=security)', item.tag)
                     .then((data) => {
                         Security.SaveUser(data).then(() => {
                             Manage.FormWindow.Hide();
