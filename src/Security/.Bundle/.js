@@ -71,8 +71,11 @@ App.Modules.Security = class extends Colibri.Modules.Module {
     ShowProfileWindow() {
         if (this.IsCommandAllowed('security.profile')) {
             Manage.FormWindow.Show('#{security-userprofile}', 800, 'app.manage.storages(name=users,module=security)', this._store.Query('security.user'), '', {}, (data) => {
+                App.Loading.Show();
                 this.SaveUser(data).then(() => {
                     Manage.FormWindow.Hide();
+                }).finally(() => {
+                    App.Loading.Hide();
                 });
             }, () => {
                 Manage.FormWindow.Hide();

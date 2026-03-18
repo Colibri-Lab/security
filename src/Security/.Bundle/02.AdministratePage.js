@@ -223,8 +223,11 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
         switch(menuData.name) {
             case 'add-user': {
                 Manage.FormWindow.Show('#{security-windowtitle-adduser}', 800, 'app.manage.storages(name=users,module=security)', {}, '', {}, (data) => {
+                    App.Loading.Show();
                     Security.SaveUser(data).then(() => {
                         Manage.FormWindow.Hide();
+                    }).finally(() => {
+                        App.Loading.Hide();
                     });
                 }, () => {
                     Manage.FormWindow.Hide();
@@ -233,8 +236,11 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
             }
             case 'add-role': {
                 Manage.FormWindow.Show('#{security-windowtitle-addrole}', 800, 'app.manage.storages(name=roles,module=security)', {}, '', {}, (data) => {
+                    App.Loading.Show();
                     Security.SaveRole(data).then(() => {
                         Manage.FormWindow.Hide();
+                    }).finally(() => {
+                        App.Loading.Hide();
                     });
                 }, () => {
                     Manage.FormWindow.Hide();
@@ -243,8 +249,11 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
             }
             case 'edit-role': {
                 Manage.FormWindow.Show('#{security-windowtitle-editrole}', 800, 'app.manage.storages(name=roles,module=security)', item.tag, '', {}, (data) => {
+                    App.Loading.Show();
                     Security.SaveRole(data).then(() => {
                         Manage.FormWindow.Hide();
+                    }).finally(() => {
+                        App.Loading.Hide();
                     });
                 }, () => {
                     Manage.FormWindow.Hide();
@@ -259,8 +268,11 @@ App.Modules.Security.AdministratePage = class extends Colibri.UI.Component
             }
             case 'edit-user': {
                 Manage.FormWindow.Show('#{security-windowtitle-edituser}', 800, 'app.manage.storages(name=users,module=security)', item.tag, '', {}, (data) => {
+                    App.Loading.Show();
                     Security.SaveUser(data).then(() => {
                         Manage.FormWindow.Hide();
+                    }).finally(() => {
+                        App.Loading.Hide();
                     });
                 }, () => {
                     Manage.FormWindow.Hide();
