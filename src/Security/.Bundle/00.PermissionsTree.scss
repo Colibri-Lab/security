@@ -1,0 +1,15 @@
+.app-security-permissions-tree {
+
+    .app-security-permissions-tree-node {
+        .icon {
+            svg {
+                path, rect, circle, ellipse, line, polyline, polygon {
+                    &[fill="black"] {
+                        fill: #3b3b3b;
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,26 @@
+.app-security-roles-users-tree {
+        
+    .app-security-roles-users-tree-role-node {
+        > div > .icon {
+            svg {
+                path, rect, circle, ellipse, line, polyline, polygon {
+                    &[fill="black"] {
+                        fill: #0060b9;
+                    }
+                }
+            }
+        }
+    }
+    .app-security-roles-users-tree-user-node {
+        > div > .icon {
+            svg {
+                path, rect, circle, ellipse, line, polyline, polygon {
+                    &[fill="black"] {
+                        fill: #00b947;
+                    }
+                }
+            }
+        }
+    }
+
+}

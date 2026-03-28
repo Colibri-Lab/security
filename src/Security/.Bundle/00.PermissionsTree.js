@@ -2,6 +2,8 @@ App.Modules.Security.PermissionsTree = class extends Colibri.UI.Tree {
     
     constructor(name, container) {
         super(name, container);
+        this.AddClass('app-security-permissions-tree');
+
         this._permissionsObject = [];
         this._userOrRole = null;
     }
@@ -32,6 +34,7 @@ App.Modules.Security.PermissionsTree = class extends Colibri.UI.Tree {
             newNode.text = perm.desc + ' (' + perm.name + ')';
             newNode.isLeaf = perm.isLeaf;
             newNode.icon = App.Modules.Security.Icons.PermissionNotSetIcon;
+            newNode.AddClass('app-security-permissions-tree-node');
             newNode.tag = perm;
             this._renderLevel(newNode, perm.name);
 
@@ -110,6 +113,7 @@ App.Modules.Security.PermissionsTree = class extends Colibri.UI.Tree {
         newNode.isLeaf = false;
         newNode.icon = App.Modules.Security.Icons.PermissionNotSetIcon;
         newNode.tag = {name: 'app', desc: '#{security-permissions-all}', isLeaf: false};
+        newNode.AddClass('app-security-permissions-tree-node');
         this._renderLevel(newNode, 'app');
         this._removeUnexistent();
 

@@ -42,7 +42,7 @@ databases:
         user: web
         # пароль
         password: 123456
-
+        persistent: true
     points:
       security: 
         connection: security

@@ -2,6 +2,7 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
     
     constructor(name, container) {
         super(name, container);
+        this.AddClass('app-security-roles-users-tree');
         this._rolesList = [];
         this._usersList = [];
     }
@@ -31,6 +32,7 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
                 newNode.isLeaf = true;
                 newNode.icon = App.Modules.Security.Icons.RoleIcon;
                 newNode.tag = role;    
+                newNode.AddClass('app-security-roles-users-tree-role-node');
                 foundRoles.push(role.id + role.name);
             }); 
 
@@ -56,6 +58,7 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
                 newNode.isLeaf = true;
                 newNode.icon = App.Modules.Security.Icons.UserIcon;
                 newNode.tag = user;
+                newNode.AddClass('app-security-roles-users-tree-user-node'); 
                 
                 roleNode.isLeaf = false;    
                 foundUsers.push(user.id + user.login);
