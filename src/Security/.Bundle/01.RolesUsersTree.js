@@ -5,6 +5,14 @@ App.Modules.Security.RolesUsersTree = class extends Colibri.UI.Tree {
         this.AddClass('app-security-roles-users-tree');
         this._rolesList = [];
         this._usersList = [];
+        
+        this.expandOnClick = true;
+        this.hasSearchBox = true;
+        this.searchFilterCallback = (node, term) => {
+            return node.text.toLowerCase().indexOf(term.toLowerCase()) !== -1;
+        };
+        this.searchBoxPlaceholder = '#{security-roles-users-search-placeholder}';
+
     }
 
     __renderBoundedValues(users) {

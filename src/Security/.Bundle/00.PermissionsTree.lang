@@ -11,3 +11,16 @@ security-permissions-all:
   tr: Tüm izinler
   zh: 所有权限
   fa: تمام مجوزها
+security-permissions-search-placeholder:
+  ru: Введите текст для поиска в дереве прав
+  en: Enter text to search in permissions tree
+  hy: Մուտքագրեք տեքստը, որպեսզի որոնեք իրավունքի ծառում
+  it: Inserisci il testo per cercare nell'albero dei permessi
+  es: Ingrese texto para buscar en el árbol de permisos
+  kk: Рұқсаттар ағашында іздеу үшін мәтін енгізin
+  uz: Ruxsatlar ağacında aramak için metin girin
+  cz: Zadejte text pro hledání v stromu oprávnění
+  de: Geben Sie Text ein, um im Berechtigungsbaum zu suchen
+  tr: İzinler ağacında aramak için metin girin
+  zh: 输入文本以在权限树中搜索
+  fa: برای جستجو در درخت مجوزها متن را وارد کنید

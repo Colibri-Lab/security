@@ -6,6 +6,13 @@ App.Modules.Security.PermissionsTree = class extends Colibri.UI.Tree {
 
         this._permissionsObject = [];
         this._userOrRole = null;
+
+        this.expandOnClick = true;
+        this.hasSearchBox = true;
+        this.searchFilterCallback = (node, term) => {
+            return node.text.toLowerCase().indexOf(term.toLowerCase()) !== -1;
+        };
+        this.searchBoxPlaceholder = '#{security-permissions-search-placeholder}';
     }
 
     _findLevel(parent) {
